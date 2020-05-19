@@ -23,4 +23,4 @@ function bubble_Sort(a)
  return x; 
 }
 
-console.log(bubble_Sort([1,2,3,4,5]));
+console.log(bubble_Sort([9,1,3,7,2]));
