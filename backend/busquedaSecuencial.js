@@ -20,7 +20,7 @@ function binarySearch(array, item){
   return -1;
 }
 
-function linearSearch(value, list) {
+function linearSearch(list, value) {
     let found = false;
     let position = -1;
     let index = 0;
@@ -36,6 +36,6 @@ function linearSearch(value, list) {
     return position ;
   }
 console.log("Busqueda Secuencial")
-console.log(linearSearch(3, a));
+console.log(linearSearch(a,3));
 console.log("Busqueda Binaria")
 console.log(binarySearch(a, 3));
