@@ -20,4 +20,22 @@ function binarySearch(array, item){
   return -1;
 }
 
+function linearSearch(value, list) {
+    let found = false;
+    let position = -1;
+    let index = 0;
+  
+    while(!found && index < list.length) {
+        if(list[index] == value) {
+            found = true;
+            position = index;
+        } else {
+            index += 1;
+        }
+    }
+    return position ;
+  }
+console.log("Busqueda Secuencial")
+console.log(linearSearch(3, a));
+console.log("Busqueda Binaria")
 console.log(binarySearch(a, 3));
