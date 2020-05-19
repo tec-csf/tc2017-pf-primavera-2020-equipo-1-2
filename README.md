@@ -1,13 +1,13 @@
-# *[PF1. Algoritmos de Búsqueda y Ordenamiento]*
+# *PF1. Algoritmos de Búsqueda y Ordenamiento*
 ---
-#### Materia: *[Análisis y Diseño de Algoritmos]*
+#### Materia: *Análisis y Diseño de Algoritmos*
 
 ##### Integrantes:
-1. *[LUIS DANIEL ROA GONZÁLEZ]* - *[A01021960]* - *[Campus Santa Fe]*
-2. *[KATIA YARETH BELLIDO LÓPEZ]* - *[A01023638]* - *[Campus Santa Fe]*
-3. *[CONSTANZA GÓMEZ SÁNCHEZ]* - *[A01026717]* - *[Campus Santa Fe]*
-4. *[CHRISTOPHER LUIS MIRANDA VANEGAS]* - *[A01022676]* - *[Campus Santa Fe]*
-5. *[MIGUEL MONTERRUBIO BANDERA]* - *[A01022153]* - *[Campus Santa Fe]*
+1. *LUIS DANIEL ROA GONZÁLEZ* - *A01021960* - *Campus Santa Fe*
+2. *KATIA YARETH BELLIDO LÓPEZ* - *A01023638* - *Campus Santa Fe*
+3. *CONSTANZA GÓMEZ SÁNCHEZ* - *A01026717* - *Campus Santa Fe*
+4. *CHRISTOPHER LUIS MIRANDA VANEGAS* - *A01022676* - *Campus Santa Fe*
+5. *MIGUEL MONTERRUBIO BANDERA* - *A01022153* - *Campus Santa Fe*
 
 ---
 ## 1. Aspectos generales
