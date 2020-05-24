@@ -30,6 +30,22 @@ app.get('/', async (req, res) => {
     res.render('home');
 });
 
+app.get('/search', async(req, res)=>{
+    res.render('search')
+});
+
+app.get('/sorting', async (req, res) => {
+    res.render('sorting')
+});
+
+app.get('/unstable', async (req, res) => {
+    res.render('unstable')
+});
+
+app.get('/stable', async (req, res) => {
+    res.render('stable')
+});
+
 app.listen(4000, () => {
     console.log('App is running in port 4000')
 });

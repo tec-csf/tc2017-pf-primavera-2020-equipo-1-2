@@ -1,27 +1,56 @@
 @layout('layouts.main')
 @section('mainMenu')
 
-<header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Proyecto final</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-    </div>
-  </div>
-</nav>
-</header>
+  <h1>Bienvenido al sistema</h1>
 
-<body>
+  <h3>Algoritmos de búsqueda</h3><br>
 
-        <div class="row mt-2">
-            <div class="col-sm-12">
+<table style="width:100%" class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th>Nombre</th>
+    <th>Complejidad Temporal</th> 
+    <th>Complejidad Espacial</th>
+    <th>Descripción</th>
+  </tr>
+  </thead>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+    <td>DEMO</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+    <td>DEMO</td>
+  </tr>
+</table><br>
 
-                {{--  <p>In order to use the app correctly, use the menu from the navigation bar</p>  --}}
+<h3>Algoritmos de ordenamiento</h3><br>
+
+<table style="width:100%" class="table">
+  <thead class="thead-clear">
+  <tr>
+    <th>Nombre</th>
+    <th>Complejidad Temporal</th> 
+    <th>Complejidad Espacial</th>
+    <th>Descripción</th>
+  </tr>
+  </thead>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+    <td>DEMO</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+    <td>DEMO</td>
+  </tr>
+</table>
 
 @endsection
