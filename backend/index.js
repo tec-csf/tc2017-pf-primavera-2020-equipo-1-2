@@ -43,6 +43,10 @@ app.get('/sorting', async (req, res) => {
     res.render('sorting')
 });
 
+app.get('/index', async(req, res)=>{
+    res.render('index');
+})
+
 app.get('/unstable', async (req, res) => {
     res.render('unstable')
 });
@@ -67,6 +71,7 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
 
     console.log("\n" + primer + "\n" + segundo + "\n" + nuRand);
 
+    res.render('')
 });
 
 app.listen(port, () => {
@@ -163,4 +168,4 @@ function principal() {
 
     });
 }
-principal();
+//principal();
