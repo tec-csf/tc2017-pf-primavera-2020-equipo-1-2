@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //Así se le da render a un html
 app.get('/',  (req, res) => {
     console.log(nuRand[0]);
-    res.sendFile(path.resolve(__dirname, '../frontend/indice.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/home.html'));
 });
 
 app.get('/search', async (req, res) => {
