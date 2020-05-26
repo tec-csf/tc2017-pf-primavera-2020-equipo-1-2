@@ -48,7 +48,7 @@ function selectionSort(array) {
     }
   };
 
-  function heapSort(array) {
+function heapSort(array) {
     let size = array.length
   
     // build heapSort (rearrange array)
@@ -65,7 +65,7 @@ function selectionSort(array) {
       // call max heapify on the reduced heapSort
       heapify(array, i, 0)
     }
-  }
+}
   
   // to heapify a subtree rooted with node i which is an index in array[]
   function heapify(array, size, i) {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+
+<script>
+	var txt = '{"Numbers": [1, 2, 3, 4, 5, 6]}'
+	var obj = JSON.parse(txt);
+	document.getElementById("demo").innerHTML = obj.Numbers[0] + ", " + obj.Numbers[2];
+	console.log(obj)
+
+	/*
+		NO FUNCIONA POR PEDOS DE HTML Y JAVASCRIPT, NO SÉ QUÉ HACER
+	*/
+	$(function() {
+
+	   var numbers = [];
+
+	   $.getJSON('data.json', function(data) {
+	       numbers = JSON.stringify(data);
+	     });
+
+	});
+</script>
+
+</body>
+</html>

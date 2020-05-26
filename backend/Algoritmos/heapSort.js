@@ -24,11 +24,11 @@ function heapSort(array) {
     let right = 2 * i + 2
   
     // if left child is larger than root
-    if (left < size && array[left] > array[max])
+    if (left < size && array[left] < array[max])
       max = left
   
     // if right child is larger than max
-    if (right < size && array[right] > array[max])
+    if (right < size && array[right] < array[max])
       max = right
   
     // if max is not root
