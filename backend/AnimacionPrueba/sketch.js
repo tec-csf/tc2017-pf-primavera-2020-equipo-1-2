@@ -6,11 +6,13 @@
 
 let values = [];
 let w = 10;
+let i, finished, s;
 
 let states = [];
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(600, 600);
+  i = 200;
   values = new Array(floor(width / w));
   for (let i = 0; i < values.length; i++) {
     values[i] = random(height);
@@ -75,14 +77,20 @@ async function selectionSort(array){
 }
 
 async function shellSort(array, size){
+  for (let i = 0; i < array.length; i++) {
+    states[i] = 1;
+  }
   for (let gap = Math.floor(array.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
     for (let index = gap; index < array.length; index++) {
       let indexCopy = index
       let itemValue = array[index]
       while (indexCopy >= gap && comparar(1, array[indexCopy - gap], itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
+        states[indexCopy] = 0 //se comparan y cambian derecho
         await swap (array, indexCopy, indexCopy - gap)
         indexCopy -= gap
+        states[indexCopy] = 0 //se compara y cambian izquierdo
       }
+      states[index] = -1 //lo hace en las mitades de la derecha
     }
   }
 }
