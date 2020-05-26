@@ -1,12 +1,15 @@
-const path = require("path");
-const express = require("express");
 const bodyParser = require("body-parser");
+const express = require("express");
+const os = require('os');
+var Parallel = require('paralleljs');
+const path = require("path");
 
 const app = new express();
 const { config, engine } = require("express-edge");
 
 const port = 4000;
 
+var nuRand = [];
 var tiempos = [];
 
 // Automatically sets view engine and adds dot notation to app.render
@@ -20,11 +23,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static(path.join(__dirname, "public")));
-
-/* 
- *   Permite input a JS
- *   req.body.*** 
- */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -33,6 +31,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', async (req, res) => {
+    console.log(nuRand[0]);
     res.render('home');
 });
 
@@ -52,13 +51,22 @@ app.get('/stable', async (req, res) => {
     res.render('stable')
 });
 
+//  La página llamada stable (/stable) envía los campos a esta solicitud POST
+//  aquí se igualan los valores insertados para que sean usados por otras operaciones.
+//  var primer = campo llamado primerAlg en ../frontend/stable.edge
+//  var segundo = campo llamado segundoAlg en ../frontend/stable.edge
+//  convRand = parseInt(campo llamado noRand en ../frontend/stable.edge)
 app.post('/algoritmosEstables/conf', async(req, res)=>{
     var primer = req.body.primerAlg;
     var segundo = req.body.segundoAlg;
 
-    var nuRand = parseInt(req.body.noRand);
+    var convRand = parseInt(req.body.noRand);
+
+    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand.push(convRand);
 
     console.log("\n" + primer + "\n" + segundo + "\n" + nuRand);
+
 });
 
 app.listen(port, () => {
@@ -66,9 +74,7 @@ app.listen(port, () => {
 });
 
 //Paralelización
-const os = require('os');
-var Parallel = require('paralleljs');
-var cantNum = 100;
+var cantNum = parseInt(nuRand);
 const n_cpus = os.cpus().length;
 var cantXthread = Math.floor(cantNum/n_cpus);
 
