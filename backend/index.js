@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = new express();
 const { config, engine } = require("express-edge");
 
-const port = 80;
+const port = 4000;
 
 // Automatically sets view engine and adds dot notation to app.render
 app.use(engine);
@@ -49,5 +49,5 @@ app.get('/stable', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('App is running in port 4000')
+    console.log('App is running in port '+port)
 });
