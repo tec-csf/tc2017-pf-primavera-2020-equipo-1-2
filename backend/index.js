@@ -30,9 +30,10 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', async (req, res) => {
+//Así se le da render a un html
+app.get('/',  (req, res) => {
     console.log(nuRand[0]);
-    res.render('home');
+    res.sendFile(path.resolve(__dirname, '../frontend/indice.html'));
 });
 
 app.get('/search', async (req, res) => {
