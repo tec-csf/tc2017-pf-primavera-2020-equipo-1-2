@@ -31,29 +31,29 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, "public")));
 
 //Así se le da render a un html
-app.get('/',  (req, res) => {
-    console.log(nuRand[0]);
+app.get('/',  async(req, res) => {
+    //console.log(nuRand[0]);
     res.sendFile(path.resolve(__dirname, '../frontend/home.html'));
 });
 
 app.get('/search', async (req, res) => {
-    res.render('search')
+    res.sendFile(path.resolve(__dirname, '../frontend/search.html'))
 });
 
 app.get('/sorting', async (req, res) => {
-    res.render('sorting')
+    res.sendFile(path.resolve(__dirname, '../frontend/sorting.html'))
 });
 
 app.get('/index', async(req, res)=>{
-    res.render('index');
+    res.sendFile(path.resolve(__dirname, '../frontend/index.html'));
 })
 
 app.get('/unstable', async (req, res) => {
-    res.render('unstable')
+    res.sendFile(path.resolve(__dirname, '../frontend/unstable.html'))
 });
 
 app.get('/stable', async (req, res) => {
-    res.render('stable')
+    res.sendFile(path.resolve(__dirname, '../frontend/stable.html'))
 });
 
 //  La página llamada stable (/stable) envía los campos a esta solicitud POST
@@ -72,7 +72,7 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
 
     console.log("\n" + primer + "\n" + segundo + "\n" + nuRand);
 
-    res.render('')
+    res.redirect('/');
 });
 
 app.listen(port, () => {

@@ -45,21 +45,29 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                    <td>DEMO</td>
+                    <td>Secuencial</td>
+                    <td>O(n)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo realiza una búsqueda en cada elemento de un arreglo o lista. Va comparando cada valor de la lista hasta que encuentre el valor solicitado.
+                    </td>
                 </tr>
                 <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
-                    <td>DEMO</td>
+                    <td>Binaria</td>
+                    <td>O(log n)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo comienza buscando el elemento a la mitad del arreglo. Si no se encuentra en esa mitad, divide el arreglo a la mitad y sigue buscando en la mitad del arreglo recién creado. Así corre hasta que se encuentre. 
+                    </td>
                 </tr>
             </table><br>
             
             <h3>Algoritmos de ordenamiento</h3><br>
             
+            <p>Estos se dividen en dos, estables e inestables.</p>
+            <p>Los estables se encuentran en la versión clara de la tabla, mientras que los inestables están a partir de la versión oscura de la tabla.</p>
+
+            <h4>Estables</h4>
             <table style="width:100%" class="table">
                 <thead class="thead-clear">
                     <tr>
@@ -70,16 +78,130 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                    <td>DEMO</td>
+                    <td>Bubble Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                            Este algoritmo ordena los valores de un arreglo (o lista), conforme vaya pasando por la lista. Al comparar un valor con otro, los va moviendo de lugar, dependiendo si el valor es mayor o menor.
+                    </td>
                 </tr>
                 <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
-                    <td>DEMO</td>
+                    <td>Insertion Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo se encarga de ordenar los valores conforme los vaya leyendo. En otras palabras, mientras vaya avanzando por el arreglo, va enviando los datos analizados a un arreglo nuevo para que se almacene el resultado final.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Merge Sort</td>
+                    <td>O(n*log(n))</td>
+                    <td>O(n)</td>
+                    <td>
+                        Este algoritmo ordena los valores en dos fases. Primero, divide el arreglo en <i>n</i> valores, cada uno conteniendo un elemento del arreglo original. Después, comienza a juntar los sub-arreglos y los ordenas conforme vaya avanzando.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Counting Sort</td>
+                    <td>O(n+i)</td>
+                    <td>O(n+i)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cocktail Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bucket Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(n+k)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Binary tree Sort</td>
+                    <td>O(n*log(n))</td>
+                    <td>O(n)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Radix Sort</td>
+                    <td>O(n*k/d)</td>
+                    <td>O(n+2^d)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+            </table>
+
+            <h4>Inestables</h4>
+            <table style="width:100%" class="table"></h>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Complejidad Temporal</th>
+                        <th>Complejidad Espacial</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Selection Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Shell Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(n)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Heap Sort</td>
+                    <td>O(n*log(n))</td>
+                    <td>O(1)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quick Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(n)</td>
+                    <td>
+                        <b>
+                            DESCRIPCIÓN VA AQUÍ
+                        </b>
+                    </td>
                 </tr>
             </table>
 

@@ -19,10 +19,10 @@ function setup() {
     states[i] = -1;
   }
 
-  //quickSort(values, 0, values.length - 1);
+  quickSort(values, 0, values.length - 1);
   //heapSort(values);
   //selectionSort(values);
-  shellSort(values);
+  //shellSort(values);
 }
 
 async function quickSort(arr, start, end) {
