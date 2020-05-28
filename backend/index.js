@@ -48,6 +48,10 @@ app.get('/index', async(req, res)=>{
     res.sendFile(path.resolve(__dirname, '../frontend/index.html'));
 })
 
+app.get('/animacionInestables', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/AnimacionInestables.js'))
+})
+
 app.get('/unstable', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/unstable.html'))
 });

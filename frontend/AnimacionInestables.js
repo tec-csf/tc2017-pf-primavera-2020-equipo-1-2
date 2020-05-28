@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>QuickSort Visualization
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+<script>
 // QuickSort Visualization
 // Daniel Shiffman
 // https://thecodingtrain.com/CodingChallenges/143-quicksort.html
@@ -198,3 +212,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }
+</script>
+</body>
+
+</html>
