@@ -4,12 +4,17 @@ const os = require('os');
 var Parallel = require('paralleljs');
 const path = require("path");
 
+
+
 const app = new express();
 const { config, engine } = require("express-edge");
 
 const port = 4000;
 
 var nuRand = [];
+var nombrePrim = [];
+var nombreSec = [];
+
 var tiempos = [];
 
 // Automatically sets view engine and adds dot notation to app.render
@@ -44,9 +49,6 @@ app.get('/sorting', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/sorting.html'))
 });
 
-app.get('/index', async(req, res)=>{
-    res.sendFile(path.resolve(__dirname, '../frontend/index.html'));
-})
 
 app.get('/animacionInestables', async(req, res)=>{
     res.sendFile(path.resolve(__dirname, '../frontend/AnimacionInestables.js'))
@@ -84,6 +86,24 @@ app.get('/stableDoc', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/stableDoc.html'))
 });
 
+//Render de los HTMLS que despliegan las animaciones
+
+app.get('/heapsortDisplay', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/heapsortDisplay.html'));
+})
+
+app.get('/quicksortDisplay', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/quicksortDisplay.html'));
+})
+
+app.get('/shellsortDisplay', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/shellsortDisplay.html'))
+});
+
+app.get('/selectionsortDisplay', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/selectionsortDisplay.html'));
+})
+
 //  La página llamada stable (/stable) envía los campos a esta solicitud POST
 //  aquí se igualan los valores insertados para que sean usados por otras operaciones.
 //  var primer = campo llamado primerAlg en ../frontend/stable.edge
@@ -97,10 +117,18 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
     nuRand = [];
+    nombrePrim = [];
+    nombreSec = [];
 
+    nombrePrim.push(primer);
+    nombreSec.push(segundo);
     nuRand.push(convRand);
 
+    console.log(nombrePrim + " " + nombreSec + " " + convRand)
+
     console.log("Stable\n" + primer + ", " + segundo + ", " + nuRand);
+
+
 
     res.redirect('/');
 });
