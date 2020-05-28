@@ -86,6 +86,10 @@ app.get('/stableDoc', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/stableDoc.html'))
 });
 
+app.get("/searchDoc", async (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/searchDoc.html"));
+});
+
 //Render de los HTMLS que despliegan las animaciones
 
 app.get('/heapsortDisplay', async(req, res)=>{
