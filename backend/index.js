@@ -3,8 +3,8 @@ const express = require("express");
 const os = require('os');
 var Parallel = require('paralleljs');
 const path = require("path");
-
-
+const fs = require("fs-extra");
+const jsonfile = require("jsonfile");
 
 const app = new express();
 const { config, engine } = require("express-edge");
@@ -177,10 +177,13 @@ app.post('/algoritmosInestables/doc', async (req, res) => {
 });
 
 app.post('/algoritmosEstables/doc', async (req, res) => {
-    var primer = req.body.newFile;
+    const primer = req.body.newFile;
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
-    nuRand = [];
+   jsonfile.readFile(primer, function(err, obj){
+       if (err) console.error(err);
+       console.dir(obj);
+   })
 
     console.log("Doc stable\n" + primer);
 
