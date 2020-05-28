@@ -56,6 +56,30 @@ app.get('/stable', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/stable.html'))
 });
 
+app.get('/stableUI', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/stableUI.html'))
+})
+
+app.get('/unstableUI', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/unstableUI.html'))
+});
+
+app.get('/search', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/search.html'))
+});
+
+app.get('/searchUI', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/searchUI.html'))
+});
+
+app.get('/unstableDoc', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/unstableDoc.html'))
+});
+
+app.get('/stableDoc', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/stableDoc.html'))
+});
+
 //  La página llamada stable (/stable) envía los campos a esta solicitud POST
 //  aquí se igualan los valores insertados para que sean usados por otras operaciones.
 //  var primer = campo llamado primerAlg en ../frontend/stable.edge
@@ -68,9 +92,65 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
     var convRand = parseInt(req.body.noRand);
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand = [];
+
     nuRand.push(convRand);
 
-    console.log("\n" + primer + "\n" + segundo + "\n" + nuRand);
+    console.log("Stable\n" + primer + ", " + segundo + ", " + nuRand);
+
+    res.redirect('/');
+});
+
+app.post('/algoritmosInestables/conf', async(req, res)=>{
+    var primer = req.body.primerAlg;
+    var segundo = req.body.segundoAlg;
+
+    var convRand = parseInt(req.body.noRand);
+
+    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand = [];
+
+    nuRand.push(convRand);
+
+    console.log("Unstable\n" + primer + ", " + segundo + ", " + nuRand);
+
+    res.redirect('/');
+});
+
+app.post('/algoritmosBusqueda/conf', async (req, res) => {
+    var primer = req.body.primerAlg;
+    var segundo = req.body.segundoAlg;
+
+    var convRand = parseInt(req.body.noRand);
+
+    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand = [];
+
+    nuRand.push(convRand);
+
+    console.log("Search\n" + primer + ", " + segundo + ", " + nuRand);
+
+    res.redirect('/');
+});
+
+app.post('/algoritmosInestables/doc', async (req, res) => {
+    var primer = req.body.newFile;
+
+    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand = [];
+
+    console.log("Doc unstable\n" + primer);
+
+    res.redirect('/');
+});
+
+app.post('/algoritmosEstables/doc', async (req, res) => {
+    var primer = req.body.newFile;
+
+    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand = [];
+
+    console.log("Doc stable\n" + primer);
 
     res.redirect('/');
 });
