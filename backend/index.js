@@ -493,15 +493,12 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                                  console.timeEnd("primero");
                              });
                              var segundo = Date.now();
+                             bucketSort(n);
                              console.time("segundo");
-                             dos.spawn(bucketSort).then(function (n) {
-                                 console.timeEnd("segundo");
-                                 var endseg = Date.now();
-                                 var tiempoFinalDos = endseg - segundo;
-                                 console.log(`Seg Execution time: ${tiempoFinalDos} ms`);
-                                 /* res.send("Tiempo total: " + tiempoFinalDos) */
-                             });
-
+                             console.timeEnd("segundo");
+                             var endseg = Date.now();
+                             var tiempoFinalDos = endseg - segundo;
+                             console.log(`Seg Execution time: ${tiempoFinalDos} ms`);
                          });
 
                      } //Fin principal
@@ -688,12 +685,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             dos.spawn(bubli).then(function (n) {
@@ -722,12 +718,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             dos.spawn(bucketSort).then(function (n) {
@@ -755,12 +750,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             dos.spawn(cocktailSort).then(function (n) {
@@ -788,12 +782,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             dos.spawn(countingSort).then(function (n) {
@@ -821,12 +814,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             dos.spawn(insertionSort).then(function (n) {
@@ -854,12 +846,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             mergeSort(n);
@@ -885,12 +876,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             var dos = new Parallel(n);
                             console.time("primero");
                             var primero = Date.now();
-                            uno.spawn(bucketSort).then(function (n) {
-                                var endprim = Date.now();
-                                var tiempoFinalUno = endprim - primero;
-                                console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
-                                console.timeEnd("primero");
-                            });
+                            bucketSort(n);
+                            var endprim = Date.now();
+                            var tiempoFinalUno = endprim - primero;
+                            console.log(`Prim Execution time: ${tiempoFinalUno} ms`);
+                            console.timeEnd("primero");
                             var segundo = Date.now();
                             console.time("segundo");
                             radixSort(n);
@@ -966,13 +956,11 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             });
                             var segundo = Date.now();
                             console.time("segundo");
-                            dos.spawn(bucketSort).then(function (n) {
-                                console.timeEnd("segundo");
-                                var endseg = Date.now();
-                                var tiempoFinalDos = endseg - segundo;
-                                console.log(`Seg Execution time: ${tiempoFinalDos} ms`);
-                                /* res.send("Tiempo total: " + tiempoFinalDos) */
-                            });
+                            bucketSort(n);
+                            console.timeEnd("segundo");
+                            var endseg = Date.now();
+                            var tiempoFinalDos = endseg - segundo;
+                            console.log(`Seg Execution time: ${tiempoFinalDos} ms`);
 
                         });
 
@@ -1032,7 +1020,7 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
                             });
                             var segundo = Date.now();
                             console.time("segundo");
-                            dos.spawn(countingSort).then(function (n) {
+                            dos.spawn(countingSort(n)).then(function (n) {
                                 console.timeEnd("segundo");
                                 var endseg = Date.now();
                                 var tiempoFinalDos = endseg - segundo;
@@ -1293,7 +1281,7 @@ app.post('/algoritmosEstables/conf', async(req, res)=>{
             break;
 
         default:
-            console.log("DEF 1")
+            console.log("null")
             break;
     }
 
