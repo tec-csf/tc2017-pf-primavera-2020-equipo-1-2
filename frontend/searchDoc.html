@@ -18,9 +18,9 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="/search">Algoritmos de búsqueda</a>
+                <a class="nav-item nav-link active" href="/search">Algoritmos de búsqueda</a>
                 <a class="nav-item nav-link" href="/stable">Algoritmos estables</a>
-                <a class="nav-item nav-link active" href="/unstable">Algoritmos inestables</a>
+                <a class="nav-item nav-link" href="/unstable">Algoritmos inestables</a>
             </div>
         </div>
     </nav>
@@ -36,19 +36,51 @@
             <button class="btn btn-danger" onclick="window.location.href='/search'">Regresar a <i><b>Algoritmos
                         de búsqueda</b></i></button>
 
-            <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
+                        <h4 class="text-lg-center">Seleccione los algoritmos que desea utilizar</h4>
 
-                <form method="POST" action="/algoritmosBusqueda/doc">
+                        <form method="POST" action="/algoritmosBusqueda/doc">
+                        
+                        <table style="width:100%" class="table">
+                            <thead class="thead-dark">
+                    <tr>
+                        <th class="text-lg-center">Primer algoritmo</th>
+                        <th class="text-lg-center">Segundo algoritmo</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <div class="row justify-content-center form-group">
+                            <select name="primerAlg" id="primerAlg">
+                                <option value="null">-</option>
+                                <option value="binary">Binaria</option>
+                                <option value="sequential">Secuencial</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row justify-content-center form-group">
+                            <select name="segundoAlg" id="segundoAlg">
+                                <option value="null">-</option>
+                                <option value="binary">Binaria</option>
+                                <option value="sequential">Secuencial</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table><br>
+            
+            <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
                 <div class="row mt-2">
                     <div class="col-sm-12 text-lg-center">
                         <label for="fileUpload"></label><br>
                         <input type="text" id="fileUpload" name="newFile"><br>
                     </div>
+
                 </div>
-                     <div class="form-group text-lg-center">
-                         <br><input type="submit" class="btn btn-success justify-content-center">
-                     </div>
-                </form>
+                <div class="form-group text-lg-center">
+                    <br><input type="submit" class="btn btn-success justify-content-center">
+                </div>
+            </form>
         </div>
     </div>
 
