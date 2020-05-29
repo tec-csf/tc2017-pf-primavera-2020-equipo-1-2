@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+/* <!DOCTYPE html>
 <html>
 
 <head>
@@ -16,15 +16,15 @@
 // Daniel Shiffman
 // https://thecodingtrain.com/CodingChallenges/143-quicksort.html
 // https://editor.p5js.org/codingtrain/sketches/vic6Qzo-j
-// https://youtu.be/eqo2LxRADhU
+// https://youtu.be/eqo2LxRADhU */
 
-let values = [];
-let w = 10;
+let values = [];//array with the values 
+let w = 10;// width de los rectangulos de la animación
 let i, finished, s;
 
 let states = [];
 
-function setup() {
+function setup(){
   createCanvas(600, 600);
   i = 200;
   values = new Array(floor(width / w));
@@ -38,7 +38,19 @@ function setup() {
   //selectionSort(values);
   //shellSort(values);
 }
-
+/* 
+Function QuickSort: We select a number, called our pivot, 
+which we’ll compare every number to when we loop through our items. 
+The goal is to reorganize the array so it is partitioned into two halves, 
+with everything in each either being less than or greater than our pivot. 
+When the pivot is in it’s final position we’ll move on to doing the same 
+thing with a new pivot, with every pivot being cemented 
+in place until every item has been a pivot at least once.
+@param arr:the array of elements to be sorted
+@param start: the first element of the array 
+@param end: the last element of the array 
+@return:  
+*/
 async function quickSort(arr, start, end) {
   if (start >= end) {
     return;
@@ -212,7 +224,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }
-</script>
+/* </script>
 </body>
 
-</html>
+</html> */
