@@ -1,17 +1,20 @@
-// QuickSort Visualization
-// Daniel Shiffman
-// https://thecodingtrain.com/CodingChallenges/143-quicksort.html
-// https://editor.p5js.org/codingtrain/sketches/vic6Qzo-j
-// https://youtu.be/eqo2LxRADhU
+/* 
+  Animaciones de los algoritmos Estables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Bubble sort, cocktail Sort,
+  insertion Sort ymerge Sort.  
+*/
 
-let values = [];
-let w = 10;
-let i, finished, s;
+let values = []; // array with the values of the array 
+let w = 10; // size of each bar in the visualization 
 let comparisons = 0;
 
 let states = [];
 
-
+/* 
+Function setup: this function creates the canvas where the animation will be visualized
+@param: nothing 
+@return:nothing
+*/
 function setup() {
     createCanvas(windowWidth, windowHeight);
     i = 200;
@@ -25,10 +28,12 @@ function setup() {
     //cocktailSort(values);
     //insertionSort(values);
     mergeSort(values);
-}
+}//end setup 
+
 /* 
-    Function Bubble sort: Sorting takes place by stepping through all the elements one-by-one and comparing it with the adjacent element and swapping them if required.
-    @param: the array of the values to be sorted 
+    Function Bubble sort: Sorting takes place by stepping through all the elements 
+    one-by-one and comparing it with the adjacent element and swapping them if required.
+    @param arr: the array of the values to be sorted 
     @return: nothing
 */
 async function bubbleSort(arr){
@@ -40,10 +45,13 @@ async function bubbleSort(arr){
 			}
 		}
 	}
-}
+}//end bubblesort
+
 /* 
-    Function Cocktail sort: is the same mechanics of the cocktail sort, but when it reaches the end of the array it goes backwards comparing the elemtns. Then it starts from the index 0, all this until it's sorted. 
-    @param: the array of the values to be sorted 
+    Function Cocktail sort: is the same mechanics of the cocktail sort, but when it reaches the 
+    end of the array it goes backwards comparing the elemtns. Then it starts from the index 0, 
+    all this until it's sorted. 
+    @param arr: the array of the values to be sorted 
     @return: nothing
 */
 async function cocktailSort(arr) {
@@ -61,10 +69,15 @@ async function cocktailSort(arr) {
 			}
 		}
 	}
-}
+}//end cocktail
+
 /* 
-    Function Insertion sort:is a simple sorting algorithm that works the way we sort playing cards in our hands. It iterates over the array and compares two items at a time. It swaps the items if one is larger than the other and continues to iterate left, comparing and swapping until the minimum is at the front of the array
-    @param: the array of the values to be sorted 
+    Function Insertion sort:is a simple sorting algorithm that works 
+    the way we sort playing cards in our hands. It iterates over the 
+    array and compares two items at a time. It swaps the items if one is 
+    larger than the other and continues to iterate left, comparing and 
+    swapping until the minimum is at the front of the array.
+    @param arr: the array of the values to be sorted 
     @return: nothing
 */
 async function insertionSort(arr) {
@@ -77,10 +90,14 @@ async function insertionSort(arr) {
         }
         arr[j+1] = tmp;
     }
-}
+}//end insertion
+
 /* 
-    Function Merge sort: Imagine having to take a deck of cards, split it in two halves and continue splitting those piles in halves, and halves again until all you have is 52 piles of 1 card. Then, you regroup the piles in pairs again but this time, sort them in ascending order
-    @param: the array of the values to be sorted 
+    Function Merge sort: Imagine having to take a deck of cards, split it in two 
+    halves and continue splitting those piles in halves, and halves again until all 
+    you have is 52 piles of 1 card. Then, you regroup the piles in pairs again 
+    but this time, sort them in ascending order.
+    @param a: the array of the values to be sorted 
     @return: nothing
 */
 function mergeSort(a) {
@@ -89,10 +106,11 @@ function mergeSort(a) {
     // asynchronous sort the copy
     mergeSortSlice(copy1, 0, copy1.length);
     return;
-}
+}//end merge sort 
+
 /* 
     Function MergesortSlice: divides the array into equal parts and sorts each part
-    @param: the array of the values to be sorted 
+    @param a: the array of the values to be sorted 
     @start: the first element of the array
     @end: the last element of the array
     @return: nothing
@@ -129,7 +147,8 @@ async function mergeSortSlice(a, start, end){
         await sleep(10);
         //startSort = true;
     }
-}
+}//end mergeSort Slice
+
 /* 
     Function draw: this function of the p5 library draws the lines of the visaulizations. 
     @param:nothing
@@ -150,10 +169,11 @@ function draw() {
       //dibuja las lineas
       rect(i * w, height - values[i], w, values[i]);
     }
-}
+}// end draw
+
 /* 
     Function Swap: this function was implemented to save the switches on the other functions. Basically it changes the positiion of one element into the other elements position. 
-    @param: the array of the values to be sorted 
+    @param arr: the array of the values to be sorted 
     @a: the first element to be switched
     @b: the second element to be switched
     @return: nothing
@@ -163,27 +183,43 @@ async function swap(arr, a, b) {
     let temp = arr[a];
     arr[a] = arr[b];
     arr[b] = temp;
-}
-/* 
-    Function MergesortSlice: 
-    @param: the array of the values to be sorted 
-    @start: the first element of the array
-    @end: the last element of the array
-    @return: nothing
-*/
+}//end swap
 
+/* 
+  Function sleep: it's a function used as an delay in the animation 
+  @param ms : miliseconds for the duration of the delay
+  @return: timeout
+*/
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-  
+
+/* 
+  Function desc: to determine the order of the numbers
+  @param a: number 1 to be compare
+  @param n: number 2 to be compare
+  @return: boolean 
+*/
 function desc(a, n) {
     return a<n;
-}
-  
+}//end desc
+
+/* 
+  Function asc: to determine the order of the numbers
+  @param a: number 1 to be compare
+  @param n: number 2 to be compare
+  @return: boolean 
+*/
 function asc(a, n) {
     return a>n;
-}
+}//end asc
 
+/* 
+  Function comparar: to choose the order of the numbers
+  @param a: number 1 to be compare
+  @param n: number 2 to be compare
+  @return: boolean 
+*/
 function comparar(tipo, a, n)
 {
 	if(tipo == 1) //a
@@ -194,4 +230,4 @@ function comparar(tipo, a, n)
 	{
 		return desc (a,n);
 	}
-}
+}//end comparar
