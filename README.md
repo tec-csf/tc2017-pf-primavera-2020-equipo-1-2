@@ -52,7 +52,20 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-*[Incluya aquí la descripción del proyecto.]*
+Como proyecto final para la materia de *Análisis y diseño de algoritmos*, se nos solicitó hacer una aplicación web en la cual un usuario pudiera ver como funcionan diferentes algoritmos, tanto de ordenamiento como de búsqueda.
+
+Este proyecto cuenta con dos carpetas principales, un _frontend_ y un _backend_. Cada uno de estos aloja los documentos necesarios para poder correr la solución.
+
+Al establecer conexión entre estas dos carpetas, se está mandando a llamar desde el backend, pero esto será explicado en su sección específica.
+
+El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo.
+Para acceder a la página, puede ingresar al siguiente link:
+
+>ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000
+
+- **NOTA**
+    - **No sé si haga falta algo de la descripción que quieran completar**
+    - **La página aun no se encuentra desplegada, pero será actualizado cuando se haya desplegado.**
 
 ## 3. Solución
 
@@ -67,6 +80,17 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 ### 3.2 Descripción de los componentes
 
 *[Incluya aquí una descripción detallada de cada uno de los componentes de la arquitectura así como una justificación de la selección de cada componente]*
+
+Para poder llevar a cabo la solución al problema que se nos planteó, si implementaron diversas librerías de Node JS. Esas serán explicadas en la sección _3.4.3_, pero si es relevante explicar el uso que le dimos a _body-parser_ para mandar a llamar los datos desde el frontend.
+
+La aplicación funciona utilizando operaciones del tipo **RESTful**, es decir con el uso de acciones de tipo *POST* y del tipo *GET*.
+Las operaciones post fueron utilizadas para mandar a llamar datos que se están insertando en el HTML.
+
+Por ejemplo, para que el usuario pueda insertar tanto los nombres de los algoritmos, como el valor numérico que se usará para generar los valores aleatorios, está utilizando una operación de tipo _post_. 
+Estos datos están siendo leídos en el backend, especificamente en las secciónes que comienzan con el enunciado `app.post()`. Eso permite que, dependiendo de la acción programada en el HTML, se envíen a ese campo.
+
+Para las operaciones de tipo _get_, se está haciendo algo distinto. Esta operación se está encargando del despliegue/visualización de los documentos HTML. En otras palabras, cuando se manda a llamar a otra página, como regresar al inicio de la aplicación web, esta tomando lugar en una operación de este tipo.
+Para poder identificar estas secciones, se están mandando a llamar con el enunciado `app.get()`, esto permite cargar el documento especificado. Es importante recalcar, esos documentos se encuentran en la carpeta del _frontend_.
 
 ### 3.3 Frontend
 
