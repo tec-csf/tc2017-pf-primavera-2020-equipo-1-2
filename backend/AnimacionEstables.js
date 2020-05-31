@@ -6,7 +6,7 @@
 
 let values = []; // array with the values of the array 
 let w = 10; // size of each bar in the visualization 
-let comparisons = 0;
+let z = 0; //for countingSort
 
 let states = [];
 
@@ -28,7 +28,8 @@ function setup() {
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
-    bucketSort(values);
+    //bucketSort(values);
+    countingSort(values);
 }//end setup 
 
 /* 
@@ -267,6 +268,32 @@ async function bucketSort(arr) {
   tiempo("Bucket Sort");//time the algorithm took to execute
 }//end bucketsort
 
+async function countingSort(arr) {
+  var orderArray = new Array(windowHeight + 1);
+  var finalArray = new Array(71);
+  for (let i = 0; i < orderArray.length; i++) {
+    orderArray[i] = 0;
+  }
+  for (let i = 0; i < finalArray.length; i++) {
+    finalArray[i] = 0;
+  }
+  for (let k = 0; k < arr.length; k++) {
+    let num = arr[k];
+    orderArray[num] += 1;
+  }
+  for (let j = 1; j < orderArray.length; j++) {
+    for (let i = 0; i < orderArray[j]; i++) {
+      finalArray[z] = j;
+      z++;
+    }
+  }
+  
+  for (let i = 0; i < arr.length; i++) {
+    await swapCount(arr, finalArray, i);
+  }
+  console.log(finalArray);
+}
+
 /* 
     Function draw: this function of the p5 library draws the lines of the visaulizations. 
     @param:nothing
@@ -287,6 +314,11 @@ function draw() {
       rect(i * w, height - values[i], w, values[i]);
     }
 }// end draw
+
+async function swapCount(arr1, arr2, i) {
+    await sleep(50);//delay
+    arr1[i] = arr2[i];
+}//end swapCount
 
 /* 
     Function swapRadix: swaps the sorted array into the original array, so it can be drawn
