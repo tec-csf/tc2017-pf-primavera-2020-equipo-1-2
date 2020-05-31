@@ -28,7 +28,7 @@ function setup() {
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
-    //bucketSort(values);
+    bucketSort(values);
 }//end setup 
 
 /* 
@@ -47,7 +47,7 @@ async function bubbleSort(arr){
 			}
 		}
 	}
-  //tiempo();//time the algortihm took 
+  tiempo("Bubble Sort");//time the algorithm took to execute
 }//end bubblesort
 
 /* 
@@ -73,8 +73,7 @@ async function cocktailSort(arr) {
 			}
 		}
 	}
-    tiempo();//time the algortihm took 
-
+  tiempo("Cocktail Sort");//time the algorithm took to execute
 }//end cocktail
 
 /* 
@@ -97,6 +96,7 @@ async function insertionSort(arr) {
         }
         arr[j+1] = tmp;
     }
+   tiempo("Insertion Sort");//time the algorithm took to execute
 }//end insertion
 
 /* 
@@ -112,7 +112,7 @@ function mergeSort(a) {
     copy1 = a.slice()
     // asynchronous sort the copy
     mergeSortSlice(copy1, 0, copy1.length);
-    return;
+  return;
 }//end merge sort 
 
 /* 
@@ -156,6 +156,8 @@ async function mergeSortSlice(a, start, end){
         await sleep(10);
         //startSort = true;
     }
+    tiempo("Merge Sort");//time the algorithm took to execute
+
 }//end mergeSort Slice
 
 /* 
@@ -214,6 +216,7 @@ async function radixSort(arr){
       states[i]=0;//states of the array, this is for the color
       redraw(i);
     }
+   tiempo("Radix Sort");//time the algorithm took to execute
 }//end radixSort
 
 /* 
@@ -260,6 +263,8 @@ async function bucketSort(arr) {
       }
   }//end for
   console.log(arr);//prints the sorted array 
+
+  tiempo("Bucket Sort");//time the algorithm took to execute
 }//end bucketsort
 
 /* 
@@ -369,7 +374,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
-async function tiempo(){
+async function tiempo(algorithm){
   let tiempo=Math.ceil(millis());
-   console.log("Tiempo Animación Bubble en milisegundos:", tiempo);
+   console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
 }
