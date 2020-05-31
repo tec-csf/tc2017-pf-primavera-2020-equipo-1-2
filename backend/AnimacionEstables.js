@@ -24,8 +24,8 @@ function setup() {
     }
 
     //bubbleSort(values);
-    cocktailSort(values);
-    //insertionSort(values);
+    //cocktailSort(values);
+    insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
@@ -84,9 +84,10 @@ async function cocktailSort(arr) {
     @return: nothing
 */
 async function insertionSort(arr) {
-    for (let i = 1; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         let j = i - 1;
         let tmp = arr[i];
+        states[i]=0;
         while (j >= 0 && arr[j] > tmp) {
             await swap(arr, j, j+1);
             j--;
