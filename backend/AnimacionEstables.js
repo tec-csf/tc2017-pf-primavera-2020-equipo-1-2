@@ -6,7 +6,7 @@
 
 let values = []; // array with the values of the array 
 let w = 10; // size of each bar in the visualization 
-let comparisons = 0;
+let z = 0; //for countingSort
 
 let states = [];
 
@@ -17,7 +17,6 @@ Function setup: this function creates the canvas where the animation will be vis
 */
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    i = 200;
     values = new Array(floor(width / w));
     for (let i = 0; i < values.length; i++) {
         values[i] = Math.floor(random(height)+1);
@@ -30,6 +29,7 @@ function setup() {
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
+    countingSort(values);
 }//end setup 
 
 /* 
@@ -39,7 +39,8 @@ function setup() {
     @return: nothing
 */
 async function bubbleSort(arr){
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length ; i >= 0; i--) {
+      states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
 			if (arr[j] > arr[j + 1]) {
                 // swap
@@ -47,6 +48,7 @@ async function bubbleSort(arr){
 			}
 		}
 	}
+  tiempo("Bubble Sort");//time the algorithm took to execute
 }//end bubblesort
 
 /* 
@@ -57,7 +59,8 @@ async function bubbleSort(arr){
     @return: nothing
 */
 async function cocktailSort(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+    states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
 			if (arr[j] > arr[j + 1]) {
                 // swap
@@ -71,6 +74,7 @@ async function cocktailSort(arr) {
 			}
 		}
 	}
+  tiempo("Cocktail Sort");//time the algorithm took to execute
 }//end cocktail
 
 /* 
@@ -83,15 +87,17 @@ async function cocktailSort(arr) {
     @return: nothing
 */
 async function insertionSort(arr) {
-    for (let i = 1; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         let j = i - 1;
         let tmp = arr[i];
+        states[i]=0; //state of the array, this is for the color
         while (j >= 0 && arr[j] > tmp) {
             await swap(arr, j, j+1);
             j--;
         }
         arr[j+1] = tmp;
     }
+   tiempo("Insertion Sort");//time the algorithm took to execute
 }//end insertion
 
 /* 
@@ -107,7 +113,7 @@ function mergeSort(a) {
     copy1 = a.slice()
     // asynchronous sort the copy
     mergeSortSlice(copy1, 0, copy1.length);
-    return;
+  return;
 }//end merge sort 
 
 /* 
@@ -130,6 +136,8 @@ async function mergeSortSlice(a, start, end){
     // merge divides
     let i = start, j = mid;
     while (i < end && j < end) {
+    states[i]=0;//states of the array, this is for the color
+    states[j]=0;//states of the array, this is for the color
         if (a[i] > a[j]) {
             let t = a[j]; a.splice(j, 1); a.splice(i, 0, t);
             j ++;
@@ -149,6 +157,8 @@ async function mergeSortSlice(a, start, end){
         await sleep(10);
         //startSort = true;
     }
+    tiempo("Merge Sort");//time the algorithm took to execute
+
 }//end mergeSort Slice
 
 /* 
@@ -204,8 +214,10 @@ async function radixSort(arr){
     }
     for (let i = 0; i < values.length; i++) {
       await swapRadix(values, arr, i);
+      states[i]=0;//states of the array, this is for the color
       redraw(i);
     }
+   tiempo("Radix Sort");//time the algorithm took to execute
 }//end radixSort
 
 /* 
@@ -244,15 +256,53 @@ async function bucketSort(arr) {
   let index = 0;
   
   for (let i = 0; i < allBuckets.length; i++) {
-    console.log("Bucket", i, "=", allBuckets[i]); // prints the buckets with the elemnts
+    console.log("Bucket", i, "=", allBuckets[i]); // prints the buckets with the elements
       insertionSort(allBuckets[i]);
       for (let j = 0; j < allBuckets[i].length; j++) {
         await swapBuck(arr, allBuckets, index++, i, j);
+        states[index]=0;//states of the array, this is for the color
       }
   }//end for
-  console.log(arr);// prints the sorted array 
+  console.log(arr);//prints the sorted array 
 
+  tiempo("Bucket Sort");//time the algorithm took to execute
 }//end bucketsort
+
+/* 
+    Function countingSort: sorts an array by creating an auxiliar array of the same size,
+    and counting how many times the number is in the original array. 
+    Once it's done it put backs the array in order
+    @param arr: array to be sorted 
+    @return: nothing
+*/
+async function countingSort(arr) {
+  var orderArray = new Array(windowHeight + 1);
+  var finalArray = new Array(arr.length);
+  for (let i = 0; i < orderArray.length; i++) {
+    orderArray[i] = 0;
+  }
+  for (let i = 0; i < finalArray.length; i++) {
+    finalArray[i] = 0;
+  }
+  for (let k = 0; k < arr.length; k++) {
+    let num = arr[k];
+    orderArray[num] += 1;
+  }
+  for (let j = 1; j < orderArray.length; j++) {
+    for (let i = 0; i < orderArray[j]; i++) {
+      finalArray[z] = j;
+      z++;
+    }
+  }
+  
+  for (let i = 0; i < arr.length; i++) {
+    states[i]=0;//state of the array, this is for the 
+    await swapCount(arr, finalArray, i);
+  }
+  console.log(finalArray);
+  tiempo("Counting Sort");//time the algorithm took to execute
+
+}
 
 /* 
     Function draw: this function of the p5 library draws the lines of the visaulizations. 
@@ -262,19 +312,31 @@ async function bucketSort(arr) {
 function draw() {
     background(230);
     stroke("white");
-    fill(255, 204, 100);
     for (let i = 0; i < values.length; i++) {
-      /*if (states[i] == 0) {
-        fill('#E0777D');
+      if (states[i] == 0) {
+        fill(161, 220, 144);
       } else if (states[i] == 1) {
         fill('#D6FFB7');
       } else {
-        fill(255);
-      }*/
+        fill(255, 204, 100);
+      }
       //dibuja las lineas
       rect(i * w, height - values[i], w, values[i]);
     }
 }// end draw
+
+/* 
+    Function swapCount: swaps the sorted array into the original array, so it can be drawn. 
+    Called by the function countingSort
+    @param arr1: the original array 
+    @param arr2: the sorted array
+    @param i: the position to be swapped
+    @return:nothing
+*/
+async function swapCount(arr1, arr2, i) {
+    await sleep(50);//delay
+    arr1[i] = arr2[i];
+}//end swapCount
 
 /* 
     Function swapRadix: swaps the sorted array into the original array, so it can be drawn
@@ -362,3 +424,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
+async function tiempo(algorithm){
+  let tiempo=Math.ceil(millis());
+   console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
+}
