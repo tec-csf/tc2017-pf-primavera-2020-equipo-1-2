@@ -27,8 +27,8 @@ function setup() {
     //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
-    radixSort(values);
-    //bucketSort(values);
+    //radixSort(values);
+    bucketSort(values);
 }//end setup 
 
 /* 
@@ -249,14 +249,14 @@ async function bucketSort(arr) {
   let index = 0;
   
   for (let i = 0; i < allBuckets.length; i++) {
-    console.log("Bucket", i, "=", allBuckets[i]); // prints the buckets with the elemnts
+    console.log("Bucket", i, "=", allBuckets[i]); // prints the buckets with the elements
       insertionSort(allBuckets[i]);
       for (let j = 0; j < allBuckets[i].length; j++) {
         await swapBuck(arr, allBuckets, index++, i, j);
+        states[index]=0;//states of the array, this is for the color
       }
   }//end for
-  console.log(arr);// prints the sorted array 
-
+  console.log(arr);//prints the sorted array 
 }//end bucketsort
 
 /* 
