@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link active" href="/search">Algoritmos de búsqueda</a>
+                <a class="nav-item nav-link" href="/search">Algoritmos de búsqueda</a>
                 <a class="nav-item nav-link" href="/stable">Algoritmos estables</a>
                 <a class="nav-item nav-link" href="/unstable">Algoritmos inestables</a>
-                <a class="nav-item nav-link" href="/info">Información del proyecto</a>
+                <a class="nav-item nav-link active" href="/info">Información del proyecto</a>
             </div>
         </div>
     </nav>
@@ -32,17 +32,17 @@
     <div class="row mt-2">
         <div class="col-sm-12">
 
-            <h2>Algoritmos de búsqueda</h2>
+            <h2 class="text-lg-center">Información del equipo</h2>
 
-            <h4 class="text-lg-center">Seleccione el tipo de input que desea llevar a cabo</h4>
-
-            <div class="col-sm-12 text-center" style="width:800px; margin:0 auto;">
-                <button class="btn btn-primary" onclick="window.location.href='/searchUI'">Insertar
-                    manualmente</button>
-                <button class="btn btn-secondary" onclick="window.location.href='/searchDoc'">Insertar desde un
-                    JSON</button>
-            </div>
-
+            <table style="width:100%" class="table text-lg-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Matrícula</th>
+                        <th>Rol dentro del proyecto</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
 

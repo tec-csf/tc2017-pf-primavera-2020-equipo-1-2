@@ -96,9 +96,39 @@ Para poder identificar estas secciones, se están mandando a llamar con el enunc
 
 *[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
+El frontend fue programado completamente en HTML y se implementa el uso de CSS mediante Bootstrap.
+Este puede ser encontrado [aquí](https://getbootstrap.com/docs/4.5/getting-started/introduction/), este fue implementado de la siguiente manera:
+
+```
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+```
+
+Esto permite que los HTMLs contengan un formato adecuado para el manejo de datos y poder mantener orden dentro de la aplicación web.
+
+La manera en la que se despliega es mediante solicitudes _app.get()_ que se están llevando a cabo en el backend, especificamente en el documento llamado _[index.js](/backend/index.js)_.
+
+Al inicializar el frontend desde el script index.js, se están mandando a llamar datos por los cuales el usuario está realizando operaciones de tipo _post_.
+
 #### 3.3.1 Lenguaje de programación
+
+El frontend fue programado completamente utilizando HTMLs, con integración de scripts de JavaScript dentro de varios de estos mismo.
+
+Como se mencionó anteriormente, se implementó un CSS (Cascade Style Sheet) mediante la implementación de Bootstrap.
+Esto nos permite tener acceso completo a una librería para poder modelar la aplicación como nos guste.
+
 #### 3.3.2 Framework
+
+Para el frontend no se manejó ningún framework existente.
+
 #### 3.3.3 Librerías de funciones o dependencias
+
+Para poder realizar operaciones del tipo _RESTful_, se está utilizando la librería **body-parser** de npm.
+
+Esto nos permite realizar operaciones de tipo *POST* y *GET*.
+
+El usuario puede insertar los valores numéricos y los nombres de los algoritmos que desea correr mediante el uso de una operación *POST*.
+
+En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las páginas que componen el proyecto.
 
 ### 3.4 Backend
 

@@ -173,6 +173,10 @@ app.get('/selectionsortDisplay', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/selectionsortDisplay.html'));
 })
 
+app.get('/info', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/info.html'))
+})
+
 //  La página llamada stable (/stable) envía los campos a esta solicitud POST
 //  aquí se igualan los valores insertados para que sean usados por otras operaciones.
 //  var primer = campo llamado primerAlg en ../frontend/stable.edge
