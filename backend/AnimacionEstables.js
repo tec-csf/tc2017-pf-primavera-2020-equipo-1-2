@@ -273,11 +273,11 @@ async function bucketSort(arr) {
     and counting how many times the number is in the original array. 
     Once it's done it put backs the array in order
     @param arr: array to be sorted 
-    @return arr: nothing
+    @return: nothing
 */
 async function countingSort(arr) {
   var orderArray = new Array(windowHeight + 1);
-  var finalArray = new Array(71);
+  var finalArray = new Array(arr.length);
   for (let i = 0; i < orderArray.length; i++) {
     orderArray[i] = 0;
   }
@@ -296,9 +296,12 @@ async function countingSort(arr) {
   }
   
   for (let i = 0; i < arr.length; i++) {
+    states[i]=0;//state of the array, this is for the 
     await swapCount(arr, finalArray, i);
   }
   console.log(finalArray);
+  tiempo("Counting Sort");//time the algorithm took to execute
+
 }
 
 /* 
