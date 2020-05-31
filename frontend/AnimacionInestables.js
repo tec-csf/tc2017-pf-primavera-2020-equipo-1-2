@@ -75,7 +75,7 @@ async function quickSort(arr, start, end) {
 }// end quicksort
 
 /* 
-  Function HeapSort:
+  Function HeapSort: sorts the array by creating a heap data and sorting it with it's help
   @param arr:the array of elements to be sorted
   @return: nothing 
 */
@@ -186,10 +186,11 @@ async function partition(arr, start, end) {
 }// end partition 
 
 /* 
-  Function Heapify: 
+  Function Heapify: auxiliar function for heapSort to sort the array by taking the first element
+  of the heap and placing it where it goes, this repeats until it's sorte
   @param arr:the array of elements to be sorted
-  @param size: 
-  @param i :
+  @param size: size of the array
+  @param i : index where it starts to make the heap
   @return:nothing
 */
 async function heapify(array, size, i){
