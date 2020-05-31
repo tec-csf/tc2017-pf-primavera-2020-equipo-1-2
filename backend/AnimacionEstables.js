@@ -23,8 +23,8 @@ function setup() {
         states[i] = -1;
     }
 
-    bubbleSort(values);
-    //cocktailSort(values);
+    //bubbleSort(values);
+    cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
@@ -38,8 +38,8 @@ function setup() {
     @return: nothing
 */
 async function bubbleSort(arr){
-    for (let i = arr.length - 1; i >= 0; i--) {
-      states[i]=0;
+    for (let i = arr.length -1; i >= 0; i--) {
+      states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
 			if (arr[j] > arr[j + 1]) {
                 // swap
@@ -57,7 +57,8 @@ async function bubbleSort(arr){
     @return: nothing
 */
 async function cocktailSort(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+    states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
 			if (arr[j] > arr[j + 1]) {
                 // swap
