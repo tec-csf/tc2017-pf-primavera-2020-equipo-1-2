@@ -25,8 +25,8 @@ function setup() {
 
     //bubbleSort(values);
     //cocktailSort(values);
-    insertionSort(values);
-    //mergeSort(values);
+    //insertionSort(values);
+    mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
 }//end setup 
@@ -132,11 +132,13 @@ async function mergeSortSlice(a, start, end){
     // merge divides
     let i = start, j = mid;
     while (i < end && j < end) {
+
         if (a[i] > a[j]) {
             let t = a[j]; a.splice(j, 1); a.splice(i, 0, t);
             j ++;
         }
         i ++;
+          states[i]=0;//states of the array, this is for the color
         if (i==j) j ++;
 
         // copy back the current state of the sorting
