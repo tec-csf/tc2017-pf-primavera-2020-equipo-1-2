@@ -87,7 +87,7 @@ async function insertionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         let j = i - 1;
         let tmp = arr[i];
-        states[i]=0;
+        states[i]=0; //state of the array, this is for the color
         while (j >= 0 && arr[j] > tmp) {
             await swap(arr, j, j+1);
             j--;
