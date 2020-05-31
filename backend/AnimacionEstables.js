@@ -132,13 +132,13 @@ async function mergeSortSlice(a, start, end){
     // merge divides
     let i = start, j = mid;
     while (i < end && j < end) {
-
+    states[i]=0;//states of the array, this is for the color
+    states[j]=0;//states of the array, this is for the color
         if (a[i] > a[j]) {
             let t = a[j]; a.splice(j, 1); a.splice(i, 0, t);
             j ++;
         }
         i ++;
-          states[i]=0;//states of the array, this is for the color
         if (i==j) j ++;
 
         // copy back the current state of the sorting
