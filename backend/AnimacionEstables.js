@@ -26,8 +26,8 @@ function setup() {
     //bubbleSort(values);
     //cocktailSort(values);
     //insertionSort(values);
-    mergeSort(values);
-    //radixSort(values);
+    //mergeSort(values);
+    radixSort(values);
     //bucketSort(values);
 }//end setup 
 
@@ -208,6 +208,7 @@ async function radixSort(arr){
     }
     for (let i = 0; i < values.length; i++) {
       await swapRadix(values, arr, i);
+      states[i]=0;//states of the array, this is for the color
       redraw(i);
     }
 }//end radixSort
