@@ -17,14 +17,13 @@ Function setup: this function creates the canvas where the animation will be vis
 */
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    i = 200;
     values = new Array(floor(width / w));
     for (let i = 0; i < values.length; i++) {
         values[i] = Math.floor(random(height)+1);
         states[i] = -1;
     }
 
-    //bubbleSort(values);
+    bubbleSort(values);
     //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
@@ -39,7 +38,8 @@ function setup() {
     @return: nothing
 */
 async function bubbleSort(arr){
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+      states[i]=0;
 		for (let j = 0; j < i; j++) {
 			if (arr[j] > arr[j + 1]) {
                 // swap
@@ -262,15 +262,14 @@ async function bucketSort(arr) {
 function draw() {
     background(230);
     stroke("white");
-    fill(255, 204, 100);
     for (let i = 0; i < values.length; i++) {
-      /*if (states[i] == 0) {
-        fill('#E0777D');
+      if (states[i] == 0) {
+        fill(161, 220, 144);
       } else if (states[i] == 1) {
         fill('#D6FFB7');
       } else {
-        fill(255);
-      }*/
+        fill(255, 204, 100);
+      }
       //dibuja las lineas
       rect(i * w, height - values[i], w, values[i]);
     }
