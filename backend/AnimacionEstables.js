@@ -268,6 +268,13 @@ async function bucketSort(arr) {
   tiempo("Bucket Sort");//time the algorithm took to execute
 }//end bucketsort
 
+/* 
+    Function countingSort: sorts an array by creating an auxiliar array of the same size,
+    and counting how many times the number is in the original array. 
+    Once it's done it put backs the array in order
+    @param arr: array to be sorted 
+    @return arr: nothing
+*/
 async function countingSort(arr) {
   var orderArray = new Array(windowHeight + 1);
   var finalArray = new Array(71);
@@ -315,6 +322,14 @@ function draw() {
     }
 }// end draw
 
+/* 
+    Function swapCount: swaps the sorted array into the original array, so it can be drawn. 
+    Called by the function countingSort
+    @param arr1: the original array 
+    @param arr2: the sorted array
+    @param i: the position to be swapped
+    @return:nothing
+*/
 async function swapCount(arr1, arr2, i) {
     await sleep(50);//delay
     arr1[i] = arr2[i];
