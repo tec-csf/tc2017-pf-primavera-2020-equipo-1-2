@@ -149,6 +149,85 @@ async function mergeSortSlice(a, start, end){
     }
 }//end mergeSort Slice
 
+
+function getNum (num, index) {
+    const strNum = String(num);
+    let end = strNum.length - 1;
+    const foundNum = strNum[end - index];
+  
+    if (foundNum === undefined) return 0;
+    else return foundNum;
+}
+
+function largestNum (arr) {
+    let largest = "0";
+  
+    arr.forEach(num => {
+      const strNum = String(num);
+  
+      if (strNum.length > largest.length) largest = strNum;
+    });
+  
+    return largest.length;
+}
+
+async function radixSort(arr){
+    let maxLength = largestNum(arr);
+    for (let i = 0; i < maxLength; i ++) {
+      let buckets = Array.from({ length: 10}, () => []);
+      for (let j = 0; j < arr.length; j ++) {
+        let num = getNum(arr[j], i);
+        
+        if (num !== undefined) buckets[num].push(arr[j]);
+      }
+      arr = buckets.flat();
+      noLoop();
+    }
+    for (let i = 0; i < values.length; i++) {
+      await swapRadix(values, arr, i);
+      redraw(i);
+    }
+}
+
+async function bucketSort(arr) {
+  if (arr.length === 0) {
+    return arr;
+  }
+  
+  var n = arr.length-1;
+    var minValue = arr[0],
+        maxValue = arr[0],
+        bucketSize = bucketSize || 5;
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < minValue) {
+      minValue = arr[i];
+    } else if (arr[i] > maxValue) {
+      maxValue = arr[i];
+    }
+  }
+  
+  var bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+  var allBuckets = new Array(bucketCount);
+  
+  for (i = 0; i < allBuckets.length; i++) {
+    allBuckets[i] = [];
+  }
+  for (let i = 0; i < arr.length; i++) {
+    allBuckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
+  }
+  let index = 0;
+  
+  for (let i = 0; i < allBuckets.length; i++) {
+    console.log("Bucket", i, "=", allBuckets[i]);
+      insertionSort(allBuckets[i]);
+      for (let j = 0; j < allBuckets[i].length; j++) {
+        await swapBuck(arr, allBuckets, index++, i, j);
+      }
+  }
+  console.log(arr);
+}
+
 /* 
     Function draw: this function of the p5 library draws the lines of the visaulizations. 
     @param:nothing
@@ -170,6 +249,17 @@ function draw() {
       rect(i * w, height - values[i], w, values[i]);
     }
 }// end draw
+
+
+async function swapRadix(arr1, arr2, i) {
+    await sleep(50);
+    arr1[i] = arr2[i];
+}
+
+async function swapBuck(arr1, arr2, indx, i, j) {
+    await sleep(50);
+    arr1[indx] = arr2[i][j];
+}
 
 /* 
     Function Swap: this function was implemented to save the switches on the other functions. Basically it changes the positiion of one element into the other elements position. 
