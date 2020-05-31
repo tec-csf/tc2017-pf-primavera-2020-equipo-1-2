@@ -20,14 +20,16 @@ function setup() {
     i = 200;
     values = new Array(floor(width / w));
     for (let i = 0; i < values.length; i++) {
-        values[i] = random(height)+1;
+        values[i] = Math.floor(random(height)+1);
         states[i] = -1;
     }
 
     //bubbleSort(values);
     //cocktailSort(values);
     //insertionSort(values);
-    mergeSort(values);
+    //mergeSort(values);
+    //radixSort(values);
+    //bucketSort(values);
 }//end setup 
 
 /* 
@@ -111,8 +113,8 @@ function mergeSort(a) {
 /* 
     Function MergesortSlice: divides the array into equal parts and sorts each part
     @param a: the array of the values to be sorted 
-    @start: the first element of the array
-    @end: the last element of the array
+    @param start: the first element of the array
+    @param end: the last element of the array
     @return: nothing
 */
 async function mergeSortSlice(a, start, end){
@@ -149,7 +151,12 @@ async function mergeSortSlice(a, start, end){
     }
 }//end mergeSort Slice
 
-
+/* 
+    Function getNum: finds the digit in a specific number at a specific index
+    @param num: the number to be searched 
+    @param index: the place on the number qhere the digit will be search. 
+    @return: the digit of the number 
+*/
 function getNum (num, index) {
     const strNum = String(num);
     let end = strNum.length - 1;
@@ -157,8 +164,13 @@ function getNum (num, index) {
   
     if (foundNum === undefined) return 0;
     else return foundNum;
-}
+}//end getNum
 
+/* 
+    Function largestNum:finds the largest number in the array
+    @param arr: the array to be searched 
+    @return: the length of the largest number in the array
+*/
 function largestNum (arr) {
     let largest = "0";
   
@@ -169,8 +181,15 @@ function largestNum (arr) {
     });
   
     return largest.length;
-}
+}//end largestNum
 
+/* 
+    Function radixSort: sorts an array by creating buckets, where each number is 
+    stored based on its digits and then putting it back into the original array. This
+    process repeats the length of the largest number in the array.  
+    @param arr: the array to be sorted
+    @return:nothing
+*/
 async function radixSort(arr){
     let maxLength = largestNum(arr);
     for (let i = 0; i < maxLength; i ++) {
@@ -187,12 +206,18 @@ async function radixSort(arr){
       await swapRadix(values, arr, i);
       redraw(i);
     }
-}
+}//end radixSort
 
+/* 
+    Function bucketSort:is a distribution sort. It works by arranging elements into ‘buckets’ 
+    which are then sorted using insertion sort. Then it is merged into the original array. 
+    @param arr: array to be sorted 
+    @return arr: if it's equal to 0
+*/
 async function bucketSort(arr) {
   if (arr.length === 0) {
     return arr;
-  }
+  }//end if 
   
   var n = arr.length-1;
     var minValue = arr[0],
@@ -205,28 +230,29 @@ async function bucketSort(arr) {
     } else if (arr[i] > maxValue) {
       maxValue = arr[i];
     }
-  }
+  }// end for 
   
   var bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
   var allBuckets = new Array(bucketCount);
   
   for (i = 0; i < allBuckets.length; i++) {
     allBuckets[i] = [];
-  }
+  }//end for
   for (let i = 0; i < arr.length; i++) {
     allBuckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
-  }
+  }//end for
   let index = 0;
   
   for (let i = 0; i < allBuckets.length; i++) {
-    console.log("Bucket", i, "=", allBuckets[i]);
+    console.log("Bucket", i, "=", allBuckets[i]); // prints the buckets with the elemnts
       insertionSort(allBuckets[i]);
       for (let j = 0; j < allBuckets[i].length; j++) {
         await swapBuck(arr, allBuckets, index++, i, j);
       }
-  }
-  console.log(arr);
-}
+  }//end for
+  console.log(arr);// prints the sorted array 
+
+}//end bucketsort
 
 /* 
     Function draw: this function of the p5 library draws the lines of the visaulizations. 
@@ -250,16 +276,31 @@ function draw() {
     }
 }// end draw
 
-
+/* 
+    Function swapRadix: swaps the sorted array into the original array, so it can be drawn
+    @param arr1: the original array 
+    @param arr2: the sorted array 
+    @param i: the position to be swapped
+    @return:nothing
+*/
 async function swapRadix(arr1, arr2, i) {
-    await sleep(50);
+    await sleep(50);//delay
     arr1[i] = arr2[i];
-}
+}//end swapRadix
 
+/* 
+    Function swapBuck:swaps the buckets into the original array 
+    @param arr1: the original array 
+    @param arr2: the buckets array
+    @param indx: the position in the original array
+    @param i: the position in "x"
+    @param j: the position in "y"
+    @return:nothing
+*/
 async function swapBuck(arr1, arr2, indx, i, j) {
-    await sleep(50);
+    await sleep(50);//delay
     arr1[indx] = arr2[i][j];
-}
+}//end swapBuck
 
 /* 
     Function Swap: this function was implemented to save the switches on the other functions. Basically it changes the positiion of one element into the other elements position. 
