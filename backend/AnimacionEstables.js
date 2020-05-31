@@ -28,7 +28,7 @@ function setup() {
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
-    bucketSort(values);
+    //bucketSort(values);
 }//end setup 
 
 /* 
@@ -38,7 +38,7 @@ function setup() {
     @return: nothing
 */
 async function bubbleSort(arr){
-    for (let i = arr.length -1; i >= 0; i--) {
+    for (let i = arr.length ; i >= 0; i--) {
       states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
 			if (arr[j] > arr[j + 1]) {
@@ -47,6 +47,7 @@ async function bubbleSort(arr){
 			}
 		}
 	}
+  //tiempo();//time the algortihm took 
 }//end bubblesort
 
 /* 
@@ -72,6 +73,8 @@ async function cocktailSort(arr) {
 			}
 		}
 	}
+    tiempo();//time the algortihm took 
+
 }//end cocktail
 
 /* 
@@ -366,3 +369,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
+async function tiempo(){
+  let tiempo=Math.ceil(millis());
+   console.log("Tiempo Animación Bubble en milisegundos:", tiempo);
+}
