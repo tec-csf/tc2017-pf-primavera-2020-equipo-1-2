@@ -43,8 +43,8 @@ function setup(){
   }
 
   //quickSort(values, 0, values.length - 1);
-  heapSort(values);
-  //selectionSort(values);
+  //heapSort(values);
+  selectionSort(values);
   //shellSort(values);
 }// end setup 
 
@@ -82,7 +82,7 @@ async function heapSort(arr) {
   let size = arr.length;
   for(let i = Math.floor(size/2-1); i >= 0; i--){
     let index = await heapify(arr, size, i);
-    states[index] = 0;
+    states[index] = 0; //state of the array, this is for the color, complete
   }
 
   for(let i = size-1; i>=0; i--){
@@ -102,24 +102,20 @@ async function heapSort(arr) {
   @return:nothing
 */
 async function selectionSort(array){
-  //Este pinta de verde
   for (let i = 0; i < array.length; i++) {
-    states[i] = 1;
+    states[i] = -1; //state of the array, this is for the color, start
   }
 
   for (let currentIndex = 0; currentIndex < array.length; currentIndex++) {
     let minIndex = currentIndex;
-    states[minIndex] = -1;
-    states[currentIndex+1] = 0;
+    states[minIndex] = 0; //state of the array, this is for the color, complete
     for (let i = currentIndex + 1; i < array.length; i++) {
       if (array[i] < array[minIndex]) { //se voltea para direccion
         minIndex = i;
       }
     }
     if (minIndex != currentIndex) {
-      states[minIndex] = 0;
       await swap(array, currentIndex, minIndex);
-      states[minIndex] = 1;
     }
   }
 }// End selection sort 
@@ -294,6 +290,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
+
 
 /* </script>
 </body>
