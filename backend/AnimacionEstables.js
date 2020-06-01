@@ -7,6 +7,7 @@
 let values = []; // array with the values of the array 
 let w = 10; // size of each bar in the visualization 
 let z = 0; //for countingSort
+let order = 0;
 
 let states = [];// states to change the color
 
@@ -23,13 +24,13 @@ function setup() {
         states[i] = -1;
     }
 
-    //bubbleSort(values);
+    bubbleSort(values, order);
     //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
-    countingSort(values);
+    //countingSort(values);
 }//end setup 
 
 /* 
@@ -38,11 +39,11 @@ function setup() {
     @param arr: the array of the values to be sorted 
     @return: nothing
 */
-async function bubbleSort(arr){
+async function bubbleSort(arr, order){
     for (let i = arr.length ; i >= 0; i--) {
       states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
-			if (arr[j] > arr[j + 1]) {
+			if (comparar(order, arr[j], arr[j+1])) { //arr[j] > arr[j + 1]
                 // swap
                 await swap(arr, j, j+1);
 			}
