@@ -35,9 +35,10 @@
             <h2>Algoritmos estables</h2>
 
             <button class="btn btn-danger" onclick="window.location.href='/stable'">Regresar a <i><b>Algoritmos
-                        estables</b></i></button>
-
-            <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
+                estables</b></i></button>
+                
+                <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
+                <form name="inputBE" action="/algoritmosEstables/conf" method="POST">
 
                 <div class="form-group form-control-lg">
                     <label for="">Inserta el máximo de los números aleatorios</label>
@@ -57,7 +58,6 @@
                     </tr>
                 </thead>
                 <tr>
-                    <form action="/algoritmosEstables/conf" method="POST">
                         <td>
                             <div class="row justify-content-center form-group">
                                 <select name="primerAlg" id="primerAlg">
@@ -98,6 +98,11 @@
                 </tr>
             </table><br>
 
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-success">
+            </div>
+            </form>
+
             <div class="form-group form-control-lg">
                 <h5 class="text-lg-center">Seleccione que algoritmo desea visualizar</h5>
 
@@ -110,30 +115,50 @@
                     </thead>
                     <tr>
                         <td>
+                            <form action="/burbujaVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
                             <input type="button" class="btn btn-info text-lg-center " value="Burbuja">
+                            </form>
                         </td>
-                        <td>
+                        <td><form action="/bucketVis" method="POST">
+                            <input type="number" class="text-lg-center"min="1" max="999999" name="noRand"> 
                             <input type="button" class="btn btn-info text-lg-center" value="Bucket">
+                            </form>
                         </td>
                         <td>
+                            <form action="/cocktailVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
                             <input type="button" class="btn btn-info text-lg-center" value="Cocktail">
+                            </form>
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <form action="/countingVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
                             <input type="button" class="btn btn-info text-lg-center" value="Counting">
+                            </form>
                         </td>
                         <td>
+                            <form action="/insertVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
                             <input type="button" class="btn btn-info text-lg-center" value="Insertion">
+                            </form>
                         </td>
                         <td>
+                            <form action="/mergeVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
                             <input type="button" class="btn btn-info text-lg-center" value="Merge">
+                            </form>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <input type="button" class="btn btn-info text-lg-center" title="Radix" value="Radix">
+                            <form action="/radixVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                            <input type="button" class="btn btn-info text-lg-center" title="Radix" value="Radix" onclick="radixOpen()">
+                            </form>
                         </td>
                         <td></td>
                     </tr>
@@ -142,12 +167,16 @@
 
             <br><br>
 
-            <div class="form-group text-center">
-                <input type="submit" class="btn btn-success">
-            </div>
-            </form>
         </div>
     </div>
+
+    <script>
+
+        //Modifiquen lo que est'a dentro de los paréntesis después del .open para abrir la página que quieren en un nuevo tab
+        function radixOpen() {
+            window.open('/')
+        }
+    </script>
 
 </body>
 

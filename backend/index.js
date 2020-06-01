@@ -177,6 +177,61 @@ app.get('/info', async(req, res)=>{
     res.sendFile(path.resolve(__dirname, '../frontend/info.html'))
 })
 
+//A partir de esta sección se están mandando a llamar los datos insertados en los forms/botones individuales,
+//que se encuentran en la segunda tabla del stableUI.html
+
+//Tipo y nombre de la operación
+app.post('/burbujaVis', async(req, res)=>{
+    //Este es el valor que está siendo insertado por el usuario
+    var inputNo = parseInt(req.body.noRand);
+
+    //Va a abrir en la misma ventana el documento que hayan especificado y va a enviar el campo llamado
+    //inputN
+    res.redirect('/NOMBREDOCUMENTO', {
+        inputNo
+    })
+
+    console.log(inputNo);
+})
+
+app.post('/bucketVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/cocktailVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/countingVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/insertVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/mergeVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/radixVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+//Hasta acá 
+
+
 //  La página llamada stable (/stable) envía los campos a esta solicitud POST
 //  aquí se igualan los valores insertados para que sean usados por otras operaciones.
 //  var primer = campo llamado primerAlg en ../frontend/stable.edge
