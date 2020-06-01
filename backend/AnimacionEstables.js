@@ -24,9 +24,9 @@ function setup() {
         states[i] = -1;
     }
 
-    bubbleSort(values, order);
-    //cocktailSort(values);
-    //insertionSort(values);
+    //bubbleSort(values, order);
+    //cocktailSort(values, order);
+    insertionSort(values, order);
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
@@ -59,17 +59,17 @@ async function bubbleSort(arr, order){
     @param arr: the array of the values to be sorted 
     @return: nothing
 */
-async function cocktailSort(arr) {
+async function cocktailSort(arr, order) {
     for (let i = arr.length - 1; i >= 0; i--) {
     states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
-			if (arr[j] > arr[j + 1]) {
+			if (comparar(order, arr[j], arr[j + 1])) { //arr[j] > arr[j + 1]
                 // swap
                 await swap(arr, j, j+1);
 			}
 		}
       for (let h = arr.length-1; h > 0; h--) {
-			if (arr[h] > arr[h + 1]) {
+			if (comparar(order, arr[h], arr[h + 1])) { //arr[h] > arr[h + 1]
                 // swap
                 await swap(arr, h, h+1);
 			}
@@ -87,12 +87,12 @@ async function cocktailSort(arr) {
     @param arr: the array of the values to be sorted 
     @return: nothing
 */
-async function insertionSort(arr) {
+async function insertionSort(arr, order) {
     for (let i = 0; i < arr.length; i++) {
         let j = i - 1;
         let tmp = arr[i];
         states[i]=0; //state of the array, this is for the color
-        while (j >= 0 && arr[j] > tmp) {
+        while (j >= 0 && comparar(order, arr[j], tmp)) { //arr[j] > tmp
             await swap(arr, j, j+1);
             j--;
         }
