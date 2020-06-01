@@ -8,7 +8,7 @@ let values = []; // array with the values of the array
 let w = 10; // size of each bar in the visualization 
 let z = 0; //for countingSort
 
-let states = [];
+let states = [];// states to change the color
 
 /* 
 Function setup: this function creates the canvas where the animation will be visualized
@@ -424,7 +424,12 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
+/* 
+    function tiempo: this function takes the time in miliseconds of the animations execution
+    @param algorithm: the algorithm executed
+    @return: nothin
+ */
 async function tiempo(algorithm){
   let tiempo=Math.ceil(millis());
    console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
-}
+}// end tiempo
