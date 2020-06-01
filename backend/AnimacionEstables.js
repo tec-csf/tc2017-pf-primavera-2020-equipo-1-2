@@ -24,9 +24,9 @@ function setup() {
         states[i] = -1;
     }
 
-    //bubbleSort(values, order);
-    //cocktailSort(values, order);
-    insertionSort(values, order);
+    //bubbleSort(values);
+    cocktailSort(values);
+    //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
@@ -39,7 +39,7 @@ function setup() {
     @param arr: the array of the values to be sorted 
     @return: nothing
 */
-async function bubbleSort(arr, order){
+async function bubbleSort(arr){
     for (let i = arr.length ; i >= 0; i--) {
       states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
@@ -59,7 +59,7 @@ async function bubbleSort(arr, order){
     @param arr: the array of the values to be sorted 
     @return: nothing
 */
-async function cocktailSort(arr, order) {
+async function cocktailSort(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
     states[i]=0;//state of the array, this is for the color
 		for (let j = 0; j < i; j++) {
@@ -87,7 +87,7 @@ async function cocktailSort(arr, order) {
     @param arr: the array of the values to be sorted 
     @return: nothing
 */
-async function insertionSort(arr, order) {
+async function insertionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         let j = i - 1;
         let tmp = arr[i];
@@ -113,7 +113,7 @@ function mergeSort(a) {
     // create copy of the array 
     copy1 = a.slice()
     // asynchronous sort the copy
-    mergeSortSlice(copy1, 0, copy1.length);
+    mergeSortSlice(copy1, 0, copy1.length, order);
   return;
 }//end merge sort 
 
@@ -140,7 +140,8 @@ async function mergeSortSlice(a, start, end){
     states[i]=0;//states of the array, this is for the color
     states[j]=0;//states of the array, this is for the color
         if (a[i] > a[j]) {
-            let t = a[j]; a.splice(j, 1); a.splice(i, 0, t);
+            let t = a[j]; //a.splice(j, 1); a.splice(i, 0, t);
+          comparar(order, a.splice(j, 1), a.splice(i, 0, t))
             j ++;
         }
         i ++;
