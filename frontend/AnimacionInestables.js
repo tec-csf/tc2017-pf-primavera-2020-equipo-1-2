@@ -31,6 +31,7 @@
 
 let values = [];//array with the values 
 let w = 10;// width de los rectangulos de la animación
+let order = 0;
 
 let states = []; //array to determine the colors in the visualization 
 
@@ -47,10 +48,10 @@ function setup(){
     states[i] = -1;
   }
 
-  //quickSort(values, 0, values.length - 1);
+  quickSort(values, 0, values.length - 1, order);
   //heapSort(values);
   //selectionSort(values);
-  shellSort(values);
+  //shellSort(values);
 }// end setup 
 
 /* 
@@ -66,15 +67,15 @@ function setup(){
   @param end: the last element of the array 
   @return: nothing
 */
-async function quickSort(arr, start, end) {
+async function quickSort(arr, start, end, order) {
   if (start >= end) {
     return;
   }
-  let index = await partition(arr, start, end);
+  let index = await partition(arr, start, end, order);
 
   await Promise.all([
-    quickSort(arr, start, index - 1),
-    quickSort(arr, index + 1, end)
+    quickSort(arr, start, index - 1, order),
+    quickSort(arr, index + 1, end, order)
   ]);
   tiempo("Quick Sort");//time the algorithm took to execute
 
@@ -172,7 +173,7 @@ async function shellSort(array){
   @param end:the last element of the array 
   @return:nothing
 */
-async function partition(arr, start, end) {
+async function partition(arr, start, end, orden) {
   for (let i = start; i < end; i++) {
     states[i] = -1; //state of the array, this is for the color, start
   }
@@ -180,7 +181,7 @@ async function partition(arr, start, end) {
   let pivotIndex = start;
   states[pivotIndex] = 0; //state of the array, this is for the color, complete
   for (let i = start; i <=end; i++) {
-    if (comparar(1, arr[i], pivotValue)) { //se voltea signo para direccion //arr[i] < pivotValue
+    if (comparar(orden, arr[i], pivotValue)) { //se voltea signo para direccion //arr[i] < pivotValue
       await swap(arr, i, pivotIndex);
       pivotIndex++;
       states[pivotIndex] = 0; //state of the array, this is for the color, complete
