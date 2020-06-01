@@ -42,8 +42,8 @@ function setup(){
     states[i] = -1;
   }
 
-  quickSort(values, 0, values.length - 1);
-  //heapSort(values);
+  //quickSort(values, 0, values.length - 1);
+  heapSort(values);
   //selectionSort(values);
   //shellSort(values);
 }// end setup 
@@ -82,7 +82,7 @@ async function heapSort(arr) {
   let size = arr.length;
   for(let i = Math.floor(size/2-1); i >= 0; i--){
     let index = await heapify(arr, size, i);
-    states[index] = -1;
+    states[index] = 0;
   }
 
   for(let i = size-1; i>=0; i--){
@@ -160,16 +160,16 @@ async function shellSort(array){
 */
 async function partition(arr, start, end) {
   for (let i = start; i < end; i++) {
-    states[i] = -1;
+    states[i] = -1; //state of the array, this is for the color, start
   }
   let pivotValue = arr[end];
   let pivotIndex = start;
-  states[pivotIndex] = 0;
+  states[pivotIndex] = 0; //state of the array, this is for the color, complete
   for (let i = start; i < end; i++) {
     if (comparar(1, arr[i], pivotValue)) { //se voltea signo para direccion //arr[i] < pivotValue
       await swap(arr, i, pivotIndex);
       pivotIndex++;
-      states[pivotIndex] = 0;
+      states[pivotIndex] = 0; //state of the array, this is for the color, complete
     }
   }
   await swap(arr, pivotIndex, end);
@@ -187,19 +187,19 @@ async function partition(arr, start, end) {
 */
 async function heapify(array, size, i){
   for (let i = 0; i < size; i++) {
-    states[i] = 1;
+    states[i] = -1; //state of the array, this is for the color, start   
   }
   let max = i;
   let left = 2 * i + 1;
   let right = 2 * i + 2;
-  states[max] = 0;
+  states[max] = 1;
 
   if(left < size && comparar(0, array[left], array[max])){ //se voltea el segundo para direccion //array[left] < array[max]
-    states[left] = 0;
+    //states[left] = 1; //state of the array, this is for the color, iterating    
     max = left;
   }
   if(right < size && comparar(0, array[right], array[max])){ //se voltea el segundo para direccion //array[right] < array[max]
-    states[right] = 0;
+    //states[right] = 1; //state of the array, this is for the color, iterating    
     max = right
   }
   if (max != i){
@@ -208,7 +208,7 @@ async function heapify(array, size, i){
   }
   for(let i = 0; i < size; i++){
     if( i != max-2){
-      states[i] = -1;        
+      states[i] = 0; //state of the array, this is for the color, complete      
     }
   }
 }//end heapify 
