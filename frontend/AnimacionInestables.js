@@ -66,7 +66,6 @@ async function quickSort(arr, start, end) {
     return;
   }
   let index = await partition(arr, start, end);
-  states[index] = -1; 
 
   await Promise.all([
     quickSort(arr, start, index - 1),
@@ -161,7 +160,7 @@ async function shellSort(array){
 */
 async function partition(arr, start, end) {
   for (let i = start; i < end; i++) {
-    states[i] = 1;
+    states[i] = -1;
   }
   let pivotValue = arr[end];
   let pivotIndex = start;
@@ -169,18 +168,11 @@ async function partition(arr, start, end) {
   for (let i = start; i < end; i++) {
     if (comparar(1, arr[i], pivotValue)) { //se voltea signo para direccion //arr[i] < pivotValue
       await swap(arr, i, pivotIndex);
-      states[pivotIndex] = -1;
       pivotIndex++;
       states[pivotIndex] = 0;
     }
   }
   await swap(arr, pivotIndex, end);
-
-  for (let i = start; i < end; i++) {
-    if (i != pivotIndex) {
-      states[i] = -1;
-    }
-  }
 
   return pivotIndex;
 }// end partition 
@@ -250,7 +242,7 @@ function draw() {
     @return: nothing
 */
 async function swap(arr, a, b) {
-  await sleep(500);
+  await sleep(50);
   let temp = arr[a];
   arr[a] = arr[b];
   arr[b] = temp;
@@ -302,6 +294,7 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
+
 /* </script>
 </body>
 
