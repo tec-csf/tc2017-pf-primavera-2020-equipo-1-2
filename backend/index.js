@@ -480,7 +480,7 @@ app.post('/algoritmosEstables/conf', async (req, res) => {
                     } //Fin principal
 
                     principal();
-                    res.redirect('/quicksortDisplay');
+                    res.redirect('/tiempos')
                     break;
 
                 case "bucket":

@@ -58,11 +58,6 @@ Este proyecto cuenta con dos carpetas principales, un _frontend_ y un _backend_.
 
 Al establecer conexión entre estas dos carpetas, se está mandando a llamar desde el backend, pero esto será explicado en su sección específica.
 
-El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo.
-Para acceder a la página, puede ingresar al siguiente link:
-
->ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000
-
 - **NOTA**
     - **No sé si haga falta algo de la descripción que quieran completar**
     - **La página aun no se encuentra desplegada, pero será actualizado cuando se haya desplegado.**
@@ -81,16 +76,22 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 *[Incluya aquí una descripción detallada de cada uno de los componentes de la arquitectura así como una justificación de la selección de cada componente]*
 
-Para poder llevar a cabo la solución al problema que se nos planteó, si implementaron diversas librerías de Node JS. Esas serán explicadas en la sección _3.4.3_, pero si es relevante explicar el uso que le dimos a _body-parser_ para mandar a llamar los datos desde el frontend.
+#### 3.2.1 Hosting
 
-La aplicación funciona utilizando operaciones del tipo **RESTful**, es decir con el uso de acciones de tipo *POST* y del tipo *GET*.
-Las operaciones post fueron utilizadas para mandar a llamar datos que se están insertando en el HTML.
+El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo.
+Para acceder a la página, puede ingresar al siguiente link:
 
-Por ejemplo, para que el usuario pueda insertar tanto los nombres de los algoritmos, como el valor numérico que se usará para generar los valores aleatorios, está utilizando una operación de tipo _post_. 
-Estos datos están siendo leídos en el backend, especificamente en las secciónes que comienzan con el enunciado `app.post()`. Eso permite que, dependiendo de la acción programada en el HTML, se envíen a ese campo.
+>ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000
 
-Para las operaciones de tipo _get_, se está haciendo algo distinto. Esta operación se está encargando del despliegue/visualización de los documentos HTML. En otras palabras, cuando se manda a llamar a otra página, como regresar al inicio de la aplicación web, esta tomando lugar en una operación de este tipo.
-Para poder identificar estas secciones, se están mandando a llamar con el enunciado `app.get()`, esto permite cargar el documento especificado. Es importante recalcar, esos documentos se encuentran en la carpeta del _frontend_.
+#### 3.2.2 Backend
+
+
+
+#### 3.2.3 Frontend
+
+La solución del frontend está programada completamente en HTML, esto permitió que tuvieramos flexibilidad al momento de programar la interfaz del usuario.
+
+La comunicación entre el frontend y el backend será explicada posteriormente.
 
 ### 3.3 Frontend
 
@@ -108,6 +109,15 @@ Esto permite que los HTMLs contengan un formato adecuado para el manejo de datos
 La manera en la que se despliega es mediante solicitudes _app.get()_ que se están llevando a cabo en el backend, especificamente en el documento llamado _[index.js](/backend/index.js)_.
 
 Al inicializar el frontend desde el script index.js, se están mandando a llamar datos por los cuales el usuario está realizando operaciones de tipo _post_.
+
+La aplicación funciona utilizando operaciones del tipo **RESTful**, es decir con el uso de acciones de tipo *POST* y del tipo *GET*.
+Las operaciones post fueron utilizadas para mandar a llamar datos que se están insertando en el HTML.
+
+Por ejemplo, para que el usuario pueda insertar tanto los nombres de los algoritmos, como el valor numérico que se usará para generar los valores aleatorios, está utilizando una operación de tipo _post_. 
+Estos datos están siendo leídos en el backend, especificamente en las secciónes que comienzan con el enunciado `app.post()`. Eso permite que, dependiendo de la acción programada en el HTML, se envíen a ese campo.
+
+Para las operaciones de tipo _get_, se está haciendo algo distinto. Esta operación se está encargando del despliegue/visualización de los documentos HTML. En otras palabras, cuando se manda a llamar a otra página, como regresar al inicio de la aplicación web, esta tomando lugar en una operación de este tipo.
+Para poder identificar estas secciones, se están mandando a llamar con el enunciado `app.get()`, esto permite cargar el documento especificado. Es importante recalcar, esos documentos se encuentran en la carpeta del _frontend_.
 
 #### 3.3.1 Lenguaje de programación
 
@@ -134,9 +144,20 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
+El backend fue programado en JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido.
+
 #### 3.4.1 Lenguaje de programación
 #### 3.4.2 Framework
 #### 3.4.3 Librerías de funciones o dependencias
+
+- body-parser
+- edge-js
+- express
+- express-edge
+- fs-extra
+- jsonfile
+- nodemon
+- paralleljs
 
 ### 3.5 API
 
