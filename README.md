@@ -52,7 +52,39 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-Como proyecto final para la materia de *Análisis y diseño de algoritmos*, se nos solicitó hacer una aplicación web en la cual un usuario pudiera ver como funcionan diferentes algoritmos, tanto de ordenamiento como de búsqueda.
+Como proyecto final para la materia de *Análisis y diseño de algoritmos*, se nos solicitó hacer una aplicación web en la cual un usuario pueda ver como funcionan diferentes algoritmos y las características de ambos, tanto de ordenamiento como de búsqueda.
+
+Los algoritmos que se presentarán en las búsquedas son 2:
+
+•Secuencial .
+
+•Binaria.
+
+Y los algoritmos de ordenamiento se dividirán en estables e inestables : 
+
+•Ordenamiento de burbuja(Bubble Sort) .
+
+•Ordenamiento de burbuja bidireccional (Cocktail Sort) .
+
+•Ordenamiento por inserción (Insertion Sort) .
+
+•Ordenamiento por casilleros (Bucket Sort) .
+
+•Ordenamiento por cuentas (Counting Sort) .
+
+•Ordenamiento por mezcla (Merge Sort) .
+
+•Ordenamiento con árbol binario (Binary tree Sort) .
+
+•Ordenamiento Radix (Radix Sort) .
+
+•Ordenamiento Shell (Shell Sort) .
+
+•Ordenamiento por selección (Selection Sort) .
+
+•Ordenamiento por montículos (Heap Sort) .
+
+•Ordenamiento rápido (Quick Sort)  .
 
 Este proyecto cuenta con dos carpetas principales, un _frontend_ y un _backend_. Cada uno de estos aloja los documentos necesarios para poder correr la solución.
 
@@ -70,7 +102,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 *[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
 
-*[Incluya una explicación del flujo de la información entre los diferentes componentes.]*
+El usuario podrá conectarse con nuestra aplicación web por medio de un link de AMAZON WEB SERVICES. En está aplicación lo que podrá observar serán las diferentes características de cada tipo de algoritmo de ordenamiento y busqueda. Así pues existirán diferentes pantallas que le permitirán generar datos aleatorios o ingresarlos por medio de un Json, para que después se puedan analizar dos tipos de algoritmos de forma ascendente o descendente por medio de paralelización(backend) y a su vez se pueda acceder a una nueva pantalla con la visualización del funcionamiento de dichos algoritmos a analizar. También se permitirá la creación de gráficas con los resultados de los tiempos de ejecución de cada algoritmo que se podrán descargar en PDF, CSV, Json. Todo esto será posible visualizarlo por HTML y BOOTSTRAP en la parte de FRONTEND y NODE.js, y JAVASCRIPT con las librerias de 'P5js', 'Parallel.js' en la parte de BACKEND.
 
 ### 3.2 Descripción de los componentes
 
