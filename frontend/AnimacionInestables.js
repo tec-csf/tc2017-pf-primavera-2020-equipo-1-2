@@ -31,7 +31,7 @@
 
 let values = [];//array with the values 
 let w = 10;// width de los rectangulos de la animación
-let order = 1;
+let order = 0;
 
 let states = []; //array to determine the colors in the visualization 
 
@@ -49,8 +49,8 @@ function setup(){
   }
 
   //quickSort(values, 0, values.length - 1, order);
-  heapSort(values, order);
-  //selectionSort(values);
+  //heapSort(values, order);
+  selectionSort(values, order);
   //shellSort(values);
 }// end setup 
 
@@ -112,7 +112,7 @@ async function heapSort(arr, order) {
   @param array:the array of elements to be sorted
   @return:nothing
 */
-async function selectionSort(array){
+async function selectionSort(array, order){
   for (let i = 0; i < array.length; i++) {
     states[i] = -1; //state of the array, this is for the color, start
   }
@@ -121,7 +121,7 @@ async function selectionSort(array){
     let minIndex = currentIndex;
     states[minIndex] = 0; //state of the array, this is for the color, complete
     for (let i = currentIndex + 1; i < array.length; i++) {
-      if (array[i] < array[minIndex]) { //se voltea para direccion
+      if (comparar(order, array[i], array[minIndex])) { //se voltea para direccion, array[i] < array[minIndex]
         minIndex = i;
       }
     }
@@ -318,8 +318,6 @@ async function tiempo(algorithm){
   let tiempo=Math.ceil(millis());
    console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
 }// end tiempo
-
-
 
 /* </script>
 </body>
