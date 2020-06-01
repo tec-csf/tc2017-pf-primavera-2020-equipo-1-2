@@ -31,7 +31,7 @@
 
 let values = [];//array with the values 
 let w = 10;// width de los rectangulos de la animación
-let order = 0;
+let order = 1;
 
 let states = []; //array to determine the colors in the visualization 
 
@@ -50,8 +50,8 @@ function setup(){
 
   //quickSort(values, 0, values.length - 1, order);
   //heapSort(values, order);
-  selectionSort(values, order);
-  //shellSort(values);
+  //selectionSort(values, order);
+  shellSort(values, order);
 }// end setup 
 
 /* 
@@ -139,7 +139,7 @@ async function selectionSort(array, order){
   @param array:the array of elements to be sorted
   @return:nothing
 */
-async function shellSort(array){
+async function shellSort(array, order){
   for (let i = 0; i < array.length; i++) {
     states[i] = -1; //state of the array, this is for the color, start
      //console.log(array);
@@ -149,7 +149,7 @@ async function shellSort(array){
       states[index] = 1 //state of the array, this is for the         color, iteration
       let indexCopy = index
       let itemValue = array[index]
-      while (indexCopy >= gap && comparar(1, array[indexCopy - gap], itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
+      while (indexCopy >= gap && comparar(order, array[indexCopy - gap], itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
         await swap (array, indexCopy, indexCopy - gap)
         states[indexCopy] =0;
         indexCopy -= gap;
@@ -318,6 +318,7 @@ async function tiempo(algorithm){
   let tiempo=Math.ceil(millis());
    console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
 }// end tiempo
+
 
 /* </script>
 </body>
