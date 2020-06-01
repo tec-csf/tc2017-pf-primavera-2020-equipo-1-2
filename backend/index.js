@@ -2665,24 +2665,24 @@ app.post("/algoritmosInestables/doc", async (req, res) => {
 
 app.post("/algoritmosBusqueda/doc", async (req, res) => {
 
-    console.log("Try 1")
-
     const documento = req.body.newFile;
     const primerAlg = req.body.primerAlg;
     const segundoAlg = req.body.segundoAlg;
-    const fileCont = req.body.fileContent;
+    const fileCont = JSON.parse(req.body.fileContent)
 
-    console.log(fileCont)
+    var numData = []
 
-    console.log("Try finished")
+    // console.log(fileCont)
 
-    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor.
-    jsonfile.readFile(documento, function (err, obj) {
-        if (err) console.error(err);
-        console.dir(obj);
-    });
+    for(let entry in fileCont)
+    {
+        for(let data in fileCont[entry])
+        {
+            numData.push(fileCont[entry][data])
+        }
+    }
 
-    console.log("Doc stable\n" + documento + "\n" + primerAlg + "\n" + segundoAlg);
+    console.log("Doc stable\n" + numData + "\n" + primerAlg + "\n" + segundoAlg);
 
     res.redirect("/");
 });
