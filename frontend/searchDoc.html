@@ -74,16 +74,42 @@
                 <div class="row mt-2">
                     <div class="col-sm-12 text-lg-center">
                         <label for="fileUpload"></label><br>
-                        <input type="text" id="fileUpload" name="newFile"><br>
+                        <input type="file" id="fileUpload" name="newFile"><br>
                     </div>
 
                 </div>
                 <div class="form-group text-lg-center">
                     <br><input type="submit" class="btn btn-success justify-content-center">
                 </div>
+
+                <input type="file" id="selectFiles" value="Import" /><br />
+                <button id="import">NO</button>
+                <textarea id="result" name="fileContent"></textarea>
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        document.getElementById('import').addEventListener("click", function(event){
+            event.preventDefault()
+            var files = document.getElementById('selectFiles').files;
+          // console.log(typeof files);
+          if (files.length <= 0) {
+            return false;
+          }
+
+          var fr = new FileReader();
+
+          fr.onload = function(e) { 
+          console.log(e);
+            var result = JSON.parse(e.target.result);
+            var formatted = JSON.stringify(result, null, 2);
+                document.getElementById('result').value = formatted;
+          }
+
+          fr.readAsText(files.item(0));
+          return false;
+        });
+    </script>
 
 </body>
 

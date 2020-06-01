@@ -100,7 +100,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Arquitectura de la solución
 
-*[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
+![](Images/ARQUITECTURA.png)
 
 El usuario podrá conectarse con nuestra aplicación web por medio de un link de AMAZON WEB SERVICES. En está aplicación lo que podrá observar serán las diferentes características de cada tipo de algoritmo de ordenamiento y busqueda. Así pues existirán diferentes pantallas que le permitirán generar datos aleatorios o ingresarlos por medio de un Json, para que después se puedan analizar dos tipos de algoritmos de forma ascendente o descendente por medio de paralelización(backend) y a su vez se pueda acceder a una nueva pantalla con la visualización del funcionamiento de dichos algoritmos a analizar. También se permitirá la creación de gráficas con los resultados de los tiempos de ejecución de cada algoritmo que se podrán descargar en PDF, CSV, Json. Todo esto será posible visualizarlo por HTML y BOOTSTRAP en la parte de FRONTEND y NODE.js, y JAVASCRIPT con las librerias de 'P5js', 'Parallel.js' en la parte de BACKEND.
 
