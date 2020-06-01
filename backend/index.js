@@ -2665,9 +2665,16 @@ app.post("/algoritmosInestables/doc", async (req, res) => {
 
 app.post("/algoritmosBusqueda/doc", async (req, res) => {
 
+    console.log("Try 1")
+
     const documento = req.body.newFile;
     const primerAlg = req.body.primerAlg;
     const segundoAlg = req.body.segundoAlg;
+    const fileCont = req.body.fileContent;
+
+    console.log(fileCont)
+
+    console.log("Try finished")
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor.
     jsonfile.readFile(documento, function (err, obj) {
