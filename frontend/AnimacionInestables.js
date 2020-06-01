@@ -18,6 +18,11 @@
 
 <body>
 <script>
+/* 
+  Animaciones de los algoritmos Inestables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Shell sort, Selection Sort,
+  Quick Sort y Heap Sort. 
+
 // QuickSort Visualization
 // Daniel Shiffman
 // https://thecodingtrain.com/CodingChallenges/143-quicksort.html
@@ -30,7 +35,7 @@ let w = 10;// width de los rectangulos de la animación
 let states = []; //array to determine the colors in the visualization 
 
 /* 
-  Function setup: this function creates the canvas where the animation will be visualized
+  Function setup: this function creates the canvas where the   animation will be visualized
   @param: nothing 
   @return:nothing
 */
@@ -38,7 +43,7 @@ function setup(){
   createCanvas(windowWidth, windowHeight); // size of the canvas 
   values = new Array(floor(width / w));
   for (let i = 0; i < values.length; i++) {
-    values[i] = random(height);
+    values[i] = Math.floor(random(height));
     states[i] = -1;
   }
 
@@ -71,6 +76,8 @@ async function quickSort(arr, start, end) {
     quickSort(arr, start, index - 1),
     quickSort(arr, index + 1, end)
   ]);
+  tiempo("Quick Sort");//time the algorithm took to execute
+
 }// end quicksort
 
 /* 
@@ -79,6 +86,7 @@ async function quickSort(arr, start, end) {
   @return: nothing 
 */
 async function heapSort(arr) {
+  
   let size = arr.length;
   for(let i = Math.floor(size/2-1); i >= 0; i--){
     let index = await heapify(arr, size, i);
@@ -91,7 +99,9 @@ async function heapSort(arr) {
       heapify(arr, i, 0)
     ]);
   }
+  tiempo("Heap Sort");//time the algorithm took to execute
 }// end heap sort
+
 /* 
   Function Selection Sort:This sorting algorithm is an in-place comparison-based algorithm 
   in which the list is divided into two parts, the sorted part at the left end and the unsorted part at the right end. 
@@ -118,6 +128,7 @@ async function selectionSort(array){
       await swap(array, currentIndex, minIndex);
     }
   }
+  tiempo("Selection Sort");//time the algorithm took to execute
 }// End selection sort 
 
 /* 
@@ -130,21 +141,27 @@ async function selectionSort(array){
 async function shellSort(array){
   for (let i = 0; i < array.length; i++) {
     states[i] = -1; //state of the array, this is for the color, start
+     //console.log(array);
   }
   for (let gap = Math.floor(array.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
-    for (let index = gap; index < array.length; index++) {
-      states[index] = 1 //state of the array, this is for the color, iteration
+    for (let index = gap; index <array.length; index++) {
+      states[index] = 1 //state of the array, this is for the         color, iteration
       let indexCopy = index
       let itemValue = array[index]
       while (indexCopy >= gap && comparar(1, array[indexCopy - gap], itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
         await swap (array, indexCopy, indexCopy - gap)
-        //states[indexCopy] = -1
-        indexCopy -= gap
+        states[indexCopy] =0;
+        indexCopy -= gap;
         states[indexCopy] = 0 //se compara y cambian izquierdo
       }
-      states[index] = 0 //lo hace en las mitades de la derecha
     }
   }
+  for (let i = 0; i < array.length; i++) {
+    states[i] = 0; //state of the array, this is for the color, start
+     //console.log(array);
+  }
+  console.log(array);
+  tiempo("Shell Sort");//time the algorithm took to execute
 }// end ShellSort
 
 /* 
@@ -162,7 +179,7 @@ async function partition(arr, start, end) {
   let pivotValue = arr[end];
   let pivotIndex = start;
   states[pivotIndex] = 0; //state of the array, this is for the color, complete
-  for (let i = start; i < end; i++) {
+  for (let i = start; i <=end; i++) {
     if (comparar(1, arr[i], pivotValue)) { //se voltea signo para direccion //arr[i] < pivotValue
       await swap(arr, i, pivotIndex);
       pivotIndex++;
@@ -190,13 +207,12 @@ async function heapify(array, size, i){
   let left = 2 * i + 1;
   let right = 2 * i + 2;
   states[max] = 1;
+  
 
-  if(left < size && comparar(0, array[left], array[max])){ //se voltea el segundo para direccion //array[left] < array[max]
-    //states[left] = 1; //state of the array, this is for the color, iterating    
+  if(left < size && comparar(0, array[left], array[max])){ //se voltea el segundo para direccion //array[left] < array[max]   
     max = left;
   }
-  if(right < size && comparar(0, array[right], array[max])){ //se voltea el segundo para direccion //array[right] < array[max]
-    //states[right] = 1; //state of the array, this is for the color, iterating    
+  if(right < size && comparar(0, array[right], array[max])){ //se voltea el segundo para direccion //array[right] < array[max]  
     max = right
   }
   if (max != i){
@@ -291,6 +307,17 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
+
+/* 
+    function tiempo: this function takes the time in miliseconds of the animations execution
+    @param algorithm: the algorithm executed
+    @return: nothin
+ */
+async function tiempo(algorithm){
+  let tiempo=Math.ceil(millis());
+   console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
+}// end tiempo
+
 
 /* </script>
 </body>
