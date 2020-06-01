@@ -44,8 +44,8 @@ function setup(){
 
   //quickSort(values, 0, values.length - 1);
   //heapSort(values);
-  selectionSort(values);
-  //shellSort(values);
+  //selectionSort(values);
+  shellSort(values);
 }// end setup 
 
 /* 
@@ -129,19 +129,20 @@ async function selectionSort(array){
 */
 async function shellSort(array){
   for (let i = 0; i < array.length; i++) {
-    states[i] = 1;
+    states[i] = -1; //state of the array, this is for the color, start
   }
   for (let gap = Math.floor(array.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
     for (let index = gap; index < array.length; index++) {
+      states[index] = 1 //state of the array, this is for the color, iteration
       let indexCopy = index
       let itemValue = array[index]
       while (indexCopy >= gap && comparar(1, array[indexCopy - gap], itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
-        states[indexCopy] = 0 //se comparan y cambian derecho
         await swap (array, indexCopy, indexCopy - gap)
+        //states[indexCopy] = -1
         indexCopy -= gap
         states[indexCopy] = 0 //se compara y cambian izquierdo
       }
-      states[index] = -1 //lo hace en las mitades de la derecha
+      states[index] = 0 //lo hace en las mitades de la derecha
     }
   }
 }// end ShellSort
@@ -290,7 +291,6 @@ function comparar(tipo, a, n)
 		return desc (a,n);
 	}
 }//end comparar
-
 
 /* </script>
 </body>
