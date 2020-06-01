@@ -31,7 +31,7 @@
 
 let values = [];//array with the values 
 let w = 10;// width de los rectangulos de la animación
-let order = 0;
+let order = 1;
 
 let states = []; //array to determine the colors in the visualization 
 
@@ -48,8 +48,8 @@ function setup(){
     states[i] = -1;
   }
 
-  quickSort(values, 0, values.length - 1, order);
-  //heapSort(values);
+  //quickSort(values, 0, values.length - 1, order);
+  heapSort(values, order);
   //selectionSort(values);
   //shellSort(values);
 }// end setup 
@@ -86,18 +86,18 @@ async function quickSort(arr, start, end, order) {
   @param arr:the array of elements to be sorted
   @return: nothing 
 */
-async function heapSort(arr) {
+async function heapSort(arr, order) {
   
   let size = arr.length;
   for(let i = Math.floor(size/2-1); i >= 0; i--){
-    let index = await heapify(arr, size, i);
+    let index = await heapify(arr, size, i, order);
     states[index] = 0; //state of the array, this is for the color, complete
   }
 
   for(let i = size-1; i>=0; i--){
     await swap(arr, 0, i);
     await Promise.all([
-      heapify(arr, i, 0)
+      heapify(arr, i, 0, order)
     ]);
   }
   tiempo("Heap Sort");//time the algorithm took to execute
@@ -200,7 +200,7 @@ async function partition(arr, start, end, orden) {
   @param i : index where it starts to make the heap
   @return:nothing
 */
-async function heapify(array, size, i){
+async function heapify(array, size, i, order){
   for (let i = 0; i < size; i++) {
     states[i] = -1; //state of the array, this is for the color, start   
   }
@@ -210,15 +210,15 @@ async function heapify(array, size, i){
   states[max] = 1;
   
 
-  if(left < size && comparar(0, array[left], array[max])){ //se voltea el segundo para direccion //array[left] < array[max]   
+  if(left < size && comparar(order, array[left], array[max])){ //se voltea el segundo para direccion //array[left] < array[max]   
     max = left;
   }
-  if(right < size && comparar(0, array[right], array[max])){ //se voltea el segundo para direccion //array[right] < array[max]  
+  if(right < size && comparar(order, array[right], array[max])){ //se voltea el segundo para direccion //array[right] < array[max]  
     max = right
   }
   if (max != i){
       await swap(array, i, max);
-      await heapify(array, size, max);
+      await heapify(array, size, max, order);
   }
   for(let i = 0; i < size; i++){
     if( i != max-2){
@@ -318,6 +318,7 @@ async function tiempo(algorithm){
   let tiempo=Math.ceil(millis());
    console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
 }// end tiempo
+
 
 
 /* </script>
