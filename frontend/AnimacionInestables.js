@@ -31,7 +31,8 @@
 
 let values = [];//array with the values 
 let w = 10;// width de los rectangulos de la animación
-let order = 1;
+let orderQS = 1; //1 - descendant, 0 - ascendant
+let orderHS = 0; //0 - descendant, 1 - ascendant
 
 let states = []; //array to determine the colors in the visualization 
 
@@ -48,10 +49,10 @@ function setup(){
     states[i] = -1;
   }
 
-  //quickSort(values, 0, values.length - 1, order);
-  //heapSort(values, order);
-  //selectionSort(values, order);
-  shellSort(values, order);
+  //quickSort(values, 0, values.length - 1, orderQS);
+  //heapSort(values, orderHS);
+  //selectionSort(values, orderQS);
+  shellSort(values, orderHS);
 }// end setup 
 
 /* 
