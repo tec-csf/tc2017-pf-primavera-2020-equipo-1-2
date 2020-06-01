@@ -25,12 +25,12 @@ function setup() {
     }
 
     //bubbleSort(values);
-    cocktailSort(values);
+    //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
-    //countingSort(values);
+    countingSort(values);
 }//end setup 
 
 /* 
@@ -295,7 +295,13 @@ async function countingSort(arr) {
       finalArray[z] = j;
       z++;
     }
-  }
+  } //prints ascendant
+  /*for (let j = orderArray.length; j >= 1; j--) {
+    for (let i = 0; i < orderArray[j]; i++) {
+      finalArray[z] = j;
+      z++;
+    }
+  }*/ //prints descendant
   
   for (let i = 0; i < arr.length; i++) {
     states[i]=0;//state of the array, this is for the 
