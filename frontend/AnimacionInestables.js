@@ -227,16 +227,15 @@ async function heapify(array, size, i){
   @return: nothing
 */
 function draw() {
-  background(0);
-
+  background(230);
+  stroke("white");
   for (let i = 0; i < values.length; i++) {
-    noStroke();
     if (states[i] == 0) {
-      fill('#E0777D');
+      fill(161, 220, 144);
     } else if (states[i] == 1) {
       fill('#D6FFB7');
     } else {
-      fill(255);
+      fill(255, 204, 100);
     }
     //dibuja las lineas
     rect(i * w, height - values[i], w, values[i]);
