@@ -117,7 +117,9 @@ Para acceder a la página, puede ingresar al siguiente link:
 
 #### 3.2.2 Backend
 
+El backend se encuentra programado completamente en JavaScript, esto se debe a que estamos utilizando librerías necesarias para desplegar las páginas requeridas y recibir/enviar los datos insertados a otras páginas.
 
+Las librerías y su implementación serán explicados en la sección _3.4_.
 
 #### 3.2.3 Frontend
 
@@ -177,6 +179,8 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 El backend fue programado en JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido.
+
+El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_  se están encargando 
 
 #### 3.4.1 Lenguaje de programación
 #### 3.4.2 Framework
