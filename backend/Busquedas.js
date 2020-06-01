@@ -20,7 +20,7 @@ function setup() {
     values = new Array(floor(width / w));
     for (let i = 0; i < values.length; i++) {
         values[i] = floor(random(height)+1);
-        states[i] = 1;
+        states[i] = -1;
         num = floor(random(values));
     }
   
@@ -28,8 +28,8 @@ function setup() {
       return a - b
     });
     
-    busquedaBinaria(values, num);
-    //busquedaSecuencial(values, num);
+    //busquedaBinaria(values, num);
+    busquedaSecuencial(values, num);
 }//end setup
 
 /* 
@@ -49,13 +49,14 @@ async function busquedaBinaria(arr, num) {
       console.log("Found at index (starting from 0) : ", middle);
       console.log(arr);
       states[middle] = 0;
+      break;
     }
     if(guess > num){
       high = middle - 1;
-      states[middle] = 0;
-
+      states[high] = 1;
     } else {
       low = middle + 1;
+      states[low] = 1;
     }
   }
   tiempo("Busqueda Binaria");
@@ -70,10 +71,12 @@ Function busquedaSecuencial: this function works as a normal sort, where it iter
 async function busquedaSecuencial(arr, num) {
   //bubbleSort(arr);
   for(let i = 0; i < arr.length-1; i++) {
+    states[i] = 1;
     if(arr[i] == num) {
       console.log("Number searched", num);
       console.log("Found at index", i);
       states[i] = 0;
+      break;
     } else {
       console.log(arr);
     }
@@ -96,7 +99,7 @@ function draw() {
       } else if (states[i] == 1) {
         fill(212, 161, 198);
       } else {
-        fill(255, 69, 0);
+        fill(255, 204, 100);
       }
       //dibuja las lineas
       rect(i * w, height - values[i], w, values[i]);

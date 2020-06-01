@@ -66,7 +66,7 @@ async function quickSort(arr, start, end) {
     return;
   }
   let index = await partition(arr, start, end);
-  states[index] = -1; //como funciona esto?
+  states[index] = -1; 
 
   await Promise.all([
     quickSort(arr, start, index - 1),
