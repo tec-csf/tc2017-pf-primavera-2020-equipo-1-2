@@ -183,8 +183,15 @@ El backend fue programado en JavaScript, esto nos permitió implementar las libr
 El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_  se están encargando 
 
 #### 3.4.1 Lenguaje de programación
+
+Javascript es un lenguaje de programación que esta creado para usar solo un hilo al correr código, esto se debe a que es muy rápido por su naturaleza al ser un modelo asíncrono y no bloqueante que usa loop de eventos. Sin embargo los programadores con experiencia concuerdan que la implementación del paralelismo sería un efecto positivo en el lenguaje. Diferentes desarrolladores se han encargado de hacer librerías como “Parallel.js”  que resuelven ese problema al brindar acceso de alto nivel al procesamiento multinúcleo utilizando trabajadores web (web workers),logrando la ejecución de código en el navegador y en la consola. Así también han creado librerías para mejorar la representación visual de diferentes ejecuciones de código, una de estas librerías es conocida como P5js que se enfoca en la programación creativa, pues tiene un conjunto completo para dibujar y animar objetos dentro de las páginas web con la ayuda de javascript y html.
+
 #### 3.4.2 Framework
+
 #### 3.4.3 Librerías de funciones o dependencias
+
+* Parallel.js  para la creación de datos aleatorios y la comparación de algoritmos, sin embargo esta librería contaba con ciertas restricciones, ya que los web workers, que son muy parecidos a los Child process no permiten la extracción de datos una vez se finaliza la acción esperada.
+* P5js para la animación del proceso que tienen cada uno de los 14 algoritmos de búsquedas y ordenamientos, igual que la librería anterior P5js también tiene restricciones, las cuales impedían juntar dos visualizaciones al mismo tiempo.
 
 - body-parser
 - edge-js
@@ -201,15 +208,10 @@ El frontend y el backend establecen una conexión mediante operaciones de tipo _
 
 #### 3.5.1 Lenguaje de programación
 
-Javascript es un lenguaje de programación que esta creado para usar solo un hilo al correr código, esto se debe a que es muy rápido por su naturaleza al ser un modelo asíncrono y no bloqueante que usa loop de eventos. Sin embargo los programadores con experiencia concuerdan que la implementación del paralelismo sería un efecto positivo en el lenguaje. Diferentes desarrolladores se han encargado de hacer librerías como “Parallel.js”  que resuelven ese problema al brindar acceso de alto nivel al procesamiento multinúcleo utilizando trabajadores web (web workers),logrando la ejecución de código en el navegador y en la consola. Así también han creado librerías para mejorar la representación visual de diferentes ejecuciones de código, una de estas librerías es conocida como P5js que se enfoca en la programación creativa, pues tiene un conjunto completo para dibujar y animar objetos dentro de las páginas web con la ayuda de javascript y html.
 
 #### 3.5.2 Framework
 
 #### 3.5.3 Librerías de funciones o dependencias
-
-En este proyecto utilizamos 2 librerías principales:
-* Parallel.js  para la creación de datos aleatorios y la comparación de algoritmos, sin embargo esta librería contaba con ciertas restricciones, ya que los web workers, que son muy parecidos a los Child process no permiten la extracción de datos una vez se finaliza la acción esperada.
-* P5js para la animación del proceso que tienen cada uno de los 14 algoritmos de búsquedas y ordenamientos, igual que la librería anterior P5js también tiene restricciones, las cuales impedían juntar dos visualizaciones al mismo tiempo.
 
 *[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
 
