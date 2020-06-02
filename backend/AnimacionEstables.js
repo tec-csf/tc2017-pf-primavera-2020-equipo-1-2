@@ -51,6 +51,7 @@ async function bubbleSort(arr){
 	}
   // saveJSON(arr, "finalArray.json");
   save('finalGraphic.png')
+  save(arr, "finalArray.csv")
   tiempo("Bubble Sort");//time the algorithm took to execute
 }//end bubblesort
 
