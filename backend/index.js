@@ -2250,6 +2250,8 @@ app.post('/algoritmosInestables/conf', async (req, res) => {
     var ordenImpresion = req.body.ordenImp;
     var convRand = parseInt(req.body.noRand);
 
+    console.log("unstable POST successful")
+
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
     nuRand = [];
 
@@ -2727,6 +2729,8 @@ app.post('/algoritmosInestables/doc', async (req, res) => {
             numData.push(fileCont[entry][data])
         }
     }
+
+    console.log("unstable doc successful")
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
     nuRand = [];
