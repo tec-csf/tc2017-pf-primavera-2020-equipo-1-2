@@ -3091,7 +3091,7 @@ app.post('/algoritmosInestables/doc', async (req, res) => {
             break;
     } */
 
-    //res.redirect('/');
+    res.redirect('/');
 });
 
 app.post('/algoritmosEstables/doc', async (req, res) => {
@@ -5030,29 +5030,120 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
                 break;
         }
 
-        //res.redirect('/');
+        res.redirect('/');
     });
 
 app.post("/algoritmosBusqueda/doc", async (req, res) => {
 
-    const documento = req.body.newFile;
-    const primerAlg = req.body.primerAlg;
-    const segundoAlg = req.body.segundoAlg;
+    var primer = req.body.primerAlg;
+    var segundo = req.body.segundoAlg;
+    var ordenImpresion = req.body.ordenImp;
+    var convRand = 150;
+
     const fileCont = JSON.parse(req.body.fileContent)
 
-    var numData = []
+        var numData = []
 
-    for(let entry in fileCont)
-    {
-        for(let data in fileCont[entry])
+        for(let entry in fileCont)
         {
-            numData.push(fileCont[entry][data])
+            for(let data in fileCont[entry])
+            {
+                numData.push(fileCont[entry][data])
+            }
         }
+
+        console.log(numData)
+
+    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
+    nuRand = [];
+
+    nuRand.push(convRand);
+
+    var cantNum = convRand;
+    const n_cpus = os.cpus().length;
+    var cantXthread = Math.floor(cantNum / n_cpus);
+
+    //var p = new Parallel([2,8]);
+    var arreglo = []; //new Array(p.data.length*2);
+    function aleatorio(tamano) {
+        var a = new Array(tamano);
+        for (var i = 0; i < tamano; ++i) {
+            a[i] = Math.floor(Math.random() * (tamano * 8));
+        }
+        return a;
+    }
+    //esta función concatena los arreglos para que se unan
+    function logi(d) {
+        if (Array.isArray(arreglo)) {
+            arreglo = d[0].concat(d[1]);
+        }
+        for (let i = 2; i < n_cpus; i++) {
+            arreglo = arreglo.concat(d[i]);
+        }
+        if (arreglo.length < cantNum) {
+            for (let index = arreglo.length; index < cantNum; index++) {
+                arreglo[index] = Math.floor(Math.random() * cantXthread);
+            }
+        }
+        console.log(arreglo);
+        console.log(arreglo.length);
+        return numData;
+    };
+
+    function binarySearch(array, item) {
+        var low = 0;
+        var high = array.length - 1;
+
+        while (low <= high) {
+            var middle = Math.floor((low + high) / 2);
+            var guess = array[middle];
+            if (guess == item) {
+                return middle;
+            }
+            if (guess > item) {
+                high = middle - 1;
+            } else {
+                low = middle + 1;
+            }
+        }
+        return -1;
     }
 
-    console.log("Doc stable\n" + numData + "\n" + primerAlg + "\n" + segundoAlg);
+    function linearSearch(list, value) {
+        let found = false;
+        let position = -1;
+        let index = 0;
 
-    res.redirect("/");
+        while (!found && index < list.length) {
+            if (list[index] == value) {
+                found = true;
+                position = index;
+            } else {
+                index += 1;
+            }
+        }
+        return position;
+    }
+
+    switch (primer) {
+        case "binary":
+            switch (segundo) {
+                case "binary":
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+            break;
+    
+        default:
+            break;
+    }
+
+    console.log("Search\n" + primer + ", " + segundo + ", " + nuRand);
+
+    res.redirect('/');
 });
 
 app.listen(port, () => {

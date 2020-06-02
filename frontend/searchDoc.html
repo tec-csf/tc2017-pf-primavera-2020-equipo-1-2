@@ -37,40 +37,10 @@
             <button class="btn btn-danger" onclick="window.location.href='/search'">Regresar a <i><b>Algoritmos
                         de búsqueda</b></i></button>
 
-                        <h4 class="text-lg-center">Seleccione los algoritmos que desea utilizar</h4>
-
-                        <form method="POST" action="/algoritmosBusqueda/doc">
-                        
-                        <table style="width:100%" class="table">
-                            <thead class="thead-dark">
-                    <tr>
-                        <th class="text-lg-center">Primer algoritmo</th>
-                        <th class="text-lg-center">Segundo algoritmo</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>
-                        <div class="row justify-content-center form-group">
-                            <select name="primerAlg" id="primerAlg">
-                                <option value="null">-</option>
-                                <option value="binary">Binaria</option>
-                                <option value="sequential">Secuencial</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row justify-content-center form-group">
-                            <select name="segundoAlg" id="segundoAlg">
-                                <option value="null">-</option>
-                                <option value="binary">Binaria</option>
-                                <option value="sequential">Secuencial</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-            </table><br>
             
-            <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
+
+            <form action="/algoritmosBusqueda/doc" method="POST">
+                <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
                 <div class="row mt-2">
                     <div class="col-sm-12 text-lg-center">
                         <label for="fileUpload"></label><br>
@@ -80,13 +50,87 @@
                     </div>
 
                 </div>
-                <div class="form-group text-lg-center">
-                    <br><input type="submit" class="btn btn-success justify-content-center">
-                </div>
 
+            <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
+
+            <table style="width:100%" class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-lg-center">Primer algoritmo</th>
+                        <th class="text-lg-center">Segundo algoritmo</th>
+                        <th class="text-lg-center">Orden de impresión</th>
+                    </tr>
+                </thead>
+                <tr>
+                        <td>
+                            <div class="row justify-content-center form-group">
+                                <select name="primerAlg" id="segundoAlg">
+                                    <option value="null">-</option>
+                                    <option value="binary">Binaria</option>
+                                    <option value="sequential">Secuencial</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row justify-content-center form-group">
+                                <select name="segundoAlg" id="segundoAlg">
+                                    <option value="null">-</option>
+                                    <option value="binary">Binaria</option>
+                                    <option value="sequential">Secuencial</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row justify-content-center form-group">
+                                <select name="ordenImp" id="ordenImp">
+                                    <option value="null">-</option>
+                                    <option value="binary">Ascendente</option>
+                                    <option value="sequential">Descendente</option>
+                                </select>
+                            </div>
+                        </td>
+                </tr>
+            </table><br>
+
+            <br><br>
+
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-success">
+            </div>
             </form>
+
+            <div class="form-group form-control-lg">
+                <h5 class="text-lg-center">Seleccione que algoritmo desea visualizar</h5>
+
+            <table style="width:100%" class="table">
+                <thead class="thead-clear">
+                    <th class="text-center"></th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tr>
+                    <td>
+                        <form action="/binaryVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                            <input type="button" class="btn btn-info text-lg-center " value="Binary">
+                        </form>
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <form action="/sequentialVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                            <input type="button" class="btn btn-info text-lg-center" value="Sequential">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+
         </div>
     </div>
+
     <script type="text/javascript">
         document.getElementById('import').addEventListener("click", function(event){
             event.preventDefault()
