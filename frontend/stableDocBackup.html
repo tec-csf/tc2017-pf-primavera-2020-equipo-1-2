@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Proyecto final</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="/search">Algoritmos de búsqueda</a>
+                <a class="nav-item nav-link active" href="/stable">Algoritmos estables</a>
+                <a class="nav-item nav-link" href="/unstable">Algoritmos inestables</a>
+                <a class="nav-item nav-link" href="/info">Información del proyecto</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div class="row mt-2">
+        <div class="col-sm-12">
+
+            <h2>Algoritmos estables</h2>
+
+            <button class="btn btn-danger" onclick="window.location.href='/stable'">Regresar a <i><b>Algoritmos
+                        estables</b></i></button>
+
+            <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
+
+            <form method="POST" action="/algoritmosEstables/doc">
+                <div class="row mt-2">
+                    <div class="col-sm-12 text-lg-center">
+                        <label for="fileUpload"></label><br>
+                        <input type="file" id="fileUpload" name="newFile"><br><br>
+                        <button id="import">Validate JSON</button><br><br>
+                        <textarea rows="15" cols="100" id="result" name="fileContent"></textarea>
+                    </div>
+                </div>
+                <div class="form-group text-lg-center">
+                    <br><input type="submit" class="btn btn-success justify-content-center">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById('import').addEventListener("click", function(event){
+            event.preventDefault()
+            var files = document.getElementById('fileUpload').files;
+          // console.log(typeof files);
+          if (files.length <= 0) {
+            return false;
+          }
+
+          var fr = new FileReader();
+
+          fr.onload = function(e) { 
+          console.log(e);
+            var result = JSON.parse(e.target.result);
+            var formatted = JSON.stringify(result, null, 2);
+                document.getElementById('result').value = formatted;
+          }
+
+          fr.readAsText(files.item(0));
+          return false;
+        });
+    </script>
+
+</body>
+
+</html>
