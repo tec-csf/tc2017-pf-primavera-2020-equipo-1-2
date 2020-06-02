@@ -49,7 +49,8 @@ async function bubbleSort(arr){
 			}
 		}
 	}
-  saveJSON(arr, "finalArray.json")
+  // saveJSON(arr, "finalArray.json");
+  save('finalGraphic.png')
   tiempo("Bubble Sort");//time the algorithm took to execute
 }//end bubblesort
 
