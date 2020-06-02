@@ -24,7 +24,7 @@ function setup() {
         states[i] = -1;
     }
 
-    bubbleSort(values);
+    //bubbleSort(values);
     //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
@@ -310,7 +310,7 @@ async function countingSort(arr) {
   console.log(finalArray);
   tiempo("Counting Sort");//time the algorithm took to execute
 
-}
+}//end counting 
 
 /* 
     Function draw: this function of the p5 library draws the lines of the visaulizations. 
