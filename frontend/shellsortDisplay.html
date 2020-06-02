@@ -1,12 +1,14 @@
+<!--Animaciones de los algoritmos Inestables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Shell sort, Selection Sort,
+  Quick Sort y Heap Sort.-->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>QuickSort Visualization
+    <title>ShellSort Visualization
     </title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
     <meta charset="utf-8" />
 </head>
 
@@ -18,202 +20,152 @@
         // https://editor.p5js.org/codingtrain/sketches/vic6Qzo-j
         // https://youtu.be/eqo2LxRADhU
 
-        let values = [];
-        let w = 10;
-        let i, finished, s;
+        let values = [];//array with the values 
+        let w = 10;// width de los rectangulos de la animación
+        let order = 1; //0 - descendant, 1 - ascendant
 
-        let states = [];
+        let states = []; //array to determine the colors in the visualization 
 
-        function setup() {
-            createCanvas(600, 600);
-            i = 200;
+        /* 
+        Function setup: this function creates the canvas where the   animation will be visualized
+        @param: nothing 
+        @return:nothing
+        */
+        function setup(){
+            createCanvas(600, 600); // size of the canvas 
             values = new Array(floor(width / w));
             for (let i = 0; i < values.length; i++) {
-                values[i] = random(height);
+                values[i] = Math.floor(random(height));
                 states[i] = -1;
             }
 
-            //quickSort(values, 0, values.length - 1);
-            //heapSort(values);
-            //selectionSort(values);
             shellSort(values);
-        }
+        }// end setup 
 
-        async function quickSort(arr, start, end) {
-            if (start >= end) {
-                return;
-            }
-            let index = await partition(arr, start, end);
-            states[index] = -1; //como funciona esto?
-
-            await Promise.all([
-                quickSort(arr, start, index - 1),
-                quickSort(arr, index + 1, end)
-            ]);
-        }
-
-        async function heapSort(arr) {
-            let size = arr.length;
-            for (let i = Math.floor(size / 2 - 1); i >= 0; i--) {
-                let index = await heapify(arr, size, i);
-                states[index] = -1;
-            }
-
-            for (let i = size - 1; i >= 0; i--) {
-                await swap(arr, 0, i);
-                await Promise.all([
-                    heapify(arr, i, 0)
-                ]);
-            }
-        }
-
-        async function selectionSort(array) {
-            //Este pinta de verde
+        /* 
+        Function Shell Sort:It's a variation of insertion sort. The idea of shellSort is to allow exchange of far items. 
+        In shellSort, we make the array h-sorted for a large value of h. We keep reducing the value of h until it becomes 1. 
+        An array is said to be h-sorted if all sublists of every h’th element is sorted.
+        @param array:the array of elements to be sorted
+        @return:nothing
+        */
+        async function shellSort(array){
             for (let i = 0; i < array.length; i++) {
-                states[i] = 1;
-            }
-
-            for (let currentIndex = 0; currentIndex < array.length; currentIndex++) {
-                let minIndex = currentIndex;
-                states[minIndex] = -1;
-                states[currentIndex + 1] = 0;
-                for (let i = currentIndex + 1; i < array.length; i++) {
-                    if (array[i] < array[minIndex]) { //se voltea para direccion
-                        minIndex = i;
-                    }
-                }
-                if (minIndex != currentIndex) {
-                    states[minIndex] = 0;
-                    await swap(array, currentIndex, minIndex);
-                    states[minIndex] = 1;
-                }
-            }
-        }
-
-        async function shellSort(array, size) {
-            for (let i = 0; i < array.length; i++) {
-                states[i] = 1;
+                states[i] = -1; //state of the array, this is for the color, start
+                //console.log(array);
             }
             for (let gap = Math.floor(array.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
-                for (let index = gap; index < array.length; index++) {
-                    let indexCopy = index
-                    let itemValue = array[index]
-                    while (indexCopy >= gap && comparar(1, array[indexCopy - gap],
-                            itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
-                        states[indexCopy] = 0 //se comparan y cambian derecho
-                        await swap(array, indexCopy, indexCopy - gap)
-                        indexCopy -= gap
-                        states[indexCopy] = 0 //se compara y cambian izquierdo
-                    }
-                    states[index] = -1 //lo hace en las mitades de la derecha
+                for (let index = gap; index <array.length; index++) {
+                states[index] = 1 //state of the array, this is for the         color, iteration
+                let indexCopy = index
+                let itemValue = array[index]
+                while (indexCopy >= gap && comparar(order, array[indexCopy - gap], itemValue)) { //aqui se cambia //array[currentIndexCopy - gapSize] > itemValue
+                    await swap (array, indexCopy, indexCopy - gap)
+                    states[indexCopy] =0;
+                    indexCopy -= gap;
+                    states[indexCopy] = 0 //se compara y cambian izquierdo
+                }
                 }
             }
-        }
+            for (let i = 0; i < array.length; i++) {
+                states[i] = 0; //state of the array, this is for the color, start
+                //console.log(array);
+            }
+            console.log(array);
+            tiempo("Shell Sort");//time the algorithm took to execute
+        }// end ShellSort
 
-        async function partition(arr, start, end) {
-            //creo que esto es para la grafica
-            for (let i = start; i < end; i++) {
-                states[i] = 1;
-            }
-
-            let pivotValue = arr[end];
-            let pivotIndex = start;
-            states[pivotIndex] = 0;
-            for (let i = start; i < end; i++) {
-                if (comparar(1, arr[i], pivotValue)) { //se voltea signo para direccion //arr[i] < pivotValue
-                    await swap(arr, i, pivotIndex);
-                    states[pivotIndex] = -1;
-                    pivotIndex++;
-                    states[pivotIndex] = 0;
-                }
-            }
-            await swap(arr, pivotIndex, end);
-
-            for (let i = start; i < end; i++) {
-                if (i != pivotIndex) {
-                    states[i] = -1;
-                }
-            }
-
-            return pivotIndex;
-        }
-
-        async function heapify(array, size, i) {
-            for (let i = 0; i < size; i++) {
-                states[i] = 1;
-            }
-            let max = i;
-            let left = 2 * i + 1;
-            let right = 2 * i + 2;
-            states[max] = 0;
-
-            if (left < size && comparar(0, array[left], array[
-                    max])) { //se voltea el segundo para direccion //array[left] < array[max]
-                states[left] = 0;
-                max = left;
-            }
-            if (right < size && comparar(0, array[right], array[
-                    max])) { //se voltea el segundo para direccion //array[right] < array[max]
-                states[right] = 0;
-                max = right
-            }
-            if (max != i) {
-                await swap(array, i, max);
-                await heapify(array, size, max);
-            }
-            for (let i = 0; i < size; i++) {
-                if (i != max - 2) {
-                    states[i] = -1;
-                }
-            }
-        }
-
+        /* 
+        Function draw: this function of the p5 library draws the lines of the visaulizations. 
+        @param:nothing
+        @return: nothing
+        */
         function draw() {
-            background(0);
-
+            background(230);
+            stroke("white");
             for (let i = 0; i < values.length; i++) {
-                noStroke();
                 if (states[i] == 0) {
-                    fill('#E0777D');
+                fill(161, 220, 144);
                 } else if (states[i] == 1) {
-                    fill('#D6FFB7');
+                fill('#D6FFB7');
                 } else {
-                    fill(255);
+                fill(255, 204, 100);
                 }
                 //dibuja las lineas
                 rect(i * w, height - values[i], w, values[i]);
             }
-        }
+        }//end draw
 
+        /* 
+        Function Swap: this function was implemented to save the switches on the other functions. Basically it changes the positiion of one element into the other elements position. 
+        @param: the array of the values to be sorted 
+        @a: the first element to be switched
+        @b: the second element to be switched
+        @return: nothing
+        */
         async function swap(arr, a, b) {
-            await sleep(500);
+            await sleep(50);
             let temp = arr[a];
             arr[a] = arr[b];
             arr[b] = temp;
-        }
+        }//end swap 
 
+        /* 
+        Function sleep: it's a function used as an delay in the animation 
+        @param ms : miliseconds for the duration of the delay
+        @return: timeout
+        */
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
-        }
+        }//end sleep 
 
+        /* 
+        Function desc: to determine the order of the numbers
+        @param a: number 1 to be compare
+        @param n: number 2 to be compare
+        @return: boolean 
+        */
         function desc(a, n) {
-            return a < n;
-        }
+            return a<n;
+        }//end desc
 
+        /* 
+        Function asc: to determine the order of the numbers
+        @param a: number 1 to be compare
+        @param n: number 2 to be compare
+        @return: boolean 
+        */
         function asc(a, n) {
-            return a > n;
-        }
+            return a>n;
+        }//end asc
 
-        function comparar(tipo, a, n) {
-            if (tipo == 1) //a
+        /* 
+        Function comparar: to choose the order of the numbers
+        @param a: number 1 to be compare
+        @param n: number 2 to be compare
+        @return: boolean 
+        */
+        function comparar(tipo, a, n)
+        {
+            if(tipo == 1) //a
             {
-                return asc(a, n);
+                return asc(a,n);
             }
-            if (tipo == 0) //d
+            if(tipo == 0) //d
             {
-                return desc(a, n);
+                return desc (a,n);
             }
-        }
+        }//end comparar
+
+        /* 
+        function tiempo: this function takes the time in miliseconds of the animations execution
+        @param algorithm: the algorithm executed
+        @return: nothin
+        */
+        async function tiempo(algorithm){
+            let tiempo=Math.ceil(millis());
+            console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
+        }// end tiempo
     </script>
 </body>
 
