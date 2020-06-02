@@ -106,7 +106,6 @@ El usuario podrá conectarse con nuestra aplicación web por medio de un link de
 
 ### 3.2 Descripción de los componentes
 
-*[Incluya aquí una descripción detallada de cada uno de los componentes de la arquitectura así como una justificación de la selección de cada componente]*
 
 #### 3.2.1 Hosting
 
@@ -126,6 +125,10 @@ Las librerías y su implementación serán explicados en la sección _3.4_.
 La solución del frontend está programada completamente en HTML, esto permitió que tuvieramos flexibilidad al momento de programar la interfaz del usuario.
 
 La comunicación entre el frontend y el backend será explicada posteriormente.
+
+#### 3.2.4 Archivos 
+
+Los archivos que el usuario podrá ingresar serán tipo Json, además que se podrán exportar los elementos en formato PDF, CSV y Json.
 
 ### 3.3 Frontend
 
@@ -178,13 +181,24 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
-El backend fue programado en JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido.
+El backend del proyecto es implementado con JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido. Así generando datos aleatorios u obteniendolos de archivos Json. Una vez generados los datos se eligen dos algoritmos a comparar de la misma clase, búsqueda con búsqueda, inestables con inestables o finalmente estables con estables. Además de la comparación se realizarán las visualizaciones de los 14 algoritmos especificados, al principio de este proyecto,  cabe especificar que no podrán verse al mismo tiempo si no por decisión del usuario, se podrán también exportar gráficas de los datos que se generaron y los tiempos de ejecución de los algoritmos debido al almacenamiento de los mismos. 
+
+Todo esto esta conectado con Frontend mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ se están encargando.
 
 El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ están manejando los datos que están siendo ingresados en los <form>
 
 #### 3.4.1 Lenguaje de programación
+
+Javascript es un lenguaje de programación que esta creado para usar solo un hilo al correr código, esto se debe a que es muy rápido por su naturaleza al ser un modelo asíncrono y no bloqueante que usa loop de eventos. Sin embargo los programadores con experiencia concuerdan que la implementación del paralelismo sería un efecto positivo en el lenguaje. Diferentes desarrolladores se han encargado de hacer librerías como “Parallel.js”  que resuelven ese problema al brindar acceso de alto nivel al procesamiento multinúcleo utilizando trabajadores web (web workers),logrando la ejecución de código en el navegador y en la consola. Así también han creado librerías para mejorar la representación visual de diferentes ejecuciones de código, una de estas librerías es conocida como P5js que se enfoca en la programación creativa, pues tiene un conjunto completo para dibujar y animar objetos dentro de las páginas web con la ayuda de javascript y html.
+
 #### 3.4.2 Framework
+
+El Framework utilizado se conoce como Node.js debido a que nos permitió ejecutar librerías como Parallel.js, edge-js, así como otras que se mencionarán en el siguiente punto.
+
 #### 3.4.3 Librerías de funciones o dependencias
+
+* Parallel.js  para la creación de datos aleatorios y la comparación de algoritmos, sin embargo esta librería contaba con ciertas restricciones, ya que los web workers, que son muy parecidos a los Child process no permiten la extracción de datos una vez se finaliza la acción esperada.
+* P5js para la animación del proceso que tienen cada uno de los 14 algoritmos de búsquedas y ordenamientos, igual que la librería anterior P5js también tiene restricciones, las cuales impedían juntar dos visualizaciones al mismo tiempo.
 
 - body-parser
 - edge-js
@@ -202,7 +216,10 @@ El frontend y el backend establecen una conexión mediante operaciones de tipo _
 El API para poder llevar a cabo la solución del proyecto, fue programada en JavaScript,
 
 #### 3.5.1 Lenguaje de programación
+
+
 #### 3.5.2 Framework
+
 #### 3.5.3 Librerías de funciones o dependencias
 
 *[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
@@ -224,3 +241,8 @@ El API para poder llevar a cabo la solución del proyecto, fue programada en Jav
 ## 4. Referencias
 
 *[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
+
+* https://lemoncode.net/lemoncode-blog/2018/1/29/javascript-asincrono
+* https://parallel.js.org/
+* https://p5js.org/es/
+* https://nodejs.org/es/about/
