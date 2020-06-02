@@ -39,15 +39,22 @@
 
             <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
 
+            <form action="/algoritmosBusqueda/conf" method="POST">
+                <div class="form-group form-control-lg">
+                    <label for="">Inserta el máximo de los números aleatorios</label>
+                    <input type="number" class="form-control text-lg-center" placeholder="Del 1 al 10,000,000" min="0"
+                        max="10000000" name="noRand">
+                </div><br><br>
+
             <table style="width:100%" class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th class="text-lg-center">Primer algoritmo</th>
                         <th class="text-lg-center">Segundo algoritmo</th>
+                        <th class="text-lg-center">Orden de impresión</th>
                     </tr>
                 </thead>
                 <tr>
-                    <form action="/algoritmosBusqueda/conf" method="POST">
                         <td>
                             <div class="row justify-content-center form-group">
                                 <select name="primerAlg" id="segundoAlg">
@@ -78,16 +85,42 @@
                 </tr>
             </table><br>
 
-            <div class="form-group form-control-lg">
-                <label for="">Inserta el máximo de los números aleatorios</label>
-                <input type="number" class="form-control text-lg-center" placeholder="Del 1 al 10,000,000" min="0"
-                    max="10000000" name="noRand">
-            </div><br><br>
+            <br><br>
 
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-success">
             </div>
             </form>
+
+            <div class="form-group form-control-lg">
+                <h5 class="text-lg-center">Seleccione que algoritmo desea visualizar</h5>
+
+            <table style="width:100%" class="table">
+                <thead class="thead-clear">
+                    <th class="text-center"></th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tr>
+                    <td>
+                        <form action="/binaryVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                            <input type="button" class="btn btn-info text-lg-center " value="Binary">
+                        </form>
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <form action="/sequentialVis" method="POST">
+                            <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                            <input type="button" class="btn btn-info text-lg-center" value="Sequential">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+
         </div>
     </div>
 

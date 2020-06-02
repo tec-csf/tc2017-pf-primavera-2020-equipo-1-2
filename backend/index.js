@@ -177,6 +177,10 @@ app.get('/info', async(req, res)=>{
     res.sendFile(path.resolve(__dirname, '../frontend/info.html'))
 })
 
+app.get('/animacionEstable', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/animacionEstables.js'))
+})
+
 //A partir de esta sección se están mandando a llamar los datos insertados en los forms/botones individuales,
 //que se encuentran en la segunda tabla del stableUI.html
 
@@ -225,6 +229,43 @@ app.post('/mergeVis', async(req, res)=>{
 })
 
 app.post('/radixVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/heapVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/quickVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/selectionVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+});
+
+app.post('/shellVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+});
+
+
+app.post('/binaryVis', async(req, res)=>{
+    var inputNo = parseInt(req.body.noRand);
+
+    console.log(inputNo);
+})
+
+app.post('/sequentialVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     console.log(inputNo);
