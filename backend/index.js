@@ -4660,20 +4660,6 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
         //res.redirect('/');
     });
 
-app.post("/algoritmosInestables/doc", async (req, res) => {
-    const primer = req.body.newFile;
-
-    //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor.
-    jsonfile.readFile(primer, function (err, obj) {
-        if (err) console.error(err);
-        console.dir(obj);
-    });
-
-    console.log("Doc stable\n" + primer);
-
-    res.redirect("/");
-});
-
 app.post("/algoritmosBusqueda/doc", async (req, res) => {
 
     const documento = req.body.newFile;
