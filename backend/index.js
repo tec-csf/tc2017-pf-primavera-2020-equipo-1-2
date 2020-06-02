@@ -2713,8 +2713,6 @@ app.post("/algoritmosBusqueda/doc", async (req, res) => {
 
     var numData = []
 
-    // console.log(fileCont)
-
     for(let entry in fileCont)
     {
         for(let data in fileCont[entry])
