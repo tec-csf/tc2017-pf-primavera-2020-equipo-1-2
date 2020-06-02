@@ -24,13 +24,13 @@ function setup() {
         states[i] = -1;
     }
 
-    //bubbleSort(values);
+    bubbleSort(values);
     //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);
     //radixSort(values);
     //bucketSort(values);
-    countingSort(values);
+    // countingSort(values);
 }//end setup 
 
 /* 
@@ -49,6 +49,7 @@ async function bubbleSort(arr){
 			}
 		}
 	}
+  saveJSON(arr, "finalArray.json")
   tiempo("Bubble Sort");//time the algorithm took to execute
 }//end bubblesort
 
