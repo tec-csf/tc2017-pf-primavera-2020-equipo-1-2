@@ -1,3 +1,14 @@
+/* 
+  Códigos en JavaScript de los algoritmos estables, al igual que funciones auxiliares para
+  algoritmos
+*/
+
+/* 
+  Function asc: to determine the order of the numbers
+  @param x: number 1 to be compare
+  @param j: number 2 to be compare
+  @return: nothing
+*/
 function ascendente(x, j)
 {
     if (x[j] > x[j+1]) {
@@ -5,7 +16,14 @@ function ascendente(x, j)
         x[j] = x[j+1];
         x[j+1] = temp;
     }
-};
+}; //end ascendente
+
+/* 
+  Function desc: to determine the order of the numbers
+  @param x: number 1 to be compare
+  @param j: number 2 to be compare
+  @return: nothing 
+*/
 function descendente(x, j)
 {
     if (x[j] < x[j+1]) {
@@ -13,7 +31,14 @@ function descendente(x, j)
         x[j] = x[j+1];
         x[j+1] = temp;
     }
-};
+}; //end descendente
+
+/* 
+    Function Bubble sort: Sorting takes place by stepping through all the elements 
+    one-by-one and comparing it with the adjacent element and swapping them if required.
+    @param a: the array of the values to be sorted 
+    @return x: the sorted array
+*/
 function bubble_Sort(a)
 {
     var n = a.length-1;
@@ -37,7 +62,15 @@ function bubble_Sort(a)
         }
     }
  return x; 
-};
+}; //end bubble_Sort
+
+/* 
+    Function Cocktail sort: is the same mechanics of the cocktail sort, but when it reaches the 
+    end of the array it goes backwards comparing the elemtns. Then it starts from the index 0, 
+    all this until it's sorted. 
+    @param a: the array of the values to be sorted 
+    @return x: the sorted array
+*/
 function cocktailSort(a)
 {
     var n = a.length-1; // tamaño del arreglo
@@ -72,7 +105,17 @@ function cocktailSort(a)
          
     }
     return x; 
-};
+}; //end of cocktailSort
+
+/* 
+    Function Insertion sort:is a simple sorting algorithm that works 
+    the way we sort playing cards in our hands. It iterates over the 
+    array and compares two items at a time. It swaps the items if one is 
+    larger than the other and continues to iterate left, comparing and 
+    swapping until the minimum is at the front of the array.
+    @param a: the array of the values to be sorted 
+    @return a: the sorted array
+*/
 function insertionSort(a)
 {
     for (let i = 1; i < a.length; i++) {
@@ -85,7 +128,14 @@ function insertionSort(a)
       a[j+1] = tmp
     }
     return a
-};
+}; //end of insertionSort
+
+/* 
+    Function bucketSort:is a distribution sort. It works by arranging elements into ‘buckets’ 
+    which are then sorted using insertion sort. Then it is merged into the original array. 
+    @param a: array to be sorted 
+    @return a: the sorted array
+*/
 function bucketSort(a) {
     if (a.length === 0) {
       return a;
@@ -129,8 +179,16 @@ function bucketSort(a) {
     });
   
     return a;
-};
-function countingSort(arr, min, max)
+};//end of bucketSort
+
+/* 
+    Function countingSort: sorts an array by creating an auxiliar array of the same size,
+    and counting how many times the number is in the original array. 
+    Once it's done it put backs the array in order
+    @param arr: array to be sorted 
+    @return arr: the sorted array
+*/
+function countingSort(arr)
   {
     var i, z = 0, count = [];
     var min = 0, max = arr.length-1;
@@ -149,7 +207,14 @@ function countingSort(arr, min, max)
         }
     }
  return arr;
-};
+}; //end countingSort
+
+/* 
+    Function merge: divides the array into equal parts and sorts each part
+    @param left: the left side of the array
+    @param right: right side of the array
+    @return: the result of merging both sides
+*/
 function merge (left, right){
     let result = [],
         leftLen = left.length,
@@ -166,7 +231,16 @@ function merge (left, right){
         }
     }
     return result.concat(left.slice(l)).concat(right.slice(r));
-};
+}; //end merge 
+
+/* 
+    Function Merge sort: Imagine having to take a deck of cards, split it in two 
+    halves and continue splitting those piles in halves, and halves again until all 
+    you have is 52 piles of 1 card. Then, you regroup the piles in pairs again 
+    but this time, sort them in ascending order.
+    @param arr: the array of the values to be sorted 
+    @return: the sorted array
+*/
 function mergeSort (arr){
     let len = arr.length;
     if (len < 2) {
@@ -176,7 +250,14 @@ function mergeSort (arr){
         left = arr.slice(0, mid),
         right = arr.slice(mid);
     return merge(mergeSort(left), mergeSort(right));
-};
+}; //end mergeSort
+
+/* 
+    Function getNum: finds the digit in a specific number at a specific index
+    @param num: the number to be searched 
+    @param index: the place on the number qhere the digit will be search. 
+    @return: the digit of the number 
+*/
 const getNum = (num, index) => {
     const strNum = String(num);
     let end = strNum.length - 1;
@@ -184,7 +265,13 @@ const getNum = (num, index) => {
   
     if (foundNum === undefined) return 0;
     else return foundNum;
-};
+}; //end getNum
+
+/* 
+    Function largestNum:finds the largest number in the array
+    @param arr: the array to be searched 
+    @return: the length of the largest number in the array
+*/
 const largestNum = arr => {
     let largest = "0";
   
@@ -195,7 +282,15 @@ const largestNum = arr => {
     });
   
     return largest.length;
-};
+}; //end largestNum
+
+/* 
+    Function radixSort: sorts an array by creating buckets, where each number is 
+    stored based on its digits and then putting it back into the original array. This
+    process repeats the length of the largest number in the array.  
+    @param arr: the array to be sorted
+    @return arr: sorted array
+*/
 const radixSort = arr => {
     let maxLength = largestNum(arr);
   
@@ -210,4 +305,4 @@ const radixSort = arr => {
       arr = buckets.flat();
     };
     return arr;
-};
+}; //end radixSort
