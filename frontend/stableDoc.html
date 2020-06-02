@@ -37,45 +37,150 @@
             <button class="btn btn-danger" onclick="window.location.href='/stable'">Regresar a <i><b>Algoritmos
                         estables</b></i></button>
 
-            <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
-
-            <form method="POST" action="/algoritmosEstables/doc">
+            <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
+            <form name="inputBE" action="/algoritmosEstables/conf" method="POST">
                 <div class="row mt-2">
                     <div class="col-sm-12 text-lg-center">
                         <label for="fileUpload"></label><br>
                         <input type="file" id="fileUpload" name="newFile"><br><br>
                         <button id="import">Validate JSON</button><br><br>
-                        <textarea rows="15" cols="100" id="result" name="fileContent"></textarea>
+                        <textarea rows="8" cols="80" id="result" name="fileContent"></textarea>
                     </div>
+
                 </div>
-                <div class="form-group text-lg-center">
-                    <br><input type="submit" class="btn btn-success justify-content-center">
+
+
+                <br>
+                <br>
+
+                <table style="width:100%" class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-lg-center">Primer algoritmo</th>
+                            <th class="text-lg-center">Segundo algoritmo</th>
+                            <th class="text-lg-center">Orden de impresión</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <div class="row justify-content-center form-group">
+                                <select name="primerAlg" id="primerAlg">
+                                    <option value="null">-</option>
+                                    <option value="burbuja">Burbuja</option>
+                                    <option value="bucket">Bucket</option>
+                                    <option value="cocktail">Cocktail</option>
+                                    <option value="counting">Counting</option>
+                                    <option value="insertion">Insertion</option>
+                                    <option value="merge">Merge</option>
+                                    <option value="redix">Radix</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row justify-content-center form-group">
+                                <select name="segundoAlg" id="segundoAlg">
+                                    <option value="null">-</option>
+                                    <option value="burbuja">Burbuja</option>
+                                    <option value="bucket">Bucket</option>
+                                    <option value="cocktail">Cocktail</option>
+                                    <option value="counting">Counting</option>
+                                    <option value="insertion">Insertion</option>
+                                    <option value="merge">Merge</option>
+                                    <option value="redix">Radix</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row justify-content-center form-group">
+                                <select name="ordenImp" id="ordenImp">
+                                    <option value="null">-</option>
+                                    <option value="binary">Ascendente</option>
+                                    <option value="sequential">Descendente</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </table><br>
+
+                <div class="form-group text-center">
+                    <input type="submit" class="btn btn-success">
                 </div>
             </form>
+
+            <div class="form-group form-control-lg">
+                <h5 class="text-lg-center">Seleccione que algoritmo desea visualizar</h5>
+
+
+                <table style="width:100%" class="table">
+                    <thead class="thead-clear">
+                        <th class="text-center"></th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tr>
+                        <td>
+                            <form action="/burbujaVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center " value="Burbuja">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/bucketVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center" value="Bucket">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/cocktailVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center" value="Cocktail">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="/countingVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center" value="Counting">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/insertVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center" value="Insertion">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/mergeVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center" value="Merge">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <form action="/radixVis" method="POST">
+                                <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
+                                <input type="button" class="btn btn-info text-lg-center" title="Radix" value="Radix">
+                            </form>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+
+            <br><br>
+
         </div>
     </div>
 
-    <script type="text/javascript">
-        document.getElementById('import').addEventListener("click", function(event){
-            event.preventDefault()
-            var files = document.getElementById('fileUpload').files;
-          // console.log(typeof files);
-          if (files.length <= 0) {
-            return false;
-          }
+    <script>
 
-          var fr = new FileReader();
-
-          fr.onload = function(e) { 
-          console.log(e);
-            var result = JSON.parse(e.target.result);
-            var formatted = JSON.stringify(result, null, 2);
-                document.getElementById('result').value = formatted;
-          }
-
-          fr.readAsText(files.item(0));
-          return false;
-        });
+        //Modifiquen lo que est'a dentro de los paréntesis después del .open para abrir la página que quieren en un nuevo tab
+        function radixOpen() {
+            window.open('/')
+        }
     </script>
 
 </body>

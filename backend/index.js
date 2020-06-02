@@ -4563,7 +4563,7 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
                                 console.time("primero");
                                 var primero = Date.now();
                                 console.timeEnd("primero");
-                                var endseg = Date.now();
+                                var endseg = ate.now();
                                 var tiempoFinalUno = endseg - primero;
                                 console.log(`Seg Execution time: ${tiempoFinalUno} ms`);
                                 /* res.send("Tiempo total: " + tiempoFinalDos) */
