@@ -1038,7 +1038,7 @@ app.post('/algoritmosEstables/conf', async (req, res) => {
                     } //Fin principal
 
                     principal();
-                    res.redirect('/heapsortDisplay');
+                    res.redirect('/selectionsortDisplay');
                     break;
 
                 case "bucket":
