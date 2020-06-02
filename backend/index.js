@@ -2711,14 +2711,383 @@ app.post('/algoritmosBusqueda/conf', async (req, res) => {
 });
 
 app.post('/algoritmosInestables/doc', async (req, res) => {
-    var primer = req.body.newFile;
+    var primer = req.body.primerAlg;
+    var segundo = req.body.segundoAlg;
+    var ordenImpresion = req.body.ordenImp;
+    var convRand = 200;
+
+    const fileCont = JSON.parse(req.body.fileContent)
+
+    var numData = []
+
+    for(let entry in fileCont)
+    {
+        for(let data in fileCont[entry])
+        {
+            numData.push(fileCont[entry][data])
+        }
+    }
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
     nuRand = [];
 
-    console.log("Doc unstable\n" + primer);
+    nuRand.push(convRand);
 
-    res.redirect('/');
+    var cantNum = convRand;
+    const n_cpus = os.cpus().length;
+    var cantXthread = Math.floor(cantNum / n_cpus);
+
+    //var p = new Parallel([2,8]);
+    var arreglo = []; //new Array(p.data.length*2);
+    function aleatorio(tamano) {
+        var a = new Array(tamano);
+        for (var i = 0; i < tamano; ++i) {
+            a[i] = Math.floor(Math.random() * (tamano * 8));
+        }
+        return a;
+    }
+    //esta función concatena los arreglos para que se unan
+    function logi(d) {
+        if (Array.isArray(arreglo)) {
+            arreglo = d[0].concat(d[1]);
+        }
+        for (let i = 2; i < n_cpus; i++) {
+            arreglo = arreglo.concat(d[i]);
+        }
+        if (arreglo.length < cantNum) {
+            for (let index = arreglo.length; index < cantNum; index++) {
+                arreglo[index] = Math.floor(Math.random() * cantXthread);
+            }
+        }
+        console.log(arreglo);
+        console.log(arreglo.length);
+        return numData;
+    };
+
+    //crea un arreglo con la cantidad que debe tener cada hilo que procese la funcion de paralelizacion
+    //Ejemplo: si tienes 4 cores y quieres hacer 40 elementos en un arreglo
+    //se crea el arreglito= [10,10,10,10]; :D que sería lo que mandaría la funcion paralle
+    function min() {
+        var arreglito = Array(n_cpus);
+        for (let i = 0; i < n_cpus; i++) {
+            arreglito[i] = cantXthread;
+
+        }
+        return arreglito;
+    }
+
+    function hola(d) {
+        return d;
+    };
+
+    function bubli(a) {
+        var n = a.length - 1;
+        var x = a;
+        for (var i = 0; i < n; i++) {
+            for (var j = 0; j < n - i; j++) {
+
+                //mayor a menor
+                if (x[j] < x[j + 1]) {
+                    var temp = x[j];
+                    x[j] = x[j + 1];
+                    x[j + 1] = temp;
+                }
+            }
+        }
+        return x;
+    }
+
+    function print() {
+        console.log(arguments[0]);
+    };
+
+    function shellSort(arreglo) {
+        /*
+         * for-loop setup:
+         *      1. set the gapSize to the length of the arreglo / 2
+         *      2. run the loop as long as gapSize > 0
+         */
+        for (let gapSize = Math.floor(arreglo.length / 2); gapSize > 0; gapSize = Math.floor(gapSize / 2)) {
+            for (let currentIndex = gapSize; currentIndex < arreglo.length; currentIndex++) {
+
+                // save the currentIndex
+                let currentIndexCopy = currentIndex
+                // save the value of the currentIndex
+                let itemValue = arreglo[currentIndex]
+
+                while (currentIndexCopy >= gapSize && arreglo[currentIndexCopy - gapSize] > itemValue) {
+                    arreglo[currentIndexCopy] = arreglo[currentIndexCopy - gapSize]
+                    currentIndexCopy -= gapSize
+                }
+
+                arreglo[currentIndexCopy] = itemValue
+            }
+        }
+    };
+
+    function selectionSort(arreglo) {
+        // step 1: loop from the beginning of the arreglo to the second to last item
+        for (let currentIndex = 0; currentIndex < arreglo.length - 1; currentIndex++) {
+            // step 2: save a copy of the currentIndex
+            let minIndex = currentIndex;
+            // step 3: loop through all indexes that proceed the currentIndex
+            for (let i = currentIndex + 1; i < arreglo.length; i++) {
+                /* step 4:  if the value of the index of the current loop is less
+                            than the value of the item at minIndex, update minIndex
+                            with the new lowest value index */
+                if (arreglo[i] < arreglo[minIndex]) {
+                    // update minIndex with the new lowest value index
+                    minIndex = i;
+                }
+            }
+            // step 5: if minIndex has been updated, swap the values at minIndex and currentIndex
+            if (minIndex != currentIndex) {
+                let temp = arreglo[currentIndex];
+                arreglo[currentIndex] = arreglo[minIndex];
+                arreglo[minIndex] = temp;
+            }
+        }
+    };
+
+    function heapSort(arreglo) {
+        let size = arreglo.length
+
+        // build heapSort (rearrange arreglo)
+        for (let i = Math.floor(size / 2 - 1); i >= 0; i--)
+            heapify(arreglo, size, i)
+
+        // one by one extract an element from heapSort
+        for (let i = size - 1; i >= 0; i--) {
+            // move current root to end
+            let temp = arreglo[0]
+            arreglo[0] = arreglo[i]
+            arreglo[i] = temp
+
+            // call max heapify on the reduced heapSort
+            heapify(arreglo, i, 0)
+        }
+        return arreglo;
+    }
+
+    // to heapify a subtree rooted with node i which is an index in arreglo[]
+    function heapify(arreglo, size, i) {
+        let max = i // initialize max as root
+        let left = 2 * i + 1
+        let right = 2 * i + 2
+
+        // if left child is larger than root
+        if (left < size && arreglo[left] > arreglo[max])
+            max = left
+
+        // if right child is larger than max
+        if (right < size && arreglo[right] > arreglo[max])
+            max = right
+
+        // if max is not root
+        if (max != i) {
+            // swap
+            let temp = arreglo[i]
+            arreglo[i] = arreglo[max]
+            arreglo[max] = temp
+
+            // recursively heapify the affected sub-tree
+            heapify(arreglo, size, max)
+        }
+    };
+
+    function quickSort(arreglo, startIndex, endIndex) {
+        // verify that the start and end index have not overlapped
+        if (startIndex < endIndex) {
+            // calculate the pivotIndex
+            let pivotIndex = partition(arreglo, startIndex, endIndex)
+            // sort the left sub-arreglo
+            quickSort(arreglo, startIndex, pivotIndex)
+            // sort the right sub-arreglo
+            quickSort(arreglo, pivotIndex + 1, endIndex)
+        }
+        return arreglo;
+    }
+
+    function partition(arreglo, startIndex, endIndex) {
+        let pivotIndex = Math.floor((startIndex + endIndex) / 2)
+        let pivotValue = arreglo[pivotIndex]
+
+        while (true) {
+            // start at the FIRST index of the sub-arreglo and increment
+            // FORWARD until we find a value that is > pivotValue
+            while (arreglo[startIndex] < pivotValue) {
+                startIndex++
+            }
+
+            // start at the LAST index of the sub-arreglo and increment
+            // BACKWARD until we find a value that is < pivotValue
+            while (arreglo[endIndex] > pivotValue) {
+                endIndex--
+            }
+
+            if (startIndex >= endIndex) return endIndex
+
+            // swap values at the startIndex and endIndex
+            let temp = arreglo[startIndex]
+            arreglo[startIndex] = arreglo[endIndex]
+            arreglo[endIndex] = temp
+        }
+    };
+
+    /* switch (primer) {
+        case "heap":
+            switch (segundo) {
+                case "heap":
+                        function principal() {
+                            var prueba = Date.now();
+                            var p = new Parallel(min());
+                            console.time("arreglo");
+                            var res = p.map(aleatorio, console.log(Date.now() - prueba)).then(logi).then(function (n) {
+                                var uno = n;
+                                var dos = n;
+                                console.time("primero");
+                                var primero = Date.now();
+          /*                       console.log(uno); 
+                                //heapSort(uno);
+                                var endprim = Date.now();
+                                console.log(`Prim Execution time: ${endprim - primero} ms`);
+                                console.timeEnd("primero");
+
+                                var segundo = Date.now();
+                                console.time("segundo");
+                                //heapSort(dos);
+                                console.timeEnd("segundo")
+/*                                 console.log(dos);
+                               var endseg = Date.now();
+                                console.log(`Seg Execution time: ${endseg - segundo} ms`);
+
+                            });
+                        }
+                        principal();
+                    break;
+
+                case "quick":
+                        function principal() {
+                            var prueba = Date.now();
+                            var p = new Parallel(min());
+                            console.time("arreglo");
+                            var res = p.map(aleatorio, console.log(Date.now() - prueba)).then(logi).then(function (n) {
+                                var uno = new Parallel(n);
+                                var dos = new Parallel(n);
+                                console.time("primero");
+                                var primero = Date.now();
+                                
+                                heapSort(n);
+                                var endprim = Date.now();
+                                console.log(`Prim Execution time: ${endprim - primero} ms`);
+                                console.timeEnd("primero");
+
+
+                                console.log(n);
+                                var segundo = Date.now();
+                                console.time("segundo");
+                                console.timeEnd("segundo");
+                                quickSort(n);
+                                var endseg = Date.now();
+                                console.log(`Seg Execution time: ${endseg - segundo} ms`);
+
+                            });
+                        }
+                        principal();
+                    break;
+
+                case "selection":
+
+                    break;
+
+                case "shell":
+
+                    break;
+
+                default:
+                    console.log("NULL")
+                    break;
+            }
+            break;
+
+        case "quick":
+            switch (segundo) {
+                case "heap":
+
+                    break;
+
+                case "quick":
+
+                    break;
+
+                case "selection":
+
+                    break;
+
+                case "shell":
+
+                    break;
+
+                default:
+                    console.log("NULL")
+                    break;
+            }
+            break;
+
+        case "selection":
+            switch (segundo) {
+                case "heap":
+
+                    break;
+
+                case "quick":
+
+                    break;
+
+                case "selection":
+
+                    break;
+
+                case "shell":
+
+                    break;
+
+                default:
+                    console.log("NULL")
+                    break;
+            }
+            break;
+
+        case "shell":
+            switch (segundo) {
+                case "heap":
+
+                    break;
+
+                case "quick":
+
+                    break;
+
+                case "selection":
+
+                    break;
+
+                case "shell":
+
+                    break;
+
+                default:
+                    console.log("NULL")
+                    break;
+            }
+            break;
+
+        default:
+            console.log("NULL")
+            break;
+    } */
+
+    //res.redirect('/');
 });
 
 app.post('/algoritmosEstables/doc', async (req, res) => {
