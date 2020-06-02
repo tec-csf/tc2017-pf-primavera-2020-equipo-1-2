@@ -190,6 +190,8 @@ Javascript es un lenguaje de programación que esta creado para usar solo un hil
 
 #### 3.4.2 Framework
 
+El Framework utilizado se conoce como Node.js debido a que nos permitió ejecutar librerías como Parallel.js, edge-js, así como otras que se mencionarán en el siguiente punto.
+
 #### 3.4.3 Librerías de funciones o dependencias
 
 * Parallel.js  para la creación de datos aleatorios y la comparación de algoritmos, sin embargo esta librería contaba con ciertas restricciones, ya que los web workers, que son muy parecidos a los Child process no permiten la extracción de datos una vez se finaliza la acción esperada.
