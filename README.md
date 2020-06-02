@@ -100,7 +100,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Arquitectura de la solución
 
-*[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
+![](Images/ARQUITECTURA.png)
 
 El usuario podrá conectarse con nuestra aplicación web por medio de un link de AMAZON WEB SERVICES. En está aplicación lo que podrá observar serán las diferentes características de cada tipo de algoritmo de ordenamiento y busqueda. Así pues existirán diferentes pantallas que le permitirán generar datos aleatorios o ingresarlos por medio de un Json, para que después se puedan analizar dos tipos de algoritmos de forma ascendente o descendente por medio de paralelización(backend) y a su vez se pueda acceder a una nueva pantalla con la visualización del funcionamiento de dichos algoritmos a analizar. También se permitirá la creación de gráficas con los resultados de los tiempos de ejecución de cada algoritmo que se podrán descargar en PDF, CSV, Json. Todo esto será posible visualizarlo por HTML y BOOTSTRAP en la parte de FRONTEND y NODE.js, y JAVASCRIPT con las librerias de 'P5js', 'Parallel.js' en la parte de BACKEND.
 
@@ -117,7 +117,9 @@ Para acceder a la página, puede ingresar al siguiente link:
 
 #### 3.2.2 Backend
 
+El backend se encuentra programado completamente en JavaScript, esto se debe a que estamos utilizando librerías necesarias para desplegar las páginas requeridas y recibir/enviar los datos insertados a otras páginas.
 
+Las librerías y su implementación serán explicados en la sección _3.4_.
 
 #### 3.2.3 Frontend
 
@@ -177,6 +179,8 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 El backend fue programado en JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido.
+
+El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_  se están encargando 
 
 #### 3.4.1 Lenguaje de programación
 #### 3.4.2 Framework

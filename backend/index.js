@@ -186,7 +186,7 @@ app.post('/burbujaVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     //Va a abrir en la misma ventana el documento que hayan especificado y va a enviar el campo llamado
-    //inputN
+    //inputNo es el valor numérico que se le insertó al form del html
     res.redirect('/NOMBREDOCUMENTO', {
         inputNo
     })
