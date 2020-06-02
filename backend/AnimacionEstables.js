@@ -24,7 +24,7 @@ function setup() {
         states[i] = -1;
     }
 
-    //bubbleSort(values);
+    bubbleSort(values);
     //cocktailSort(values);
     //insertionSort(values);
     //mergeSort(values);

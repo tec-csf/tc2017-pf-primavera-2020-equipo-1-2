@@ -1,3 +1,8 @@
+<!-- 
+  Animaciones de los algoritmos Estables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Bubble sort, cocktail Sort,
+  insertion Sort ymerge Sort.  
+ -->
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -6,24 +11,18 @@
     <title>HeapSort Visualization
     </title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
     <meta charset="utf-8" />
 </head>
 
 <body>
     <script>
-        // QuickSort Visualization
-        // Daniel Shiffman
-        // https://thecodingtrain.com/CodingChallenges/143-quicksort.html
-        // https://editor.p5js.org/codingtrain/sketches/vic6Qzo-j
-        // https://youtu.be/eqo2LxRADhU
 
-        let values = [];
-        let w = 10;
-        let order = 0; //0 - descendant, 1 - ascendant
+        let values = []; // array with the values of the array 
+        let w = 10; // size of each bar in the visualization 
+        let z = 0; //for countingSort
+        let order = 0;
 
-        let states = [];
+        let states = [];// states to change the color
 
         /* 
         Function setup: this function creates the canvas where the   animation will be visualized
