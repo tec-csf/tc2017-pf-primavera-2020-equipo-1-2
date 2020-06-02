@@ -65,7 +65,7 @@ var tree;
   @return:nothing
 */
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(1200, 800);
 
   // New tree
   tree = new Tree();
