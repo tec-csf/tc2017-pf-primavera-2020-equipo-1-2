@@ -106,7 +106,6 @@ El usuario podrá conectarse con nuestra aplicación web por medio de un link de
 
 ### 3.2 Descripción de los componentes
 
-*[Incluya aquí una descripción detallada de cada uno de los componentes de la arquitectura así como una justificación de la selección de cada componente]*
 
 #### 3.2.1 Hosting
 
@@ -126,6 +125,10 @@ Las librerías y su implementación serán explicados en la sección _3.4_.
 La solución del frontend está programada completamente en HTML, esto permitió que tuvieramos flexibilidad al momento de programar la interfaz del usuario.
 
 La comunicación entre el frontend y el backend será explicada posteriormente.
+
+#### 3.2.4 Archivos 
+
+Los archivos que el usuario podrá ingresar serán tipo Json, además que se podrán exportar los elementos en formato PDF, CSV y Json.
 
 ### 3.3 Frontend
 
