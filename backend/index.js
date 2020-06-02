@@ -219,46 +219,63 @@ app.post('/burbujaVis', async(req, res)=>{
 
     //Va a abrir en la misma ventana el documento que hayan especificado y va a enviar el campo llamado
     //inputNo es el valor numérico que se le insertó al form del html
-    res.redirect('/NOMBREDOCUMENTO', {
+    res.redirect('/bubbleSortDisp', {
         inputNo
     })
-
     console.log(inputNo);
 })
 
 app.post('/bucketVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/bucketSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/cocktailVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/cocktailSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/countingVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/countingSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/insertVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/insertionSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/mergeVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/mergeSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/radixVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/radixSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
