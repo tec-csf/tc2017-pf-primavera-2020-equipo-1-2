@@ -50,9 +50,9 @@ function setup(){
   }
 
   //quickSort(values, 0, values.length - 1, orderQS);
-  heapSort(values, orderHS);
+  //heapSort(values, orderHS);
   //selectionSort(values, orderQS);
-  //shellSort(values, orderHS);
+  shellSort(values, orderHS);
 }// end setup 
 
 /* 
