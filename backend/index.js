@@ -182,31 +182,31 @@ app.get('/animacionEstable', async(req, res)=>{
 })
 
 app.get('/bubbleSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/bubblesortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/bubblesortDisplay.html'));
 })
 
 app.get('/cocktailSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/cocktailsortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/cocktailsortDisplay.html'));
 })
 
 app.get('/insertionSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/insertionsortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/insertionsortDisplay.html'));
 })
 
 app.get('/mergeSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/mergesortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/mergesortDisplay.html'));
 })
 
 app.get('/radixSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/radixsortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/radixsortDisplay.html'));
 })
 
 app.get('/bucketSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/bucketsortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/bucketsortDisplay.html'));
 })
 
 app.get('/countingSortDisp', async (req, res) =>{
-    res.senFile(path.resolve(__dirname, '../frontend/countingsortDisplay.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/countingsortDisplay.html'));
 })
 
 //A partir de esta sección se están mandando a llamar los datos insertados en los forms/botones individuales,
