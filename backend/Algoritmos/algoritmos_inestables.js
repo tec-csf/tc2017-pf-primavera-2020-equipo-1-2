@@ -1,5 +1,18 @@
-let array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
+/* 
+  Código de los algoritmos Inestables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Shell sort, Selection Sort,
+  Quick Sort y Heap Sort. 
+*/
 
+let array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8] //array to be sorted
+
+/* 
+  Function Shell Sort:It's a variation of insertion sort. The idea of shellSort is to allow exchange of far items. 
+  In shellSort, we make the array h-sorted for a large value of h. We keep reducing the value of h until it becomes 1. 
+  An array is said to be h-sorted if all sublists of every h’th element is sorted.
+  @param array:the array of elements to be sorted
+  @return:nothing
+*/
 function shellSort(array) {
     /*
      * for-loop setup:
@@ -22,8 +35,17 @@ function shellSort(array) {
         array[currentIndexCopy] = itemValue
       }
     }
-};
+}; //end shellSort
 
+/* 
+  Function Selection Sort:This sorting algorithm is an in-place comparison-based algorithm 
+  in which the list is divided into two parts, the sorted part at the left end and the unsorted part at the right end. 
+  Initially, the sorted part is empty and the unsorted part is the entire list.The smallest element is selected 
+  from the unsorted array and swapped with the leftmost element, and that element becomes a part of the sorted array. 
+  This process continues moving unsorted array boundary by one element to the right.
+  @param array:the array of elements to be sorted
+  @return:nothing
+*/
 function selectionSort(array) {
     // step 1: loop from the beginning of the array to the second to last item
     for (let currentIndex = 0; currentIndex < array.length - 1; currentIndex++) {
@@ -46,8 +68,13 @@ function selectionSort(array) {
         array[minIndex] = temp;
       }
     }
-  };
+  }; //end of selectionSort
 
+/* 
+  Function HeapSort: sorts the array by creating a heap data and sorting it with it's help
+  @param arr:the array of elements to be sorted
+  @return: nothing 
+*/
 function heapSort(array) {
     let size = array.length
   
@@ -65,8 +92,16 @@ function heapSort(array) {
       // call max heapify on the reduced heapSort
       heapify(array, i, 0)
     }
-}
+}; //end heapSort
   
+/* 
+  Function Heapify: auxiliar function for heapSort to sort the array by taking the first element
+  of the heap and placing it where it goes, this repeats until it's sorte
+  @param arr:the array of elements to be sorted
+  @param size: size of the array
+  @param i : index where it starts to make the heap
+  @return:nothing
+*/
   // to heapify a subtree rooted with node i which is an index in array[]
   function heapify(array, size, i) {
     let max = i // initialize max as root
@@ -91,8 +126,21 @@ function heapSort(array) {
       // recursively heapify the affected sub-tree
       heapify(array, size, max)
     }
-  };
+  }; //end heapify
 
+  /* 
+  Function QuickSort: We select a number, called our pivot, 
+  which we’ll compare every number to when we loop through our items. 
+  The goal is to reorganize the array so it is partitioned into two halves, 
+  with everything in each either being less than or greater than our pivot. 
+  When the pivot is in it’s final position we’ll move on to doing the same 
+  thing with a new pivot, with every pivot being cemented 
+  in place until every item has been a pivot at least once.
+  @param arr:the array of elements to be sorted
+  @param startIndex: the first element of the array 
+  @param endIndex: the last element of the array 
+  @return: nothing
+*/
   function quickSort(array, startIndex, endIndex) {
     // verify that the start and end index have not overlapped
     if (startIndex < endIndex) {
@@ -104,6 +152,15 @@ function heapSort(array) {
       quickSort(array, pivotIndex + 1, endIndex)
     }
   }
+
+  /* 
+  Function Partition: this function is part of the quick sort, it compares the @param start with all the other elements
+  from back to front until it finds a smaller value to swap. 
+  @param arr:the array of elements to be sorted
+  @param startIndex:the first element of the array 
+  @param endIndex:the last element of the array 
+  @return:nothing
+  */
   
   function partition(array, startIndex, endIndex) {
     let pivotIndex = Math.floor((startIndex + endIndex) / 2)
@@ -129,4 +186,4 @@ function heapSort(array) {
       array[startIndex] = array[endIndex]
       array[endIndex] = temp
     }
-  };
+  }; //end partition

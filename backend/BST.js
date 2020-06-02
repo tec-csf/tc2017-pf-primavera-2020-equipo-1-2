@@ -1,28 +1,49 @@
 // Daniel Shiffman
 // Nature of Code: Intelligence and Learning
 // https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
-let values = [];//array with the values 
-let w = 10;// width de los rectangulos de la animación
-let j = 0;
+/* 
+  Animaciones de Binary Search Tree, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Shell sort, Selection Sort,
+  Quick Sort y Heap Sort. 
+*/
+let values = []; //array with the values 
+let w = 10; // width de los rectangulos de la animación
+let j = 0; //
 
-// Tree object
+/* 
+  Function tree: this function initializes the root to null 
+  @param: nothing 
+  @return:nothing
+*/
 function Tree() {
   // Just store the root
   this.root = null;
-}
+} //end Tree
 
-// Start by visiting the root
+/* 
+  Function: Start by visiting the root
+  @param: nothing 
+  @return: nothing
+*/
 Tree.prototype.traverse = function() {
   this.root.visit(this.root);
-}
+} //end function
 
-// Start by searching the root
+/* 
+  Function: Start by searching the root
+  @param val: the value it is searching
+  @return found: returns the value if it's found
+*/
 Tree.prototype.search = function(val) {
   var found = this.root.search(val);
   return found;
-}
+} //end function
 
-// Add a new value to the tree
+/* 
+  Function: Add a new value to the tree
+  @param val: the value to be added to the tree
+  @return: returns nothing
+*/
 Tree.prototype.addValue = function(val) {
   var n = new Node(val);
   if (this.root == null) {
@@ -33,15 +54,16 @@ Tree.prototype.addValue = function(val) {
   } else {
     this.root.addNode(n);
   }
-}
-// Daniel Shiffman
-// Nature of Code: Intelligence and Learning
-// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
+} //end function
 
 // Binary tree
 var tree;
 
-
+/* 
+  Function setup: this function creates the canvas where the animation will be visualized and initializes the tree
+  @param: nothing 
+  @return:nothing
+*/
 function setup() {
   createCanvas(800, 600);
 
@@ -65,13 +87,15 @@ function setup() {
   } else {
     console.log(result);
   }
-}
+} //end setup
 
-// Daniel Shiffman
-// Nature of Code: Intelligence and Learning
-// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
-
-// Node in the tree
+/* 
+  Function Node: initializes the node in the tree
+  @param val: value to be inserted
+  @param x: position in x
+  @param y: position in y
+  @return:nothing
+*/
 function Node(val, x, y) {
   this.value = val;
   this.left = null;
@@ -82,9 +106,13 @@ function Node(val, x, y) {
   // Now has a an xy position
   this.x = x;
   this.y = y;
-}
+}//end function Node
 
-// Search the tree for a value
+/* 
+  Function: Search the tree for a value
+  @param val: value to be searched
+  @return: value if it's found, else returns null
+*/
 Node.prototype.search = function(val) {
   if (this.value == val) {
     return this;
@@ -94,8 +122,12 @@ Node.prototype.search = function(val) {
     return this.right.search(val);
   }
   return null;
-}
+} //end function
 
+/* 
+  Function: visits a node in a tree and draws it
+  @param parent: the node to visit
+*/
 Node.prototype.visit = function(parent) {
   // Recursively go left
   if (this.left != null) {
@@ -125,9 +157,12 @@ Node.prototype.visit = function(parent) {
   if (this.right != null) {
     this.right.visit(this);
   }
-}
+} //end function
 
-// Add a new Node
+/* 
+  Function: adds a new node
+  @param n: node to be added 
+*/
 Node.prototype.addNode = function(n) {
   // If it's less go left
   if (n.value < this.value) {
@@ -155,4 +190,4 @@ Node.prototype.addNode = function(n) {
       this.right.addNode(n);
     }
   }
-}
+} //end function

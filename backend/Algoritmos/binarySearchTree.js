@@ -1,3 +1,12 @@
+/* 
+  Código para el Binary Search Tree
+*/
+
+/* 
+  Function Node: this function creates the canvas where the   animation will be visualized
+  @param: nothing 
+  @return:nothing
+*/
 function Node(data) {
     this.data = data;
     this.left = null;
