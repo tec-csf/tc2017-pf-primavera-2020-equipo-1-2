@@ -109,7 +109,7 @@ El usuario podrá conectarse con nuestra aplicación web por medio de un link de
 
 #### 3.2.1 Hosting
 
-El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo.
+El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo, pero esto fue debido al acceso que proporciona la instancia.
 Para acceder a la página, puede ingresar al siguiente link:
 
 >ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000
@@ -185,7 +185,7 @@ El backend del proyecto es implementado con JavaScript, esto nos permitió imple
 
 Todo esto esta conectado con Frontend mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ se están encargando.
 
-El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_  se están encargando 
+El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ están manejando los datos que están siendo ingresados en los <form>
 
 #### 3.4.1 Lenguaje de programación
 
@@ -199,6 +199,7 @@ El Framework utilizado se conoce como Node.js debido a que nos permitió ejecuta
 
 * Parallel.js  para la creación de datos aleatorios y la comparación de algoritmos, sin embargo esta librería contaba con ciertas restricciones, ya que los web workers, que son muy parecidos a los Child process no permiten la extracción de datos una vez se finaliza la acción esperada.
 * P5js para la animación del proceso que tienen cada uno de los 14 algoritmos de búsquedas y ordenamientos, igual que la librería anterior P5js también tiene restricciones, las cuales impedían juntar dos visualizaciones al mismo tiempo.
+* Aunque se haya explicado en el frontend, la utilidad principal de body-parser puede ser encontrado en el backend, esto se debe a la manera en la que se están manejando, tanto las páginas como los datos. Body-parser se encarga de poder cargar una página web al momento de navegar a través de la página web, al mismo tiempo, nos permite realizar las operaciones de tipo post para poder recibir los datos insertados en el backend.
 
 - body-parser
 - edge-js
@@ -213,14 +214,83 @@ El Framework utilizado se conoce como Node.js debido a que nos permitió ejecuta
 
 *[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
+El API para poder llevar a cabo la solución del proyecto, fue programada en JavaScript, esto se debe al manejo de las transacciones/operaciones que están ocurriendo en el fondo.
+
+Como se mencionó anteriormente, el manejo de las operaciones esta conformado por operaciones de tipo _POST_ y _GET_. Este tipo de operaciones son los que conforman, tanto la navegación, como la inserción de datos para que el backend pueda envíar los datos y al usuario al a sección correcta.
+
 #### 3.5.1 Lenguaje de programación
 
+Tanto el API como el backend, fueron programados en JavaScript. 
+A estos, se le integraron las librerías requeridas para que pueda funcionar de la manera debida.
 
 #### 3.5.2 Framework
+
+Para el backend no se utilizó ningún tipo de framework, todo fue programado por el equipo.
 
 #### 3.5.3 Librerías de funciones o dependencias
 
 *[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
+
+Dentro del API se encuentran dos operaciones principales, POSTS y GETS, para facilitar la explicación de las funcionalidades, las siguientes secciones se encuentran divididas respecto sus operaciones correspondientes.
+
+##### 3.5.3.1 POST
+
+**app.post('/burbujaVis', ...)**+
+* ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/burbujaVis
+
+* Esta página se encarga de mandar el valor numérico a su página especificada para que pueda correr la visualización deseada, a continuación, se pueden ver las diferentes versiones que hay para poder envíar los datos a su página respectiva:
+
+
+    * _/bucketVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/bucketVis
+    * _/cocktailVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/cocktailVis
+    * _/countingVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/countingVis
+    * _/insertVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/insertVis
+    * _/mergeVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/mergeVis
+    * _/radixVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/radixVis
+    * _/heapVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/heapVis
+    * _/quickVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/quickVis
+    * _/selectionVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/selectionVis
+    * _/shellVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/shellVis
+    * _/binaryVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/binaryVis
+    * _/sequentialVis_
+        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/sequentialVis
+
+* Todas estas operaciones funcionan con el método _POST_.
+
+Como se puede notar, estas funciones están usando un formato similar, lo que cambia entre ellas es el URL donde realiza la operación POST.
+
+* El error que puede llegar a aparecer es: 
+>Error, site not found
+
+**app.post('/algoritmosEstables/conf', ...)***
+
+* Esta operación se enfoca en recibir los datos insertados por el usuario, los nombres de los algoritmos y la cantidad de valores aleatorios que se van a generar, y los inserta en dos _switches_, el primero se enfoca en checar el primer algoritmo insertado y el segundo en el segundo input hecho por el usuario.
+Para generar el arreglo de manera correcta, se está insertando a una función donde se genera un arreglo aleatorio en ese momento.
+* ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/algoritmosEstables/conf
+* _POST_
+* >Error, site not found
+
+**app.post('/algoritmosInestables/conf', ...)***
+
+* Esta operación se encarga de recibir los valores insertados y cargarlos a dos switches (anidados) para poder correr los algoritmos de tipo inestables. 
+Al igual que los estables, se está insertando un valor numérico para poder generar el arreglo.
+* ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/algoritmosInestables/conf
+* _POST_
+* >Error, site not found
+
+
+##### 3.5.3.2 GET
 
 *[Por cada endpoint debe incluir lo siguiente:]*
 

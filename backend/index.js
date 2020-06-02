@@ -181,6 +181,34 @@ app.get('/animacionEstable', async(req, res)=>{
     res.sendFile(path.resolve(__dirname, '../frontend/animacionEstables.js'))
 })
 
+app.get('/bubbleSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/bubblesortDisplay.html'));
+})
+
+app.get('/cocktailSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/cocktailsortDisplay.html'));
+})
+
+app.get('/insertionSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/insertionsortDisplay.html'));
+})
+
+app.get('/mergeSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/mergesortDisplay.html'));
+})
+
+app.get('/radixSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/radixsortDisplay.html'));
+})
+
+app.get('/bucketSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/bucketsortDisplay.html'));
+})
+
+app.get('/countingSortDisp', async (req, res) =>{
+    res.senFile(path.resolve(__dirname, '../frontend/countingsortDisplay.html'));
+})
+
 //A partir de esta sección se están mandando a llamar los datos insertados en los forms/botones individuales,
 //que se encuentran en la segunda tabla del stableUI.html
 
@@ -191,46 +219,63 @@ app.post('/burbujaVis', async(req, res)=>{
 
     //Va a abrir en la misma ventana el documento que hayan especificado y va a enviar el campo llamado
     //inputNo es el valor numérico que se le insertó al form del html
-    res.redirect('/NOMBREDOCUMENTO', {
+    res.redirect('/bubbleSortDisp', {
         inputNo
     })
-
     console.log(inputNo);
 })
 
 app.post('/bucketVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/bucketSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/cocktailVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/cocktailSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/countingVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/countingSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/insertVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/insertionSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/mergeVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/mergeSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
 app.post('/radixVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
+    res.redirect('/radixSortDisp', {
+        inputNo
+    })
     console.log(inputNo);
 })
 
