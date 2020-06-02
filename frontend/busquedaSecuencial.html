@@ -1,0 +1,103 @@
+<!-- 
+  Animaciones de los algoritmos de busquedas, dentro de esta categoría esta la 
+  implementación de los algoritmos; busqueda secuencial y busqueda binaria. 
+ -->
+ <!DOCTYPE html>
+ <html>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  
+ <head>
+     <title>Sequential Search Visualization
+     </title>
+     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+     <meta charset="utf-8" />
+ </head>
+  
+ <body>
+     <script>
+/* 
+  Animaciones de los algoritmos de busquedas, dentro de esta categoría esta la 
+  implementación de los algoritmos; busqueda secuencial y busqueda binaria. 
+*/
+
+    let values = []; // array with the values of the array 
+    let w = 20; // size of each bar in the visualization 
+    let states = [];// states to change the color
+    var num; //number to search for
+    /* 
+    Function setup: this function creates the canvas where the animation will be visualized
+    @param:nothing 
+    @return:nothing
+    */
+    function setup() {
+        createCanvas(400, 400);
+        i = 200;
+        values = new Array(floor(width / w));
+        for (let i = 0; i < values.length; i++) {
+            values[i] = floor(random(height)+1);
+            states[i] = -1;
+            num = floor(random(values));
+        }
+    
+        values.sort(function(a, b) {
+        return a - b
+        });
+        
+        busquedaSecuencial(values, num);
+    }//end setup
+
+    /* 
+    Function busquedaSecuencial: this function works as a normal sort, where it iterates each index of the array until it finds it.
+    @param arr: the array to be searched 
+    @param num: the number to be searched
+    @return:nothing
+    */
+    async function busquedaSecuencial(arr, num) {
+        for(let i = 0; i < arr.length-1; i++) {
+            states[i] = 1;
+            if(arr[i] == num) {
+                console.log("Number searched", num);
+                console.log("Found at index", i);
+                states[i] = 0;
+            break;
+            } else {
+                console.log(arr);
+            }
+        }
+        tiempo("Busqueda Secuencial");
+    }//end busquedaSecu
+
+    /* 
+        Function draw: this function of the p5 library draws the lines of the visaulizations. 
+        @param:nothing
+        @return: nothing
+    */
+    function draw() {
+        background(230);
+        stroke("white");
+        for (let i = 0; i < values.length; i++) {
+        if (states[i] == 0) {
+            fill(0, 191, 255);
+        } else if (states[i] == 1) {
+            fill(212, 161, 198);
+        } else {
+            fill(255, 204, 100);
+        }
+        //dibuja las lineas
+        rect(i * w, height - values[i], w, values[i]);
+        }
+    }//end draw
+
+    /* 
+        function tiempo: this function takes the time in miliseconds of the animations execution
+        @param algorithm: the algorithm executed
+        @return: nothin
+    */
+    async function tiempo(algorithm){
+    let tiempo=Math.ceil(millis());
+    console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
+    }// end tiempo
+     </script>
+ </body>
+ 
+ </html>
