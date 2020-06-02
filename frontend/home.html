@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Proyecto final</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home</a>
+                <a class="nav-item nav-link" href="/search">Algoritmos de búsqueda</a>
+                <a class="nav-item nav-link" href="/stable">Algoritmos estables</a>
+                <a class="nav-item nav-link" href="/unstable">Algoritmos inestables</a>
+                <a class="nav-item nav-link" href="/info">Información del proyecto</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div class="row mt-2">
+        <div class="col-sm-12">
+
+            <h1>Bienvenido!</h1>
+
+            <h3>Algoritmos de búsqueda</h3><br>
+
+            <table style="width:100%" class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Complejidad Temporal</th>
+                        <th>Complejidad Espacial</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Binaria</td>
+                    <td>O(log n)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo comienza buscando el elemento a la mitad del arreglo. Si no se encuentra en esa
+                        mitad, divide el arreglo a la mitad y sigue buscando en la mitad del arreglo recién creado. Así
+                        corre hasta que se encuentre.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Secuencial</td>
+                    <td>O(n)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo realiza una búsqueda en cada elemento de un arreglo o lista. Va comparando cada
+                        valor de la lista hasta que encuentre el valor solicitado.
+                    </td>
+                </tr>
+            </table><br>
+
+            <h3>Algoritmos de ordenamiento</h3><br>
+
+            <p>Estos se dividen en dos, estables e inestables.</p>
+            <p>Los estables se encuentran en la versión clara de la tabla, mientras que los inestables están a partir de
+                la versión oscura de la tabla.</p>
+
+            <h4>Estables</h4>
+            <table style="width:100%" class="table">
+                <thead class="thead-clear">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Complejidad Temporal</th>
+                        <th>Complejidad Espacial</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Bubble Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo ordena los valores de un arreglo (o lista), conforme vaya pasando por la lista.
+                        Al
+                        comparar un valor con otro, los va moviendo de lugar, dependiendo si el valor es mayor o menor.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bucket Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(n+k)</td>
+                    <td>
+                            Este algoritmo separa el contenido de un arreglo en <i>buckets</i>, en estos se encuentra desordenado.
+                            Al ordernar, va separando el contenido de cada bucket en otros buckets, así prosigue hasta que este ordenado.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Binary tree Sort</td>
+                    <td>O(n*log(n))</td>
+                    <td>O(n)</td>
+                    <td>
+                        Este algoritmo se encarga de ordenar los datos de un arreglo en un árbol de búsqueda binaria.
+                        Esto permite que, al ordenar el algoritmo, los vaya ordenado dependiendo de la exploración de variables.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cocktail Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Cocktail sort es una variación del algoritmo <i>Bubble sort</i>, la diferencia principal de esta variación es
+                        que es un algoritmo bidireccional. Es decir, comienza de ambos lados del arreglo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Counting Sort</td>
+                    <td>O(n+i)</td>
+                    <td>O(n+i)</td>
+                    <td>
+                        El funcionamiento de este algoritmo es diferente, está basado en la asignación de una "llave" a cada valor del arreglo.
+                        Posteriormente, cuenta la cantidad de repeticiones que tiene cada valor, una vez que los tenga listos, los va a ordenar 
+                        de manera ascendente, asegurandose que las llaves de los demás valores sean mas altos que el valor del caso base.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Insertion Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo se encarga de ordenar los valores conforme los vaya leyendo. En otras palabras,
+                        mientras vaya avanzando por el arreglo, va enviando los datos analizados a un arreglo nuevo para
+                        que se almacene el resultado final.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Merge Sort</td>
+                    <td>O(n*log(n))</td>
+                    <td>O(n)</td>
+                    <td>
+                        Este algoritmo ordena los valores en dos fases. Primero, divide el arreglo en <i>n</i> valores,
+                        cada uno conteniendo un elemento del arreglo original. Después, comienza a juntar los
+                        sub-arreglos y los ordenas conforme vaya avanzando.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Radix Sort</td>
+                    <td>O(n*k/d)</td>
+                    <td>O(n+2^d)</td>
+                    <td>
+                        Este algoritmo se enfoca en comparar digitos de los valores dentro de un arreglo, esto ocasiona que se comparen basándose
+                        en la posición y el valor numérico de cada dígito.
+                    </td>
+                </tr>
+            </table>
+
+            <h4>Inestables</h4>
+            <table style="width:100%" class="table">
+                </h>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Complejidad Temporal</th>
+                        <th>Complejidad Espacial</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Heap Sort</td>
+                    <td>O(n*log(n))</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo está basado en un árbol binario, solo que su representación es en arreglo.
+                        Se manda a llamar para que pueda ordenar los valores numéricos donde le corresponde.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quick Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(n)</td>
+                    <td>
+                       Este algoritmo se enfoca en dividir el arreglo utilizando un <i>pivote</i> para poder separar el contenido de un arreglo
+                       Esto se encarga de ordenar de menor a mayo los valores que se encuentran antes y después del pivote.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Selection Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(1)</td>
+                    <td>
+                        Este algoritmo maneja dos arreglos a la vez, el primero contiene los valores sin haber sido ordenados y el otro con
+                        los valores ordenados. Esto permite que vaya explorando el primer arreglo y los vaya ordenando de manera <i>ascendente</i>
+                        en el segundo arreglo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Shell Sort</td>
+                    <td>O(n^2)</td>
+                    <td>O(n)</td>
+                    <td>
+                       Este algoritmo es una variación de <i>Insertion sort</i>, la diferencia principal es que este algoritmo permite que 
+                       se realicen comparaciones a una distancia mas larga en lugar de comparar con valores contiguos.
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

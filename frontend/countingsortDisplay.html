@@ -1,0 +1,191 @@
+<!-- 
+  Animaciones de los algoritmos Estables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Bubble sort, cocktail Sort,
+  insertion Sort ymerge Sort.  
+ -->
+ <!DOCTYPE html>
+ <html>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  
+ <head>
+     <title>Counting Sort Visualization
+     </title>
+     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+     <meta charset="utf-8" />
+ </head>
+  
+ <body>
+     <script>
+  
+         let values = []; // array with the values of the array 
+         let w = 10; // size of each bar in the visualization 
+         let order = 0;
+         let z=0; // for counting sort
+         let states = [];// states to change the color
+  
+         /* 
+             Function setup: this function creates the canvas where the   animation will be visualized
+             @param: nothing 
+             @return:nothing
+         */
+         function setup(){
+             createCanvas(600, 600); // size of the canvas 
+             values = new Array(floor(width / w));
+             for (let i = 0; i < values.length; i++) {
+                 values[i] = Math.floor(random(height));
+                 states[i] = -1;
+             }
+             countingSort(values);
+         }// end setup 
+
+        /* 
+            Function countingSort: sorts an array by creating an auxiliar array of the same size,
+            and counting how many times the number is in the original array. 
+            Once it's done it put backs the array in order
+            @param arr: array to be sorted 
+            @return: nothing
+        */
+        async function countingSort(arr) {
+            var orderArray = new Array(windowHeight + 1);
+            var finalArray = new Array(arr.length);
+            for (let i = 0; i < orderArray.length; i++) {
+                orderArray[i] = 0;
+            }
+            for (let i = 0; i < finalArray.length; i++) {
+                finalArray[i] = 0;
+            }
+            for (let k = 0; k < arr.length; k++) {
+                let num = arr[k];
+                orderArray[num] += 1;
+            }
+            for (let j = 1; j < orderArray.length; j++) {
+                for (let i = 0; i < orderArray[j]; i++) {
+                    finalArray[z] = j;
+                    z++;
+                }
+            } //prints ascendant
+            /*for (let j = orderArray.length; j >= 1; j--) {
+                for (let i = 0; i < orderArray[j]; i++) {
+                finalArray[z] = j;
+                z++;
+                }
+            }*/ //prints descendant
+            
+            for (let i = 0; i < arr.length; i++) {
+                states[i]=0;//state of the array, this is for the 
+                await swapCount(arr, finalArray, i);
+            }
+            console.log(finalArray);
+            tiempo("Counting Sort");//time the algorithm took to execute
+
+        }//end counting   
+
+
+        /* 
+            Function swapCount: swaps the sorted array into the original array, so it can be drawn. 
+            Called by the function countingSort
+            @param arr1: the original array 
+            @param arr2: the sorted array
+            @param i: the position to be swapped
+            @return:nothing
+        */
+        async function swapCount(arr1, arr2, i) {
+            await sleep(50);//delay
+            arr1[i] = arr2[i];
+        }//end swapCount
+        
+         /* 
+             Function draw: this function of the p5 library draws the lines of the visaulizations. 
+             @param:nothing
+             @return: nothing
+         */
+         function draw() {
+             background(230);
+             stroke("white");
+             for (let i = 0; i < values.length; i++) {
+                 if (states[i] == 0) {
+                     fill(161, 220, 144);
+                 } else if (states[i] == 1) {
+                     fill('#D6FFB7');
+                 } else {
+                     fill(255, 204, 100);
+                 }
+                 //dibuja las lineas
+                 rect(i * w, height - values[i], w, values[i]);
+             }
+         }//end draw
+  
+         /* 
+             Function Swap: this function was implemented to save the switches on the other functions. Basically it changes the positiion of one element into the other elements position. 
+             @param: the array of the values to be sorted 
+             @a: the first element to be switched
+             @b: the second element to be switched
+             @return: nothing
+         */
+         async function swap(arr, a, b) {
+             await sleep(10);
+             let temp = arr[a];
+             arr[a] = arr[b];
+             arr[b] = temp;
+         }//end swap 
+  
+         /* 
+             Function sleep: it's a function used as an delay in the animation 
+             @param ms : miliseconds for the duration of the delay
+             @return: timeout
+         */
+         function sleep(ms) {
+             return new Promise(resolve => setTimeout(resolve, ms));
+         }//end sleep 
+  
+         /* 
+             Function desc: to determine the order of the numbers
+             @param a: number 1 to be compare
+             @param n: number 2 to be compare
+             @return: boolean 
+         */
+         function desc(a, n) {
+             return a<n;
+         }//end desc
+  
+         /* 
+             Function asc: to determine the order of the numbers
+             @param a: number 1 to be compare
+             @param n: number 2 to be compare
+             @return: boolean 
+         */
+         function asc(a, n) {
+             return a>n;
+         }//end asc
+  
+         /* 
+             Function comparar: to choose the order of the numbers
+             @param a: number 1 to be compare
+             @param n: number 2 to be compare
+             @return: boolean 
+         */
+         function comparar(tipo, a, n)
+         {
+             if(tipo == 1) //a
+             {
+                 return asc(a,n);
+             }
+             if(tipo == 0) //d
+             {
+                 return desc (a,n);
+             }
+         }//end comparar
+  
+         /* 
+         function tiempo: this function takes the time in miliseconds of the animations execution
+         @param algorithm: the algorithm executed
+         @return: nothin
+         */
+         async function tiempo(algorithm){
+              let tiempo=Math.ceil(millis());
+              console.log("Tiempo animación " + algorithm + " en milisegundos:",tiempo);
+         }// end tiempo
+     </script>
+ </body>
+ 
+ </html>
