@@ -37,22 +37,22 @@
             <button class="btn btn-danger" onclick="window.location.href='/stable'">Regresar a <i><b>Algoritmos
                         estables</b></i></button>
 
-            <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
-            <form name="inputBE" action="/algoritmosEstables/conf" method="POST">
+
+            <form name="inputBE" action="/algoritmosEstables/doc" method="POST">
+                <h4 class="text-lg-center">Seleccione el documento que desea insertar</h4>
                 <div class="row mt-2">
                     <div class="col-sm-12 text-lg-center">
                         <label for="fileUpload"></label><br>
                         <input type="file" id="fileUpload" name="newFile"><br><br>
                         <button id="import">Validate JSON</button><br><br>
-                        <textarea rows="8" cols="80" id="result" name="fileContent"></textarea>
+                        <textarea rows="15" cols="100" id="result" name="fileContent"></textarea>
                     </div>
 
                 </div>
 
-
                 <br>
                 <br>
-
+                <h4 class="text-lg-center">Seleccione los algoritmos que desee comparar</h4>
                 <table style="width:100%" class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -181,6 +181,27 @@
         function radixOpen() {
             window.open('/')
         }
+
+        document.getElementById('import').addEventListener("click", function(event){
+            event.preventDefault()
+            var files = document.getElementById('fileUpload').files;
+          // console.log(typeof files);
+          if (files.length <= 0) {
+            return false;
+          }
+
+          var fr = new FileReader();
+
+          fr.onload = function(e) { 
+          console.log(e);
+            var result = JSON.parse(e.target.result);
+            var formatted = JSON.stringify(result, null, 2);
+                document.getElementById('result').value = formatted;
+          }
+
+          fr.readAsText(files.item(0));
+          return false;
+        });
     </script>
 
 </body>

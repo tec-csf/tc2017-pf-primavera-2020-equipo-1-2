@@ -2724,7 +2724,22 @@ app.post('/algoritmosInestables/doc', async (req, res) => {
 app.post('/algoritmosEstables/doc', async (req, res) => {
         var primer = req.body.primerAlg;
         var segundo = req.body.segundoAlg;
-        var inpNumber = parseInt(req.body.noRand);
+        var inpNumber = 100;
+
+        const fileCont = JSON.parse(req.body.fileContent)
+
+        var numData = []
+
+        for(let entry in fileCont)
+        {
+            for(let data in fileCont[entry])
+            {
+                numData.push(fileCont[entry][data])
+            }
+        }
+
+        console.log(numData)
+        console.log("wgat")
 
         //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
         nuRand = [];
