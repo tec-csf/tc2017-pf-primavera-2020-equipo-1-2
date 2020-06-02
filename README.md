@@ -236,3 +236,8 @@ El Framework utilizado se conoce como Node.js debido a que nos permitió ejecuta
 ## 4. Referencias
 
 *[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
+
+* https://lemoncode.net/lemoncode-blog/2018/1/29/javascript-asincrono
+* https://parallel.js.org/
+* https://p5js.org/es/
+* https://nodejs.org/es/about/
