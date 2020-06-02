@@ -42,7 +42,7 @@ let states = []; //array to determine the colors in the visualization
   @return:nothing
 */
 function setup(){
-  createCanvas(windowWidth, windowHeight); // size of the canvas 
+  createCanvas(600, 600); // size of the canvas 
   values = new Array(floor(width / w));
   for (let i = 0; i < values.length; i++) {
     values[i] = Math.floor(random(height));
