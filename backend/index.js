@@ -2724,7 +2724,7 @@ app.post('/algoritmosInestables/doc', async (req, res) => {
 app.post('/algoritmosEstables/doc', async (req, res) => {
         var primer = req.body.primerAlg;
         var segundo = req.body.segundoAlg;
-        var inpNumber = 100;
+        var inpNumber = 150;
 
         const fileCont = JSON.parse(req.body.fileContent)
 
@@ -2739,7 +2739,6 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
         }
 
         console.log(numData)
-        console.log("wgat")
 
         //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
         nuRand = [];
@@ -2761,7 +2760,9 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
             for (var i = 0; i < tamano; ++i) {
                 a[i] = Math.floor(Math.random() * (tamano * 8));
             }
+            console.log(a)
             return a;
+
         }
 
         function min() {
@@ -2994,9 +2995,10 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
                     arreglo[index] = Math.floor(Math.random() * cantXthread);
                 }
             }
-            console.log(arreglo);
-            console.log(arreglo.length);
-            return arreglo;
+            // console.log(arreglo);
+            // console.log(arreglo.length);
+            // console.log(numData)
+            return numData;
         };
 
         switch (primer) {
@@ -3009,6 +3011,7 @@ app.post('/algoritmosEstables/doc', async (req, res) => {
                             var p = new Parallel(min());
                             console.time("arreglo");
                             var res = p.map(aleatorio, console.log(Date.now() - prueba)).then(logi).then(function (n) {
+
                                 var uno = new Parallel(n);
                                 var dos = new Parallel(n);
                                 console.time("primero");
