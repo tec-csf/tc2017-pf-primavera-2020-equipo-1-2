@@ -135,7 +135,7 @@ Los archivos que el usuario podrá ingresar serán tipo Json, además que se pod
 *[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 El frontend fue programado completamente en HTML y se implementa el uso de CSS mediante Bootstrap.
-Este puede ser encontrado [aquí](https://getbootstrap.com/docs/4.5/getting-started/introduction/), este fue implementado de la siguiente manera:
+Este puede ser encontrado [aquí](https://getbootstrap.com/docs/4.5/getting-started/introduction/), y fue implementado de la siguiente manera:
 
 ```
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -156,11 +156,13 @@ Estos datos están siendo leídos en el backend, especificamente en las sección
 Para las operaciones de tipo _get_, se está haciendo algo distinto. Esta operación se está encargando del despliegue/visualización de los documentos HTML. En otras palabras, cuando se manda a llamar a otra página, como regresar al inicio de la aplicación web, esta tomando lugar en una operación de este tipo.
 Para poder identificar estas secciones, se están mandando a llamar con el enunciado `app.get()`, esto permite cargar el documento especificado. Es importante recalcar, esos documentos se encuentran en la carpeta del _frontend_.
 
+Para que el web app pueda aceptar archivos JSON y usar los datos de éstos para la ejecución de los algoritmos, se usó un pequeño _workaround_, en donde el manejo del JSON es hecho completamente en el frontend, el cual abre el archivo y manda el contenido a el backend mediante un _post_, en donde se "procesa" para pasar los números a un arreglo que puede ser usado más fácilmente por los algoritmos de búsqueda y ordenamiento.
+
 #### 3.3.1 Lenguaje de programación
 
-El frontend fue programado completamente utilizando HTMLs, con integración de scripts de JavaScript dentro de varios de estos mismo.
+El frontend fue programado completamente utilizando archivos HTML, con integración de scripts de JavaScript dentro de varios de estos mismo.
 
-Como se mencionó anteriormente, se implementó un CSS (Cascade Style Sheet) mediante la implementación de Bootstrap.
+Como se mencionó anteriormente, se implementó CSS (Cascade Style Sheet) mediante Bootstrap.
 Esto nos permite tener acceso completo a una librería para poder modelar la aplicación como nos guste.
 
 #### 3.3.2 Framework
@@ -181,7 +183,7 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 
 *[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
-El backend del proyecto es implementado con JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido. Así generando datos aleatorios u obteniendolos de archivos Json. Una vez generados los datos se eligen dos algoritmos a comparar de la misma clase, búsqueda con búsqueda, inestables con inestables o finalmente estables con estables. Además de la comparación se realizarán las visualizaciones de los 14 algoritmos especificados, al principio de este proyecto,  cabe especificar que no podrán verse al mismo tiempo si no por decisión del usuario, se podrán también exportar gráficas de los datos que se generaron y los tiempos de ejecución de los algoritmos debido al almacenamiento de los mismos. 
+El backend del proyecto es hecho con JavaScript. Esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido. Así generando datos aleatorios u obteniendolos de archivos Json. Una vez generados los datos se eligen dos algoritmos a comparar de la misma clase, búsqueda con búsqueda, inestables con inestables o finalmente estables con estables. Además de la comparación se realizarán las visualizaciones de los 14 algoritmos especificados, al principio de este proyecto,  cabe especificar que no podrán verse al mismo tiempo si no por decisión del usuario, se podrán también exportar gráficas de los datos que se generaron y los tiempos de ejecución de los algoritmos debido al almacenamiento de los mismos. 
 
 Todo esto esta conectado con Frontend mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ se están encargando.
 
