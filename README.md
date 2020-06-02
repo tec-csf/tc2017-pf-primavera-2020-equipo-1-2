@@ -110,7 +110,7 @@ El usuario podrá conectarse con nuestra aplicación web por medio de un link de
 
 #### 3.2.1 Hosting
 
-El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo.
+El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo, pero esto fue debido al acceso que proporciona la instancia.
 Para acceder a la página, puede ingresar al siguiente link:
 
 >ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000
@@ -180,7 +180,7 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 
 El backend fue programado en JavaScript, esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido.
 
-El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_  se están encargando 
+El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ están manejando los datos que están siendo ingresados en los <form>
 
 #### 3.4.1 Lenguaje de programación
 #### 3.4.2 Framework
@@ -198,6 +198,8 @@ El frontend y el backend establecen una conexión mediante operaciones de tipo _
 ### 3.5 API
 
 *[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+
+El API para poder llevar a cabo la solución del proyecto, fue programada en JavaScript,
 
 #### 3.5.1 Lenguaje de programación
 #### 3.5.2 Framework
