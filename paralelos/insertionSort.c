@@ -4,27 +4,21 @@
 
 #define SIZE 1000
 
-
-int main (int argc, char *argv[]) {
-	//int SIZE =1000; //tamaño total
-	int A[SIZE];
-	for(int i=0;i<SIZE;i++)
-	{
-	    A[i]=rand()%SIZE;
-	}
-	//int A[5] = {6,9,1,3,7};
-	int N = SIZE;
+/* 
+  Function Insertion: this function organizes the data array using Insertion Sort
+  @param: int A[], sends an int data array 
+  @return: float with the execution time
+*/
+float insertionSort(int A[])
+{
+    int N = SIZE;
 	int i=0, j=0;
 	int first;
 	double start,end;
 	start= omp_get_wtime(); //
     int  key;  
-
-    
     for (i = 1; i < SIZE; i++) 
     {  
-
-        #pragma omp critical
         {
             key = A[i];  
              j = i - 1;  
@@ -39,10 +33,17 @@ int main (int argc, char *argv[]) {
     }  
 
     end=omp_get_wtime();
-	for(i=0;i<N;i++)
-	{
-		printf(" %d",A[i]);
-	}
+    printf("\n-------------------------\n Time Parallel= %f",(end-start));
+    return end-start;
 
-printf("\n-------------------------\n Time Parallel= %f",(end-start));
+}
+
+int main () {
+	//int SIZE =1000; //tamaño total
+	int A[SIZE];
+	for(int i=0;i<SIZE;i++)
+	{
+	    A[i]=rand()%SIZE;
+	}
+	insertionSort(A);
 }
