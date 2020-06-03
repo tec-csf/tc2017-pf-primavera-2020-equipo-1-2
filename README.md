@@ -213,8 +213,6 @@ El Framework utilizado se conoce como Node.js debido a que nos permitió ejecuta
 
 ### 3.5 API
 
-*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
-
 El API para poder llevar a cabo la solución del proyecto, fue programada en JavaScript, esto se debe al manejo de las transacciones/operaciones que están ocurriendo en el fondo.
 
 Como se mencionó anteriormente, el manejo de las operaciones esta conformado por operaciones de tipo _POST_ y _GET_. Este tipo de operaciones son los que conforman, tanto la navegación, como la inserción de datos para que el backend pueda envíar los datos y al usuario al a sección correcta.
@@ -230,7 +228,7 @@ Para el backend no se utilizó ningún tipo de framework, todo fue programado po
 
 #### 3.5.3 Librerías de funciones o dependencias
 
-*[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
+
 
 Dentro del API se encuentran dos operaciones principales, POSTS y GETS, para facilitar la explicación de las funcionalidades, las siguientes secciones se encuentran divididas respecto sus operaciones correspondientes.
 
