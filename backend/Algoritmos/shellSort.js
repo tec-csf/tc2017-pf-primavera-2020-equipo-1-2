@@ -1,3 +1,12 @@
+/* 
+  Algoritmo de shellSort en JavaScript
+*/
+
+/* 
+  Function Shell Sort:It's a variation of insertion sort.
+  @param array:the array of elements to be sorted
+  @return:nothing
+*/
 function shellSort(array) {
     /*
      * for-loop setup:
@@ -20,7 +29,7 @@ function shellSort(array) {
         array[currentIndexCopy] = itemValue
       }
     }
-  }
+  } //end shellSort
   
   let array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
   shellSort(array)

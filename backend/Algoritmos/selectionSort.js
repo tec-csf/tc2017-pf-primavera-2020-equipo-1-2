@@ -1,3 +1,15 @@
+/* 
+  Algoritmo de selectionSort en JavaScript
+*/
+
+/* 
+  Function Selection Sort:This sorting algorithm divides the array into two parts, the sorted part at the left end and the unsorted part at the right end. 
+  Initially, the sorted part is empty and the unsorted part is the entire list.The smallest element is selected 
+  from the unsorted array and swapped with the leftmost element, and that element becomes a part of the sorted array. 
+  This process continues moving unsorted array boundary by one element to the right.
+  @param array:the array of elements to be sorted
+  @return:nothing
+*/
 function selectionSort(array) {
     // step 1: loop from the beginning of the array to the second to last item
     for (let currentIndex = 0; currentIndex < array.length - 1; currentIndex++) {
@@ -20,7 +32,7 @@ function selectionSort(array) {
         array[minIndex] = temp;
       }
     }
-  }
+  } //end selectionSort.js
   
   let array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
   selectionSort(array)
