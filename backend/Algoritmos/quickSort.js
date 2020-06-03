@@ -1,3 +1,14 @@
+/* 
+  Algoritmo de quickSort en JavaScript
+*/
+
+/* 
+  Function QuickSort: Algorithm to sort an array by Quick Sort
+  @param arr:the array of elements to be sorted
+  @param startIndex: the first element of the array 
+  @param endIndex: the last element of the array 
+  @return: nothing
+*/
 function quickSort(array, startIndex, endIndex) {
     // verify that the start and end index have not overlapped
     if (startIndex < endIndex) {
@@ -10,6 +21,14 @@ function quickSort(array, startIndex, endIndex) {
     }
   }
   
+  /* 
+  Function Partition: this function is part of the quick sort, it compares the @param start with all the other elements
+  from back to front until it finds a smaller value to swap. 
+  @param arr:the array of elements to be sorted
+  @param startIndex:the first element of the array 
+  @param endIndex:the last element of the array 
+  @return:nothing
+*/
   function partition(array, startIndex, endIndex) {
     let pivotIndex = Math.floor((startIndex + endIndex) / 2)
     let pivotValue = array[pivotIndex]
