@@ -90,11 +90,11 @@ int main(void)
             {
                 #pragma omp section
                 {
-                    result1 = binarySearch(subArrays[0], 0, n - 1, x); 
+                    result1 = binarySearch(subArrays[0], 0, subSize - 1, x); 
                 }
                 #pragma omp section
                 {
-                    result2 = binarySearch(subArrays[1], 0, n - 1, x); 
+                    result2 = binarySearch(subArrays[1], 0, subSize - 1, x); 
                 }
             }
             if (result1 != -1)
@@ -111,15 +111,15 @@ int main(void)
             {
                 #pragma omp section
                 {
-                    result1 = binarySearch(subArrays[0], 0, n - 1, x); 
+                    result1 = binarySearch(subArrays[0], 0, subSize - 1, x); 
                 }
                 #pragma omp section
                 {
-                    result2 = binarySearch(subArrays[1], 0, n - 1, x); 
+                    result2 = binarySearch(subArrays[1], 0, subSize - 1, x); 
                 }
                 #pragma omp section
                 {
-                    result3 = binarySearch(subArrays[2], 0, n - 1, x); 
+                    result3 = binarySearch(subArrays[2], 0, subSize - 1, x); 
                 }
             }
             if (result1 != -1)
@@ -140,19 +140,19 @@ int main(void)
             {
                 #pragma omp section
                 {
-                    result1 = binarySearch(subArrays[0], 0, n - 1, x); 
+                    result1 = binarySearch(subArrays[0], 0, subSize - 1, x); 
                 }
                 #pragma omp section
                 {
-                    result2 = binarySearch(subArrays[1], 0, n - 1, x); 
+                    result2 = binarySearch(subArrays[1], 0, subSize - 1, x); 
                 }
                 #pragma omp section
                 {
-                    result3 = binarySearch(subArrays[2], 0, n - 1, x); 
+                    result3 = binarySearch(subArrays[2], 0, subSize - 1, x); 
                 }
                 #pragma omp section
                 {
-                    result4 = binarySearch(subArrays[3], 0, n - 1, x); 
+                    result4 = binarySearch(subArrays[3], 0, subSize - 1, x); 
                 }
             }
             if (result1 != -1)
@@ -173,7 +173,7 @@ int main(void)
             }
             break;
         default:
-            int result = binarySearch(subArrays[0], 0, n - 1, x); 
+            result = binarySearch(subArrays[0], 0, subSize - 1, x); 
 
 
     }
@@ -184,7 +184,7 @@ int main(void)
     }
     else
     {
-        cout<< "Element is present at index " << result << endl; 
+        cout<< "Element found" << endl; 
     }
 
     return 0; 
