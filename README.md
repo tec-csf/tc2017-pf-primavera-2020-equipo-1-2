@@ -112,7 +112,7 @@ El usuario podrá conectarse con nuestra aplicación web por medio de un link de
 El proyecto está siendo desplegado en un servicio llamado _Amazon EC2_, este actúa como una computadora con servicio en la nube. Para que los usuarios puedan tener acceso a la página, se habilitaron diferentes puertos (80, 423, 3000 y 4000) para ver cuál permitía una conexión a la página. Esto conllevo a que desplegara en el puerto _3000_ de este mismo, pero esto fue debido al acceso que proporciona la instancia.
 Para acceder a la página, puede ingresar al siguiente link:
 
->ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000
+>http://18.191.33.21:3000/
 
 #### 3.2.2 Backend
 
@@ -237,36 +237,36 @@ Dentro del API se encuentran dos operaciones principales, POSTS y GETS, para fac
 
 ##### 3.5.3.1 POST
 
-**app.post('/burbujaVis', ...)**+
-* ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/burbujaVis
+**app.post('/burbujaVis', ...)**
+* http://18.191.33.21:3000/burbujaVis
 
 * Esta página se encarga de mandar el valor numérico a su página especificada para que pueda correr la visualización deseada, a continuación, se pueden ver las diferentes versiones que hay para poder envíar los datos a su página respectiva:
 
 
     * _/bucketVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/bucketVis
+        * http://18.191.33.21:3000/bucketVis
     * _/cocktailVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/cocktailVis
+        * http://18.191.33.21:3000/cocktailVis
     * _/countingVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/countingVis
+        * http://18.191.33.21:3000/countingVis
     * _/insertVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/insertVis
+        * http://18.191.33.21:3000/insertVis
     * _/mergeVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/mergeVis
+        * http://18.191.33.21:3000/mergeVis
     * _/radixVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/radixVis
+        * http://18.191.33.21:3000/radixVis
     * _/heapVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/heapVis
+        * http://18.191.33.21:3000/heapVis
     * _/quickVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/quickVis
+        * http://18.191.33.21:3000/quickVis
     * _/selectionVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/selectionVis
+        * http://18.191.33.21:3000/selectionVis
     * _/shellVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/shellVis
+        * http://18.191.33.21:3000/shellVis
     * _/binaryVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/binaryVis
+        * http://18.191.33.21:3000/binaryVis
     * _/sequentialVis_
-        * ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/sequentialVis
+        * http://18.191.33.21:3000/sequentialVis
 
 * Todas estas operaciones funcionan con el método _POST_.
 
@@ -275,24 +275,42 @@ Como se puede notar, estas funciones están usando un formato similar, lo que ca
 * El error que puede llegar a aparecer es: 
 >Error, site not found
 
-**app.post('/algoritmosEstables/conf', ...)***
+**app.post('/algoritmosEstables/conf', ...)**
 
 * Esta operación se enfoca en recibir los datos insertados por el usuario, los nombres de los algoritmos y la cantidad de valores aleatorios que se van a generar, y los inserta en dos _switches_, el primero se enfoca en checar el primer algoritmo insertado y el segundo en el segundo input hecho por el usuario.
 Para generar el arreglo de manera correcta, se está insertando a una función donde se genera un arreglo aleatorio en ese momento.
-* ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/algoritmosEstables/conf
+* http://18.191.33.21:3000/algoritmosEstables/conf
 * _POST_
 * >Error, site not found
 
-**app.post('/algoritmosInestables/conf', ...)***
+**app.post('/algoritmosInestables/conf', ...)**
 
 * Esta operación se encarga de recibir los valores insertados y cargarlos a dos switches (anidados) para poder correr los algoritmos de tipo inestables. 
 Al igual que los estables, se está insertando un valor numérico para poder generar el arreglo.
-* ec2-18-191-33-21.us-east-2.compute.amazonaws.com:3000/algoritmosInestables/conf
+* http://18.191.33.21:3000/algoritmosInestables/conf
 * _POST_
 * >Error, site not found
 
+**app.post('/algoritmosBusqueda/doc', ...)**
+
+* En esta operación se están recibiendo los datos insertados por el usuario en la página en la que se insertó un documento a la aplicación web.
+Esta operación se enfoca en realizar los algoritmos de búsqueda.
+* http://18.191.33.21:3000/algoritmosBusqueda/doc
+* _POST_
+* >Error, site not found
+
+* **NOTA**
+    * Las operaciones son similares debido a que manejan los mismos campos, pero una vez que son insertados, se están insertando en las variables requeridas para que se pueda correr el algoritmo especificado con la cantidad de valores numéricos requeridos.
 
 ##### 3.5.3.2 GET
+
+Las operaciones detipo GET que se encuentran presente en este API se están usando para poder cargar sus páginas correspondientes, esto permite que las páginas web solicitadas carguen su página respectiva.
+
+El documento que se está mandando a llamar es el que se encuentra dentro de la operación **sendFile(__dirname, '/_AQUÍ_');**, es decir, esto permite que se cargue el documento desde el path correspondiente.
+
+**app.get('/', ...)**
+
+* En esta operación se están 
 
 *[Por cada endpoint debe incluir lo siguiente:]*
 

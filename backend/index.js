@@ -326,6 +326,7 @@ app.post('/sequentialVis', async(req, res)=>{
 app.post('/algoritmosEstables/conf', async (req, res) => {
     var primer = req.body.primerAlg;
     var segundo = req.body.segundoAlg;
+    var ordenImp = req.body.ordenImp;
     var inpNumber = parseInt(req.body.noRand);
 
     //  Inserta el valor numérico a un arreglo global para que pueda ser accedido por todas las operaciones que dependan de ese valor. 
@@ -3097,6 +3098,7 @@ app.post('/algoritmosInestables/doc', async (req, res) => {
 app.post('/algoritmosEstables/doc', async (req, res) => {
         var primer = req.body.primerAlg;
         var segundo = req.body.segundoAlg;
+    var ordenImp = req.body.ordenImp;
         var inpNumber = 150;
 
         const fileCont = JSON.parse(req.body.fileContent)
