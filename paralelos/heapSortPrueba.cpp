@@ -27,7 +27,7 @@ void swap(int *m, int *n)
 /* 
   Function HeapSort: sorts the array by creating a heap data and sorting it with it's help
   @param arr: the array of elements to be sorted
-  @N = array size
+  @param N: array size
   @return: nothing 
 */
 void heapsort( int a[], int N){       
@@ -62,8 +62,9 @@ void heapsort( int a[], int N){
   Function siftDown: auxiliar function for heapSort to sort the array by taking the first element
   of the heap and placing it where it goes, this repeats until it's sorte
   @param a: the array of elements to be sorted
-  @N = array size
-  @return: nothing 
+  @param k: index where to start making the heap
+	@param N: array size
+  @return: if nothing is to be done
 */
 void siftDown( int *a, int k, int N){     
 	while ( k*2 + 1 < N ) { 
