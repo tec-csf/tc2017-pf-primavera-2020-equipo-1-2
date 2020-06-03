@@ -132,7 +132,6 @@ Los archivos que el usuario podrá ingresar serán tipo Json, además que se pod
 
 ### 3.3 Frontend
 
-*[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
 
 El frontend fue programado completamente en HTML y se implementa el uso de CSS mediante Bootstrap.
 Este puede ser encontrado [aquí](https://getbootstrap.com/docs/4.5/getting-started/introduction/), y fue implementado de la siguiente manera:
@@ -181,13 +180,13 @@ En cambio, las operaciones de tipo *GET* se encargan de cargar y desplegar las p
 
 ### 3.4 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
-
 El backend del proyecto es hecho con JavaScript. Esto nos permitió implementar las librerías necesarias para poder correr la aplicación como es requerido. Así generando datos aleatorios u obteniendolos de archivos Json. Una vez generados los datos se eligen dos algoritmos a comparar de la misma clase, búsqueda con búsqueda, inestables con inestables o finalmente estables con estables. Además de la comparación se realizarán las visualizaciones de los 14 algoritmos especificados, al principio de este proyecto,  cabe especificar que no podrán verse al mismo tiempo si no por decisión del usuario, se podrán también exportar gráficas de los datos que se generaron y los tiempos de ejecución de los algoritmos debido al almacenamiento de los mismos. 
 
 Todo esto esta conectado con Frontend mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ se están encargando.
 
 El frontend y el backend establecen una conexión mediante operaciones de tipo _RESTful_, esto permite que se desplieguen las páginas necesarias mediante operaciones del tipo _GET_. En cambio, las operaciones de tipo _POST_ están manejando los datos que están siendo ingresados en los <form>
+
+Para paralelizar los códigos utilizamos c y c++, sin embargo existen diferentes algoritmos que decidimos dejar de paralelizar pues sería pérdida de espacio y tiempo en el código.
 
 #### 3.4.1 Lenguaje de programación
 
