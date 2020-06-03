@@ -1,3 +1,12 @@
+/* 
+  Algoritmo Heap Sort en Java Script
+*/
+
+/* 
+  Function heapSort: sorts the array by creating a heap data and sorting it with it's help
+  @param arr:the array of elements to be sorted
+  @return: nothing 
+*/
 function heapSort(array) {
     let size = array.length
   
@@ -15,9 +24,16 @@ function heapSort(array) {
       // call max heapify on the reduced heapSort
       heapify(array, i, 0)
     }
-  }
+  } //end heapSort
   
-  // to heapify a subtree rooted with node i which is an index in array[]
+  /* 
+  Function Heapify: auxiliar function for heapSort to sort the array by taking the first element
+  of the heap and placing it where it goes, this repeats until it's sorte
+  @param arr:the array of elements to be sorted
+  @param size: size of the array
+  @param i : index where it starts to make the heap
+  @return:nothing
+*/
   function heapify(array, size, i) {
     let max = i // initialize max as root
     let left = 2 * i + 1
@@ -41,7 +57,7 @@ function heapSort(array) {
       // recursively heapify the affected sub-tree
       heapify(array, size, max)
     }
-  }
+  } //heapify
   
   let array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
   heapSort(array)

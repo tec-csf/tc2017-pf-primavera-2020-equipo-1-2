@@ -1,9 +1,19 @@
+/* 
+  Paralelizacion de Selection Sort con la librería OpenMP
+*/
 #include <stdio.h>
 #include <omp.h>
 
 struct Compare { int val; int index; };
 #pragma omp declare reduction(maximum : struct Compare : omp_out = omp_in.val > omp_out.val ? omp_in : omp_out)
 
+/* 
+  Function Selection Sort: Sorting algorithm where the smallest element is selected 
+  from the unsorted array and swapped with the leftmost element, and that element becomes a part of the sorted array. 
+  @param arr: the array of elements to be sorted
+  @param size: size of the array
+  @return:nothing
+*/
 void selectionsort(int* arr, int size)
 {
     for (int i = size - 1; i > 0; --i)

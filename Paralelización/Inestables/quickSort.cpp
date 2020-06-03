@@ -1,9 +1,17 @@
+/* 
+  Paralelizacion de Quick Sort con la librería OpenMP
+*/
 #include <bits/stdc++.h> 
 #include <iostream>
 #include <omp.h>
 
 using namespace std; 
 
+/* 
+    Function swap: this function changes the position in an array, helping with the sorting
+    @param a: the first element to be switched 
+    @param b: the second element to be switched
+*/
 void swap(int* a, int* b) 
 { 
 	int t = *a; 
@@ -11,6 +19,14 @@ void swap(int* a, int* b)
 	*b = t; 
 } 
 
+/* 
+  Function Partition: this function is part of the quick sort, it compares the lower value with all the other elements
+  from back to front until it finds a smaller value to swap. 
+  @param arr:the array of elements to be sorted
+  @param low:the first element of the array 
+  @param high:the last element of the array 
+  @return: position
+*/
 int partition (int arr[], int low, int high) 
 { 
 	int pivot = arr[high];
@@ -29,6 +45,14 @@ int partition (int arr[], int low, int high)
 	return (i + 1); 
 } 
 
+/* 
+  Function QuickSort: The goal is to reorganize the array so it is partitioned into two halves, 
+  with everything in each side either being less than or greater than our pivot.
+  @param arr:the array of elements to be sorted
+  @param low: the first element of the array 
+  @param high: the last element of the array 
+  @return: nothing
+*/
 void quickSort(int arr[], int low, int high) 
 { 
 	if (low < high) 
@@ -55,6 +79,12 @@ void quickSort(int arr[], int low, int high)
 	} 
 } 
 
+/* 
+  Function printArray: function that helps us print the array
+  @param arr: the array of elements to be sorted
+  @param size: size of the array to print
+  @return: nothing
+*/
 void printArray(int arr[], int size) 
 { 
 	int i; 

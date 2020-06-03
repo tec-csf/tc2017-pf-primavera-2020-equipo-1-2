@@ -1,3 +1,6 @@
+/* 
+  Paralelizacion de Heap Sort con la librería OpenMP
+*/
 #include <bits/stdc++.h>
 #include <iostream>
 #include <omp.h>
@@ -6,7 +9,13 @@ using namespace std;
 
 //Se remueve el primer elemento del arreglo
 void siftDown( int *a, int k, int N); 
+//N = array size
 
+/* 
+    Function swap: this function changes the position in an array, helping with the sorting
+    @param m: the first element to be switched 
+    @param n: the second element to be switched
+*/
 void swap(int *m, int *n)
 {
 	int tmp;
@@ -15,7 +24,12 @@ void swap(int *m, int *n)
 	*n = tmp;
 }
 
-//N = array size
+/* 
+  Function HeapSort: sorts the array by creating a heap data and sorting it with it's help
+  @param arr: the array of elements to be sorted
+  @param N: array size
+  @return: nothing 
+*/
 void heapsort( int a[], int N){       
 	/* heapify */    
 	for (int k = N/2; k >= 0; k--) { 
@@ -44,6 +58,14 @@ void heapsort( int a[], int N){
 	}
 }  
 
+/* 
+  Function siftDown: auxiliar function for heapSort to sort the array by taking the first element
+  of the heap and placing it where it goes, this repeats until it's sorte
+  @param a: the array of elements to be sorted
+  @param k: index where to start making the heap
+	@param N: array size
+  @return: if nothing is to be done
+*/
 void siftDown( int *a, int k, int N){     
 	while ( k*2 + 1 < N ) { 
 		/* For zero-based arrays, the children are 2*i+1 and 2*i+2 */

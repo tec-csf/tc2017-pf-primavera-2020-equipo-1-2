@@ -11,8 +11,13 @@ function Node(data) {
     this.data = data;
     this.left = null;
     this.right = null;
-}
+} //end Node
 
+/* 
+  Class BinarySearchTree: this function is the constructor of the BTS and has all the methods implemented
+  @param: nothing 
+  @return:nothing
+*/
 class BinarySearchTree {
     constructor() {
         this.root = null;
@@ -131,8 +136,13 @@ class BinarySearchTree {
         })
     }
 
-}
+} //end Binary Search Tree
 
+/* 
+  function test: this function adds nodes to the tree and print the tree in order
+  @param: nothing 
+  @return:nothing
+*/
 (function test() {
     let tree = new BinarySearchTree()
 
@@ -145,4 +155,4 @@ class BinarySearchTree {
     tree.add(9)
 
     tree.printDFS();
-})()
+})() //end test
