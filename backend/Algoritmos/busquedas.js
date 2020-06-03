@@ -1,6 +1,15 @@
+/* 
+  Animaciones de los algoritmos de busquedas. 
+*/
 var a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// Recibe un array y el elemento a Buscar. Devolverá el arreglo  si en caso
+/* 
+Function binarySearch: this function will look for a number in the array, by spliting the array in half 
+and searching on the lower or upper part
+@param arr: the array to be searched 
+@param item: the number to be searched
+@return: the number if found, or -1 if not found 
+*/
 function binarySearch(array, item){
   var low = 0;
   var high = array.length - 1;
@@ -18,8 +27,15 @@ function binarySearch(array, item){
     }
   }
   return -1;
-}
+} //end binarySearch
 
+/* 
+Function linearSearch: this function will look for a number in the array, 
+by searching for the number one by one on the array
+@param list: the array to be searched 
+@param value: the number to be searched
+@return: position where the number is found
+*/
 function linearSearch(list, value) {
     let found = false;
     let position = -1;
@@ -34,7 +50,8 @@ function linearSearch(list, value) {
         }
     }
     return position ;
-  }
+  } //end linearSearch
+
 console.log("Busqueda Secuencial")
 console.log(linearSearch(a,3));
 console.log("Busqueda Binaria")
