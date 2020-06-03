@@ -2,17 +2,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int *num1, int *num2);
+#define SIZE 1000
 
-int main (int argc, char *argv[]) {
-	int SIZE =1000; //tamaño total
-	int A[SIZE];
-	for(int i=0;i<SIZE;i++)
-	{
-	    A[i]=rand()%SIZE;
-	}
-	//int A[5] = {6,9,1,3,7};
-	int N = SIZE;
+void swap();
+
+/* 
+  Function bubbleSort: this function organizes the data array using openmp and Bubble Sort
+  @param: int A[], sends an int data array 
+  @return: float with the execution time
+*/
+float bubbleSort(int A[])
+{
+    int N = SIZE;
 	int i=0, j=0; 
 	int first;
 	double start,end;
@@ -32,18 +33,30 @@ int main (int argc, char *argv[]) {
 		}
 	}
     end=omp_get_wtime();
-	for(i=0;i<N;i++)
-	{
-		printf(" %d",A[i]);
-	}
-
-printf("\n-------------------------\n Time Parallel= %f",(end-start));
+	printf("\n-------------------------\n Time Parallel= %f",(end-start));
+    return end-start; 
 }
 
+/* 
+  Function swap: this function swaps the numbers that are being compared  
+  @param: int *num1 , int *num2 pointers to change data
+  @return: void
+*/
 void swap(int *num1, int *num2)
 {
 
 	int temp = *num1;
 	*num1 =  *num2;
 	*num2 = temp;
+}
+
+int main () {
+	//int SIZE =1000; //tamaño total
+	int A[SIZE];
+	for(int i=0;i<SIZE;i++)
+	{
+	    A[i]=rand()%SIZE;
+	}
+	bubbleSort(A);
+	return 0;
 }
