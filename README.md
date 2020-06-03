@@ -324,10 +324,10 @@ El documento que se está mandando a llamar es el que se encuentra dentro de la 
 
 ## 3.6 Pasos a seguir para utilizar el proyecto
 
-### 1. Ingresar a http://18.191.33.21:3000/
-### 2. Ingresar a la categoría deseada
-### 3. Seleccionar si desea subir un json con los números deseados, o crear un arreglo desde cero
-### 4. Elegir los alrigitmos deseados
+##### 1. Ingresar a http://18.191.33.21:3000/
+##### 2. Ingresar a la categoría deseada
+##### 3. Seleccionar si desea subir un json con los números deseados, o crear un arreglo desde cero
+##### 4. Elegir los alrigitmos deseados
 
 ## 4. Referencias
 
