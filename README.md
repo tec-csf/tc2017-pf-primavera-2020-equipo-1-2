@@ -334,3 +334,5 @@ El documento que se está mandando a llamar es el que se encuentra dentro de la 
 * https://parallel.js.org/
 * https://p5js.org/es/
 * https://nodejs.org/es/about/
+* http://mmc.geofisica.unam.mx/acl/Herramientas/ComputoParalelo/IsParallelismForYou-ppt.pdf
+* https://es.wikipedia.org/wiki/Algoritmo_de_ordenamiento
