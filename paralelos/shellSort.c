@@ -4,17 +4,14 @@
 
 #define SIZE 1000
 
-void swap();
-
-int main (int argc, char *argv[]) {
-	//int SIZE =1000; //tamaño total
-	int A[SIZE];
-	for(int i=0;i<SIZE;i++)
-	{
-	    A[i]=rand()%SIZE;
-	}
-	//int A[5] = {6,9,1,3,7};
-	int N = SIZE;
+/* 
+  Function shellSort: this function organizes the data array with openmp and shellsort 
+  @param: int A[], sends an int data array 
+  @return: float with the execution time
+*/
+float shellSort(int A[])
+{
+    int N = SIZE;
 	int i=0, j=0, incrmnt=0, temp = 0; 
 	int first;
 	double start,end;
@@ -41,10 +38,17 @@ int main (int argc, char *argv[]) {
         }
     }
     end=omp_get_wtime();
-	for(i=0;i<N;i++)
-	{
-		printf(" %d",A[i]);
-	}
+	printf("\n-------------------------\n Time Parallel= %f",(end-start));
+    return end-start;
+}
 
-printf("\n-------------------------\n Time Parallel= %f",(end-start));
+int main ()
+{
+    int A[SIZE];
+	for(int i=0;i<SIZE;i++)
+	{
+	    A[i]=rand()%SIZE;
+	}
+    shellSort(A);
+    return 0;
 }
