@@ -328,6 +328,48 @@ El documento que se está mandando a llamar es el que se encuentra dentro de la 
 ##### 2. Ingresar a la categoría deseada
 ##### 3. Seleccionar si desea subir un json con los números deseados, o crear un arreglo desde cero
 ##### 4. Elegir los alrigitmos deseados
+Contar en tu computadora con NODE.js, dde ser necesario instalarlo de [aquí](https://nodejs.org/es/download/).
+
+1. Primero, se necesita clonar el repositorio, con el siguiente comando:
+
+   ```
+    git clone https://github.com/tec-csf/tc2017-pf-primavera-2020-equipo-1-2.git
+    ```
+
+    Una vez que se haya descargado el repositorio, se tendrán las siguientes carpetas de manera local:
+
+     - Arquitectura	      
+     - backend
+     - dbs
+     - frontend
+
+    También el [README.md](README.md) que se encuentra en la carpeta raíz.
+
+
+  3. Una vez que tenga el repositorio en su computadora, entre a la carpeta llamada _backend_ con el siguiente comando:
+
+  `
+  cd tc2017-pf-primavera-2020-equipo-1-2/backend
+  `
+
+ 4. Para instalar las librerías necesarias para que el proyecto corra, es necesario correr el siguiente comando.
+
+    `
+    npm install
+    `
+
+ 5. Para poder el correr el proyecto de manera local, es necesario correr el siguiente comando:
+    
+    `
+    npm start
+    `
+
+  6. Una vez que este corriendo, se puede conectar mediante su buscador preferido ingresando a la siguiente página <localhost:4000>.
+
+  7. Este último comando lo va a llevar a la pagina de inicio donde puede entrar con un usuario existente o crear uno nuevo.
+
+  8. Una vez que haya ingresado con su cuenta recién hecha, podrá realizar las operaciones que se encuentran disponibles en la página web. 
+  
 
 ## 4. Referencias
 
