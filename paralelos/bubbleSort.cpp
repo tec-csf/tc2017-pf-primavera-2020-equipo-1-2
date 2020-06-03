@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap();
+void swap(int *num1, int *num2);
 
 int main (int argc, char *argv[]) {
 	int SIZE =1000; //tamaño total
