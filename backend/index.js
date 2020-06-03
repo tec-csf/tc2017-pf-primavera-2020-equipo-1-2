@@ -15,6 +15,7 @@ const {
 const port = 4000;
 
 var nuRand = [];
+var noInput = [];
 var nombrePrim = [];
 var nombreSec = [];
 
@@ -209,6 +210,35 @@ app.get('/countingSortDisp', async (req, res) =>{
     res.sendFile(path.resolve(__dirname, '../frontend/countingsortDisplay.html'));
 })
 
+app.get('/binaryDisp', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/BSTDisplay.html'));
+});
+
+/* app.get('/sequentialDisp', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/sequentialDisplay.html'));
+}); */
+
+app.get('/heapDisp', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/heapsortDisplay.html'));
+});
+
+app.get('/quickDisp', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/quicksortDisplay.html'));
+});
+
+app.get('/selectionDisp', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/selectionsortDisplay.html'));
+});
+
+app.get('/shellDisp', async(req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/shellsortDisplay.html'));
+});
+/* 
+No se creó el documento llamado sequentialDisplay.html
+app.get('/seqDisp', async(req, res)=>{
+     res.sendFile(path.resolve(__dirname, '../frontend/sequentialDisplay.html'));
+}) */
+
 //A partir de esta sección se están mandando a llamar los datos insertados en los forms/botones individuales,
 //que se encuentran en la segunda tabla del stableUI.html
 
@@ -217,65 +247,54 @@ app.post('/burbujaVis', async(req, res)=>{
     //Este es el valor que está siendo insertado por el usuario
     var inputNo = parseInt(req.body.noRand);
 
+    noInput.push(inputNo);
+
+    console.log(noInput[0]);
     //Va a abrir en la misma ventana el documento que hayan especificado y va a enviar el campo llamado
     //inputNo es el valor numérico que se le insertó al form del html
-    res.redirect('/bubbleSortDisp', {
-        inputNo
-    })
-    console.log(inputNo);
+    res.redirect('/bubbleSortDisp')
 })
 
 app.post('/bucketVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
-    res.redirect('/bucketSortDisp', {
-        inputNo
-    })
     console.log(inputNo);
+
+    res.redirect('/bucketSortDisp')
 })
 
 app.post('/cocktailVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
-    res.redirect('/cocktailSortDisp', {
-        inputNo
-    })
+    res.redirect('/cocktailSortDisp')
     console.log(inputNo);
 })
 
 app.post('/countingVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
-    res.redirect('/countingSortDisp', {
-        inputNo
-    })
+    res.redirect('/countingSortDisp')
     console.log(inputNo);
 })
 
 app.post('/insertVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
-    res.redirect('/insertionSortDisp', {
-        inputNo
-    })
+    res.redirect('/insertionSortDisp')
     console.log(inputNo);
 })
 
 app.post('/mergeVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
-    res.redirect('/mergeSortDisp', {
-        inputNo
-    })
+    res.redirect('/mergeSortDisp')
     console.log(inputNo);
 })
 
 app.post('/radixVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
-    res.redirect('/radixSortDisp', {
-        inputNo
-    })
+    res.redirect('/radixSortDisp')
     console.log(inputNo);
 })
 
@@ -283,24 +302,28 @@ app.post('/heapVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     console.log(inputNo);
+    res.redirect('/heapDisp');
 })
 
 app.post('/quickVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     console.log(inputNo);
+    res.redirect('/quickDisp')
 })
 
 app.post('/selectionVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     console.log(inputNo);
+    res.redirect('/selectionDisp')
 });
 
 app.post('/shellVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     console.log(inputNo);
+    res.redirect('/shellDisp')
 });
 
 
@@ -308,6 +331,8 @@ app.post('/binaryVis', async(req, res)=>{
     var inputNo = parseInt(req.body.noRand);
 
     console.log(inputNo);
+
+    res.redirect('/binaryDisp')
 })
 
 app.post('/sequentialVis', async(req, res)=>{

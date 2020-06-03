@@ -60,7 +60,6 @@
                     <tr>
                         <th class="text-lg-center">Primer algoritmo</th>
                         <th class="text-lg-center">Segundo algoritmo</th>
-                        <th class="text-lg-center">Orden de impresión</th>
                     </tr>
                 </thead>
                 <tr>
@@ -86,15 +85,6 @@
                             </select>
                         </div>
                     </td>
-                    <td>
-                        <div class="row justify-content-center form-group">
-                            <select name="ordenImp" id="ordenImp">
-                                <option value="null">-</option>
-                                <option value="binary">Ascendente</option>
-                                <option value="sequential">Descendente</option>
-                            </select>
-                        </div>
-                    </td>
                 </tr>
             </table><br>
 
@@ -110,6 +100,9 @@
                 <h5 class="text-lg-center">Seleccione que algoritmo desea visualizar</h5>
 
 
+                <h6 class="text-lg-center">Para poder ser enviado a su página correspondiente, presione la tecla
+                    <i>ENTER o Entrar</i> una vez que haya insertado los campos</h6>
+
                 <table style="width:100%" class="table">
                     <thead class="thead-clear">
                         <th class="text-center"></th>
@@ -120,19 +113,19 @@
                         <td>
                             <form action="/heapVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center " value="Heap">
+                                <label class="text-center">Heap</label>
                             </form>
                         </td>
                         <td>
                             <form action="/quickVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Quick">
+                                <label class="text-center">Quick</label>
                             </form>
                         </td>
                         <td>
                             <form action="/selectionVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Selection">
+                                <label class="text-center">Selection</label>
                             </form>
                         </td>
                     </tr>
@@ -141,12 +134,12 @@
                         <td>
                             <form action="/shellVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Shell">
+                                <label class="text-center">Shell</label>
                             </form>
                         </td>
                     </tr>
                 </table>
-            </div><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div><br><br><br><br><br><br><br><br><br><br><br><br>
 
         </div>
     </div>

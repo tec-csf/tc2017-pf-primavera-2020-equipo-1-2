@@ -58,7 +58,6 @@
                         <tr>
                             <th class="text-lg-center">Primer algoritmo</th>
                             <th class="text-lg-center">Segundo algoritmo</th>
-                            <th class="text-lg-center">Orden de impresión</th>
                         </tr>
                     </thead>
                     <tr>
@@ -90,15 +89,6 @@
                                 </select>
                             </div>
                         </td>
-                        <td>
-                            <div class="row justify-content-center form-group">
-                                <select name="ordenImp" id="ordenImp">
-                                    <option value="null">-</option>
-                                    <option value="binary">Ascendente</option>
-                                    <option value="sequential">Descendente</option>
-                                </select>
-                            </div>
-                        </td>
                     </tr>
                 </table><br>
 
@@ -110,6 +100,9 @@
             <div class="form-group form-control-lg">
                 <h5 class="text-lg-center">Seleccione que algoritmo desea visualizar</h5>
 
+                <h6 class="text-lg-center">Para poder ser enviado a su página correspondiente, presione la tecla
+                    <i>ENTER o Entrar</i>
+                    una vez que haya insertado los campos</h6>
 
                 <table style="width:100%" class="table">
                     <thead class="thead-clear">
@@ -121,19 +114,19 @@
                         <td>
                             <form action="/burbujaVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center " value="Burbuja">
+                                <label class="text-center">Bubble</label>
                             </form>
                         </td>
                         <td>
                             <form action="/bucketVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Bucket">
+                                <label class="text-center">Bucket</label>
                             </form>
                         </td>
                         <td>
                             <form action="/cocktailVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Cocktail">
+                                <label class="text-center">Cocktail</label>
                             </form>
                         </td>
                     </tr>
@@ -141,19 +134,19 @@
                         <td>
                             <form action="/countingVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Counting">
+                                <label class="text-center">Counting</label>
                             </form>
                         </td>
                         <td>
                             <form action="/insertVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Insertion">
+                                <label class="text-center">Insertion</label>
                             </form>
                         </td>
                         <td>
                             <form action="/mergeVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" value="Merge">
+                                <label class="text-center">Merge</label>
                             </form>
                         </td>
                     </tr>
@@ -162,7 +155,7 @@
                         <td>
                             <form action="/radixVis" method="POST">
                                 <input type="number" class="text-lg-center" min="1" max="999999" name="noRand">
-                                <input type="button" class="btn btn-info text-lg-center" title="Radix" value="Radix">
+                                <label class="text-center">Radix</label>
                             </form>
                         </td>
                         <td></td>
@@ -182,25 +175,25 @@
             window.open('/')
         }
 
-        document.getElementById('import').addEventListener("click", function(event){
+        document.getElementById('import').addEventListener("click", function (event) {
             event.preventDefault()
             var files = document.getElementById('fileUpload').files;
-          // console.log(typeof files);
-          if (files.length <= 0) {
-            return false;
-          }
+            // console.log(typeof files);
+            if (files.length <= 0) {
+                return false;
+            }
 
-          var fr = new FileReader();
+            var fr = new FileReader();
 
-          fr.onload = function(e) { 
-          console.log(e);
-            var result = JSON.parse(e.target.result);
-            var formatted = JSON.stringify(result, null, 2);
+            fr.onload = function (e) {
+                console.log(e);
+                var result = JSON.parse(e.target.result);
+                var formatted = JSON.stringify(result, null, 2);
                 document.getElementById('result').value = formatted;
-          }
+            }
 
-          fr.readAsText(files.item(0));
-          return false;
+            fr.readAsText(files.item(0));
+            return false;
         });
     </script>
 
