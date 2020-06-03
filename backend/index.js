@@ -110,6 +110,8 @@ app.get('/', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/home.html'));
 });
 
+//Render de las páginas principales
+
 app.get('/search', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/search.html'))
 });
@@ -117,10 +119,6 @@ app.get('/search', async (req, res) => {
 app.get('/sorting', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/sorting.html'))
 });
-
-app.get('/animacionInestables', async (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/AnimacionInestables.js'))
-})
 
 app.get('/unstable', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/unstable.html'))
@@ -130,16 +128,20 @@ app.get('/stable', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/stable.html'))
 });
 
+app.get('/search', async (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/search.html'))
+});
+
+//Hasta aquí con las páginas principales
+
+//
+
 app.get('/stableUI', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/stableUI.html'))
 })
 
 app.get('/unstableUI', async (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/unstableUI.html'))
-});
-
-app.get('/search', async (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/search.html'))
 });
 
 app.get('/searchUI', async (req, res) => {

@@ -310,7 +310,10 @@ El documento que se está mandando a llamar es el que se encuentra dentro de la 
 
 **app.get('/', ...)**
 
-* En esta operación se están 
+* En esta operación se está cargando la página de inicio de la aplicación, en la carpeta del frontend se llama _home.html_.
+* http://18.191.33.21:3000/
+* GET
+* >Error, site not found
 
 *[Por cada endpoint debe incluir lo siguiente:]*
 
