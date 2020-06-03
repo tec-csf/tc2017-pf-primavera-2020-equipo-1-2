@@ -65,16 +65,18 @@ void printArray(int arr[], int size)
 
 int main() 
 { 
-    int n = 100;
-    int arr[n];
-    int nrand =n*10;
+    int no = 100;
+    int arr[no];
+    int nrand =no*10;
 
     srand((unsigned)time(0));
 
 	//Generación aleatoria de datos
-	for(int i = 0; i < n; i++){
+	for(int i = 0; i < no; i++){
 	    arr[i] = (rand()%nrand)+1;
 	}
+
+    int n = sizeof(arr) / sizeof(arr[0]); 
 
     cout << "\nArreglo sin ordenar: \n";
     printArray(arr, n);
