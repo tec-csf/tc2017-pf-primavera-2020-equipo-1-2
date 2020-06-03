@@ -1,3 +1,8 @@
+/* 
+  Animaciones de los algoritmos Inestables, dentro de esta categoría esta la 
+  implementación de los siguientes algoritmos: Shell sort, Selection Sort,
+  Quick Sort y Heap Sort. 
+*/
 function heapSort(array) {
     let size = array.length
   

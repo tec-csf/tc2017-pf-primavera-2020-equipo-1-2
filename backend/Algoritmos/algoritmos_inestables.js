@@ -151,7 +151,7 @@ function heapSort(array) {
       // sort the right sub-array
       quickSort(array, pivotIndex + 1, endIndex)
     }
-  }
+  } // end quickSort
 
   /* 
   Function Partition: this function is part of the quick sort, it compares the @param start with all the other elements
