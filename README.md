@@ -1,4 +1,4 @@
-# *Proyecto Final - Simulador de Memoria Virtual *
+# Proyecto Final - Simulador de Memoria Virtual 
 ---
 #### Materia: Sistemas Operativos
 
