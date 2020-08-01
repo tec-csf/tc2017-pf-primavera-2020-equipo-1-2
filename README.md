@@ -1,6 +1,6 @@
-# *PF1. Algoritmos de Búsqueda y Ordenamiento*
+# *Proyecto Final - Simulador de Memoria Virtual *
 ---
-#### Materia: *Sistemas Operativos *
+#### Materia: Sistemas Operativos
 
 ##### Integrantes:
 1. *CHRISTOPHER LUIS MIRANDA VANEGAS* - *A01022676* - *Campus Santa Fe*
