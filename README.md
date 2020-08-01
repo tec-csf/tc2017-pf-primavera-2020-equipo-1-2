@@ -1,11 +1,14 @@
-# Proyecto Final - Simulador de Memoria Virtual 
+# *Proyecto Final - Simulador de Memroia *
 ---
-#### Materia: Sistemas Operativos
+#### Materia: *Análisis y Diseño de Algoritmos*
 
 ##### Integrantes:
-1. *CHRISTOPHER LUIS MIRANDA VANEGAS* - *A01022676* - *Campus Santa Fe*
-2. *Mike* - *A0* - *Campus *
-3. *Aristo* - *A0* - *Campus *
+1. *LUIS DANIEL ROA GONZÁLEZ* - *A01021960* - *Campus Santa Fe*
+2. *KATIA YARETH BELLIDO LÓPEZ* - *A01023638* - *Campus Santa Fe*
+3. *CONSTANZA GÓMEZ SÁNCHEZ* - *A01026717* - *Campus Santa Fe*
+4. *CHRISTOPHER LUIS MIRANDA VANEGAS* - *A01022676* - *Campus Santa Fe*
+5. *MIGUEL MONTERRUBIO BANDERA* - *A01022153* - *Campus Santa Fe*
+
 ---
 ## 1. Aspectos generales
 
@@ -14,6 +17,15 @@ Las orientaciones de la tarea se encuentran disponibles en la plataforma **Canva
 Este documento es una guía sobre qué información debe entregar como parte del proyecto, qué requerimientos técnicos debe cumplir y la estructura que debe seguir para organizar su entrega.
 
 ### 1.1 Requerimientos técnicos
+
+A continuación se mencionan los requerimientos técnicos mínimos del proyecto, favor de tenerlos presente para que cumpla con todos.
+
+* El equipo tiene la libertad de elegir las tecnologías de desarrollo a utilizar en el proyecto, sin embargo, debe tener presente que la solución final se deberá ejecutar en una de las siguientes plataformas en la nube: [Google Cloud Platform](https://cloud.google.com/?hl=es), [Amazon Web Services](https://aws.amazon.com/) o [Microsoft Azure](https://azure.microsoft.com/es-mx/).
+* El proyecto deberá utilizar una interfaz Web.
+* La arquitectura deberá estar separada claramente por capas (*frontend*, *backend*, *API RESTful*, datos y almacenamiento) según se necesite.
+* Todo el código, *datasets* y la documentación del proyecto debe alojarse en este repositorio de GitHub. Favor de mantener la estructura de carpetas propuesta.
+
+### 1.2 Estructura del repositorio
 
 A continuación se mencionan los requerimientos técnicos mínimos del proyecto, favor de tenerlos presente para que cumpla con todos.
 
